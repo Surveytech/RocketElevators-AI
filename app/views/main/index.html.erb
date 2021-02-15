@@ -105,71 +105,7 @@
 		<!-- wrapper -->
 		<div id="wrapper">
 
-			<div id="header" class="navbar-toggleable-md sticky header-md dark clearfix">
-
-				<!-- TOP NAV -->
-				<header id="topNav">
-					<div class="container">
-
-						<!-- Mobile Menu Button -->
-						<button class="btn btn-mobile" class="submenu-dark" data-toggle="collapse" data-target=".nav-main-collapse">
-							<i class="fa fa-bars"></i>
-						</button>
-
-						<!-- Logo -->
-
-						<a class="logo float-left scrollTo" href="#top">
-							<img src="/assets/images/R2.png" alt="RocketElevatorsLogo" />
-						</a>
-
-						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
-							<nav class="nav-main">
-
-								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-									<li><!-- HOME -->
-										<a href="#home-nav">
-											HOME
-										</a>
-									</li>
-									<li class="dropdown">
-										<a class="dropdown-toggle" href="#services-nav">
-											SERVICES
-										</a>
-										<ul class="dropdown-menu">
-											<li><a href="residential.html">RESIDENTIAL</a></li>
-											<li><a href="commercial.html">COMMERCIAL</a></li>
-										</ul>
-									</li>
-									<li><!-- portfolio -->
-										<a href="#portfolio-nav">
-											PORTFOLIO
-										</a>
-									</li>
-									<li><!-- news -->
-										<a href="#news-nav">
-											NEWS
-										</a>
-									</li>
-									<li><!-- clients -->
-										<a href="#clients-nav">
-											CLIENTS
-										</a>
-									</li>
-									<li><!-- CONTACT -->
-										<a href="#contact-nav">
-											CONTACT
-										</a>
-									</li>
-
-								</ul>
-
-							</nav>
-						</div>
-
-					</div>
-				</header>
-
-			</div>
+			<%= render "main/header"%>
 
 
 <!--SLIDERS-->
@@ -1127,69 +1063,7 @@
 			</section>
 			<!-- /CONTACT -->
 
-
-
-
-			<!-- FOOTER -->
-			<footer id="footer">
-				<div class="container">
-
-					<div class="row">
-						<!-- col #1 -->
-						<div class="col-md-5">
-
-							<h3 class="letter-spacing-1 text-center">WHY US?</h3>
-							<!-- Small Description -->
-							<p >We have the conviction that we create the most innovative and reliable products on the market. Contact us today for any questions you might have.</p>
-							<h2 class="text-center">(418) 555-1234</h2>
-						</div>
-						<!-- /col #1 -->
-
-						<div class="col-md-3">
-
-							<!-- Links -->
-							<h4 class="letter-spacing-1">EXPLORE</h4>
-							<ul class="footer-links list-unstyled">
-								<li><a href="#home-nav">Home</a></li>
-								<li><a href="#services">Our Services</a></li>
-								<li><a href="#clients">Our Clients</a></li>
-								<li><a href="quote.html">Request a Quote</a></li>
-								<li><a href="index.html#contact-nav">Contact Us</a></li>
-							</ul>
-							<!-- /Links -->
-
-						</div>
-
-						<!-- col #2 -->
-						<div class="col-md-4">
-							<h3 class="letter-spacing-1 text-center">KEEP IN TOUCH</h3>
-
-							<!-- Newsletter Form -->
-							<p class="text-center">Subscribe to Our Newsletter to get Important News & Offers</p>
-
-
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-									<input type="email" id="emailSub" name="email" class="form-control " placeholder="Enter your Email">
-									<span class="input-group-btn">
-										<button onclick="alertify.alert('Rocket Elevators','Successfully Subscribed!')" class="btn btn-default" >Subscribe</button>
-									</span>
-								</div>
-							<!-- /Newsletter Form -->
-						</div>
-						<!-- /col #2 -->
-					</div>
-				</div>
-
-				<div class="copyright">
-					<div class="container">
-						&copy; All Rights Reserved, Rocket Elevators LTD
-					</div>
-				</div>
-
-
-
-			</footer>
+<%= render "main/footer"%>
 
 		</div>
 		<!-- /wrapper -->
