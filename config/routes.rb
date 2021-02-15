@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   #get "/articles", to: "articles#index"
 
   get "/", to: "main#index"
+  get "/index", to: "main#index"
   get "/quote", to: "main#quote"
   get "/residential", to: "main#residential"
   get "/commercial", to: "main#commercial"
