@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #get "/articles", to: "articles#index"
-
+  # root 'index'
   get "/", to: "main#index"
   get "/index", to: "main#index"
   get "/quote", to: "main#quote"
