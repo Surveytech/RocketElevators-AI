@@ -14,4 +14,5 @@ class MainController < ApplicationController
     
     def quote
     end
+    
   end
