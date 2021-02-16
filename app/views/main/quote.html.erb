@@ -110,324 +110,411 @@
 </head>
 
 <body class=" enable-animation bg-grey">
-	<!-- Dark Title container -->
-	<section class="page-header dark">
-		<div class="container text-center">
-			<h1 class="fw-800 fs-60 font-latoo">Request A Quote</h1>
+	<!-- wrapper -->
+	<div id="wrapper">
+	
+		<%= render "main/header"%>
+
+		<section class="page-header dark">
+			<div class="container text-center">
+				<h1 class="fw-800 fs-60 font-latoo">Request A Quote</h1>
+			</div>
+		</section>
+		<!-- /PAGE HEADER -->
+
+		<script>
+			$('document').ready(function () {
+				$("select").change(function () {
+					getBuildingType();
+				});
+			});
+		</script>
+
+		<section >
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-xs-6">&nbsp;</div>
+					<div class="col-md-4 col-xs-6">
+						<!--First Selection, Building Type -->
+						<select id="building-type" class="form-control">
+							<option value="">Please Select a building type</option>
+							<option value="residential">Residential</option>
+							<option value="commercial">Commercial</option>
+							<option value="corporate">Corporation</option>
+							<option value="hybrid">Hybrid</option>
+						</select>
+					</div>
+					<div class="col-md-2 col-xs-4">&nbsp;</div>
+					<div class="col-md-2 col-xs-4">&nbsp;</div>
+				</div>
+
+				<div class="row hidden-sm-down">
+					<div class="col-md-2 col-xs-4">&nbsp;</div>
+					<!--Line Separator-->
+					<div class="col-md-8 col-xs-12"> <hr /></div>
+					<div class="col-md-2 col-xs-4">&nbsp;</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4 col-sm-4">&nbsp;</div>
+					<div class="col-md-4 col-sm-4">
+						<!--Questions-->
+						<div id="questionInput">
+							<div id="number-of-apartments" class="hidden">
+								<label for="number-of-apartments" id="number-of-apartmentsLabel">Enter The Number Of Appartments</label>
+								<input id="numberOfApartmentsInput" placeholder="Number Of Appartments" class="form-control" type="number"
+									maxLength="5" min="0" max="1000" />
+							</div>
+							<div id="number-of-floors" class="hidden">
+								<label for="number-of-floors" id="number-of-floorsLabel">Enter The Number Of Floors</label>
+								<input id="numberOfFloorsInput" placeholder="Number Of Floors" class="form-control" type="number"
+									maxLength="5" min="0" max="1000" />
+							</div>
+							<div id="number-of-basements" class="hidden">
+								<label for="number-of-basements" id="number-of-basementsLabel">Enter The Number Of Basements</label>
+								<input id="numberOfBasementsInput" placeholder="Number Of Basements" class="form-control" type="number"
+									maxLength="5" min="0" max="1000" />
+							</div>
+							<div id="number-of-companies" class="hidden">
+								<label for="number-of-companies" id="number-of-companiesLabel">Enter The Number Of Companies</label>
+								<input id="numberOfCompaniesInput" placeholder="Number Of Companies" class="form-control" type="number"
+									maxLength="5" min="0" max="1000" />
+							</div>
+							<div id="number-of-parking-spots" class="hidden">
+								<label for="number-of-parking-spots" id="number-of-parking-spotsLabel">Enter The Number Of Parking Spots</label>
+								<input id="numberOfParkingSpotsInput" placeholder="Number Of Parking Spots" class="form-control" type="number"
+									maxLength="5" min="0" max="1000" />
+							</div>
+							<div id="number-of-elevators" class="hidden">
+								<label for="number-of-elevators" id="number-of-elevatorsLabel">Enter The Number Of Elevators</label>
+								<input id="numberOfElevatorsInput" placeholder="Number Of Elevators" class="form-control" type="number"
+									maxLength="5" min="0" max="1000" />
+							</div>
+							<div id="number-of-corporations" class="hidden">
+								<label for="number-of-corporations" id="number-of-corporationsLabel">Enter The Number Of Corporations</label>
+								<input id="numberOfCorporationsInput" placeholder="Number Of Corporations" class="form-control" type="number"
+									maxLength="5" min="0" max="1000" />
+							</div>
+							<div id="maximum-occupancy" class="hidden">
+								<label for="maximum-occupancy" id="maximum-occupancyLabel">Enter The Number Of Occupants Per Floors</label>
+								<input id="maximumOccupancyInput" placeholder="Number Of Occupants Per Floors" class="form-control"
+									type="number" maxLength="5" min="0" max="1000" />
+							</div>
+							<div id="business-hours" class="hidden">
+								<label for="business-hours" id="business-hoursLabel">Enter The Number Of Hours</label>
+								<input id="businessHoursInput" placeholder="Number Of Hours" class="form-control" type="number"
+									maxLength="2" min="0" max="24" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<script>
+					//on keypress, give values to calc functions
+					$("#questionInput :input").bind(
+						"keypress keydown keyup change",
+						function () {
+							//can't have more than 24h big boy
+							if (parseFloat($(':input[id="businessHoursInput"]').val(), 10) > 24) {
+								$("#businessHoursInput").val(24);
+							};
+							switch (type) {
+								case "residential":
+									var apts = parseFloat($(':input[id="numberOfApartmentsInput"]').val(),10),
+										floors = parseFloat($(':input[id="numberOfFloorsInput"]').val(),10),
+										basements = parseFloat($(':input[id="numberOfBasementsInput"]').val(),10);
+									if (!isNaN(apts) && !isNaN(floors)) {
+										calcResidential(apts, floors);
+									}
+									break;
+								case "commercial":
+									var 									
+										floors = parseFloat($(':input[id="numberOfFloorsInput"]').val(),10),
+										basements = parseFloat($(':input[id="numberOfBasementsInput"]').val(),10),
+										companies = parseFloat($(':input[id="numberOfCompaniesInput"]').val(),10),
+										parkingSpots = parseFloat($(':input[id="numberOfParkingSpotsInput"]').val(),10),
+										elevators = parseFloat($(':input[id="numberOfElevatorsInput"]').val(),10);									
+									 if (									 	  
+									 	!isNaN(elevators)
+									 ) {
+										$("#estimatedElevators").val(elevators);
+  										$("#estimatedColumns").val(elevators);
+									}
+									break;
+
+								case "corporate":
+									var maxOccupancy = parseFloat($(':input[id="maximumOccupancyInput"]').val(),10),
+										floors = parseFloat($(':input[id="numberOfFloorsInput"]').val(),10),
+										basements = parseFloat($(':input[id="numberOfBasementsInput"]').val(),10),
+										corporations = parseFloat($(':input[id="numberOfCorporationsInput"]').val(),10),
+										parkingSpots = parseFloat($(':input[id="numberOfParkingSpotsInput"]').val(),10);
+									if (
+										!isNaN(maxOccupancy) &&
+										!isNaN(floors) &&
+										!isNaN(basements) 
+									) {
+										calcCorpoHybrid(maxOccupancy, floors, basements);
+									}
+									break;
+								case "hybrid":
+									var maxOccupancy = parseFloat($(':input[id="maximumOccupancyInput"]').val(),10),
+										floors = parseFloat($(':input[id="numberOfFloorsInput"]').val(),10),
+										basements = parseFloat($(':input[id="numberOfBasementsInput"]').val(),10),
+										companies = parseFloat($(':input[id="numberOfCompaniesInput"]').val(),10),
+										businessHours = parseFloat($(':input[id="businessHoursInput"]').val(),10),
+										parkingSpots = parseFloat($(':input[id="numberOfParkingSpotsInput"]').val(),10);
+									if (
+										!isNaN(maxOccupancy) &&
+										!isNaN(floors) &&
+										!isNaN(basements) 
+									) {
+										calcCorpoHybrid(maxOccupancy, floors, basements);
+									}
+									break;
+								default: hideQuestions();
+									break;
+							}
+							//price();
+							price($("#lineSelection input[type=radio]:checked").val());
+						}
+					);
+				</script>
+				<!-- End of auto submit-->
+	<div class="col-md-4 hidden-sm-down">&nbsp;</div>
+	</div>
+
+	<!--New Row-->
+	
+	<div class="row hidden-sm-down">
+		<div class="col-md-1 ">&nbsp;</div>
+		<div class="col-md-3 ">
+			&nbsp;
+			<!-- <label for="estimatedColumns" class="text-right">Recommended Number Of Columns&nbsp;</label> -->
 		</div>
+
+		<div class="col-md-3">&nbsp;</div>
+		<div class="col-md-3">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+
+	</div>
+
+
+	<div class="row ">
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2 ">
+
+			&nbsp;
+			<!-- <form> 
+				<div id="elevator-amount" class="fancy-form ">
+					<i class="fa fa-angle-double-right"></i>
+					<input readonly id="estimatedColumns" class="form-control" value="">
+				</div>
+			</form> -->
+		</div>
+		<div class="col-md-1 hidden-sm-down">&nbsp;</div>
+		<div class="col-md-2">
+
+			<form> <!--Estimated Elevators Form-->
+				<div id="elevator-amount" class="fancy-form ">
+					<label for="estimatedElevators" class="text-center">Number Of Elevators&nbsp;</label>
+					<input readonly id="estimatedElevators" class="form-control" value="">
+				</div>
+			</form>
+
+			<!-- <element class="sky-form">
+				  <element class="input">					  
+					<input readonly id="estimatedElevators" value="">
+				  </element>
+			</element> -->
+		</div>
+		<div class="col-md-1 hidden-sm-down">&nbsp;</div>
+
+		<div class="col-md-2">
+			<label for="lineSelection" class="text-center">Select Your Product Line&nbsp;</label>
+			<form id="lineSelection">
+				<label class="checkbox ">
+					<input type="radio" id="standard" name="radio-btn" value="Standard">
+					<i></i> Standard
+				</label>
+				<br>
+				<label class="checkbox">
+					<input type="radio" id="premium" name="radio-btn" value="Premium">
+					<i></i> Premium
+				</label>
+				<br>
+				<label class="checkbox">
+					<input type="radio" id="excelium" name="radio-btn" value="Excelium">
+					<i></i> Excelium
+				</label>
+			</form>
+
+			<script>//On product line click calc price
+				$('#lineSelection input[type=radio]').change(function () {
+					price($('#lineSelection input[type=radio]:checked').val());
+				});
+			</script>
+		</div>
+		<div class="col-md-2">&nbsp;</div>
+	</div>
+
+	<div class="row hidden-sm-down">
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+	</div>
+
+	<!--Cost Related Label/Text-->
+
+	<div class="row hidden-sm-down">
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">&nbsp;</div>
+	</div>
+	<!--/Cost Related Label/Text-->
+
+	<!--Price Estimate Forms-->
+	<div class="row">
+		<div class="col-md-2">&nbsp;</div>
+		<div class="col-md-2">
+			<div id="elevator-unit-price" class="fancy-form ">
+				<label for="elevatorUnitPrice" class="text-center bold">Elevator Unit Price</label>
+				<input readonly id="elevatorUnitPrice" class="form-control" value="">
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div id="elevator-total-price" class="fancy-form ">
+				<label for="elevatorPrice" class="text-center bold">Elevator Cost</label>
+				<input readonly id="elevatorPrice" class="form-control" value="">
+			</div>
+		</div>
+
+		<div class="col-md-2">
+			<div id="installation-fees" class="fancy-form ">
+				<label for="installationPrice" class="text-center bold">Installation Cost</label>
+				<input readonly id="installationPrice" class="form-control" value="">
+			</div>
+		</div>
+
+		<div class="col-md-2">
+			<div id="final-price" class="fancy-form ">
+				<label for="totalPrice" class="text-center bold">Total Cost</label>
+				<input readonly id="totalPrice" class="form-control" value="">
+			</div>
+		</div>
+
+	</div>
+	<!--/Price Estimate Forms-->
+
+	
+	<!--Placeholder-->
+	<div class="row hidden-sm-down">
+		<div class="col-md-2">&nbsp;</div>
+		<!--A beautiful line-->
+		<div class="col-md-8"> <hr /></div>
+		<div class="col-md-2">&nbsp;</div>
+	</div>
+	<div class="row grid-color">
+		<div class="col-md-4">&nbsp;</div>
+		<div class="col-md-4">&nbsp;
+		<img src="assets/images/R2.png" class="img-fluid">
+
+		</div>
+		<div class="col-md-4">&nbsp;</div>
+	</div>
+	<div class="row hidden-sm-down">
+		<div class="col-md-4">&nbsp;</div>
+		<div class="col-md-4">&nbsp;</div>
+		<div class="col-md-4">&nbsp;</div>
+	</div>
+	<div class="row hidden-sm-down">
+		<div class="col-md-4">&nbsp;</div>
+		<div class="col-md-4">&nbsp;</div>
+		<div class="col-md-4">&nbsp;</div>
+	</div>
+	</div>
+	</div>
+
+</div>
+
+
 	</section>
 
-	<script>
-		$('document').ready(function () {
-			$("select").change(function () {
-				getBuildingType();
-			});
-		});
-	</script>
-
-
-	<section >
+	<!-- FOOTER -->
+	<footer id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4 col-xs-6">&nbsp;</div>
-				<div class="col-md-4 col-xs-6">
-					<!--First Selection, Building Type -->
-					<select id="building-type" class="form-control">
-						<option value="">Please Select a building type</option>
-						<option value="residential">Residential</option>
-						<option value="commercial">Commercial</option>
-						<option value="corporate">Corporation</option>
-						<option value="hybrid">Hybrid</option>
-					</select>
+				<!-- col #1 -->
+				<div class="col-md-5">
+					<h3 class="letter-spacing-1 text-center">WHY US?</h3>
+					<!-- Small Description -->
+					<p>
+						We have the conviction that we create the most innovative and
+						reliable products on the market. Contact us today for any
+						questions you might have.
+					</p>
+					<h2 class="text-center">(418) 555-1234</h2>
 				</div>
-				<div class="col-md-2 col-xs-4">&nbsp;</div>
-				<div class="col-md-2 col-xs-4">&nbsp;</div>
-			</div>
-			<div class="row hidden-sm-down">
-				<div class="col-md-2 col-xs-4">&nbsp;</div>
-				<!--Line Separator-->
-				<div class="col-md-8 col-xs-12"> <hr /></div>
-				<div class="col-md-2 col-xs-4">&nbsp;</div>
-			</div>
+				<!-- /col #1 -->
 
-			<div class="row">
-				<div class="col-md-4 col-sm-4">&nbsp;</div>
-				<div class="col-md-4 col-sm-4">
-					<!--Questions-->
-					<div id="questionInput">
-						<div id="number-of-apartments" class="hidden">
-							<label for="number-of-apartments" id="number-of-apartmentsLabel">Enter The Number Of Appartments</label>
-							<input id="numberOfApartmentsInput" placeholder="Number Of Appartments" class="form-control" type="number"
-								maxLength="5" min="0" max="1000" />
-						</div>
-						<div id="number-of-floors" class="hidden">
-							<label for="number-of-floors" id="number-of-floorsLabel">Enter The Number Of Floors</label>
-							<input id="numberOfFloorsInput" placeholder="Number Of Floors" class="form-control" type="number"
-								maxLength="5" min="0" max="1000" />
-						</div>
-						<div id="number-of-basements" class="hidden">
-							<label for="number-of-basements" id="number-of-basementsLabel">Enter The Number Of Basements</label>
-							<input id="numberOfBasementsInput" placeholder="Number Of Basements" class="form-control" type="number"
-								maxLength="5" min="0" max="1000" />
-						</div>
-						<div id="number-of-companies" class="hidden">
-							<label for="number-of-companies" id="number-of-companiesLabel">Enter The Number Of Companies</label>
-							<input id="numberOfCompaniesInput" placeholder="Number Of Companies" class="form-control" type="number"
-								maxLength="5" min="0" max="1000" />
-						</div>
-						<div id="number-of-parking-spots" class="hidden">
-							<label for="number-of-parking-spots" id="number-of-parking-spotsLabel">Enter The Number Of Parking Spots</label>
-							<input id="numberOfParkingSpotsInput" placeholder="Number Of Parking Spots" class="form-control" type="number"
-								maxLength="5" min="0" max="1000" />
-						</div>
-						<div id="number-of-elevators" class="hidden">
-							<label for="number-of-elevators" id="number-of-elevatorsLabel">Enter The Number Of Elevators</label>
-							<input id="numberOfElevatorsInput" placeholder="Number Of Elevators" class="form-control" type="number"
-								maxLength="5" min="0" max="1000" />
-						</div>
-						<div id="number-of-corporations" class="hidden">
-							<label for="number-of-corporations" id="number-of-corporationsLabel">Enter The Number Of Corporations</label>
-							<input id="numberOfCorporationsInput" placeholder="Number Of Corporations" class="form-control" type="number"
-								maxLength="5" min="0" max="1000" />
-						</div>
-						<div id="maximum-occupancy" class="hidden">
-							<label for="maximum-occupancy" id="maximum-occupancyLabel">Enter The Number Of Occupants Per Floors</label>
-							<input id="maximumOccupancyInput" placeholder="Number Of Occupants Per Floors" class="form-control"
-								type="number" maxLength="5" min="0" max="1000" />
-						</div>
-						<div id="business-hours" class="hidden">
-							<label for="business-hours" id="business-hoursLabel">Enter The Number Of Hours</label>
-							<input id="businessHoursInput" placeholder="Number Of Hours" class="form-control" type="number"
-								maxLength="2" min="0" max="24" />
-						</div>
+				<div class="col-md-3">
+					<!-- Links -->
+					<h4 class="letter-spacing-1">EXPLORE</h4>
+					<ul class="footer-links list-unstyled">
+						<li><a href="index.html#home-nav">Home</a></li>
+						<li><a href="index.html#services">Our Services</a></li>
+						<li><a href="index.html#clients">Our Clients</a></li>
+						<li><a href="quote.html">Request a Quote</a></li>
+						<li><a href="index.html#contact-nav">Contact Us</a></li>
+					</ul>
+					<!-- /Links -->
+				</div>
+
+				<!-- col #2 -->
+				<div class="col-md-4">
+					<h3 class="letter-spacing-1 text-center">KEEP IN TOUCH</h3>
+
+					<!-- Newsletter Form -->
+					<p class="text-center">Subscribe to Our Newsletter to get Important News & Offers</p>
+
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+						<input type="email" id="email" name="email" class="form-control"
+							placeholder="Enter your Email" />
+						<span class="input-group-btn">
+							<button onclick="alertify.alert('Rocket Elevators','Successfully Subscribed!')"
+								class="btn btn-default">
+								Subscribe
+							</button>
+						</span>
 					</div>
+					<!-- /Newsletter Form -->
 				</div>
-			</div>
-
-			<script>
-				//on keypress, give values to calc functions
-				$("#questionInput :input").bind(
-					"keypress keydown keyup change",
-					function () {
-						//can't have more than 24h big boy
-						if (parseFloat($(':input[id="businessHoursInput"]').val(), 10) > 24) {
-							$("#businessHoursInput").val(24);
-						};
-						switch (type) {
-							case "residential":
-								var apts = parseFloat($(':input[id="numberOfApartmentsInput"]').val(),10),
-									floors = parseFloat($(':input[id="numberOfFloorsInput"]').val(),10),
-									basements = parseFloat($(':input[id="numberOfBasementsInput"]').val(),10);
-								if (!isNaN(apts) && !isNaN(floors)) {
-									calcResidential(apts, floors);
-								}
-								break;
-
-							case "commercial":
-								var 									
-									floors = parseFloat($(':input[id="numberOfFloorsInput"]').val(),10),
-									basements = parseFloat($(':input[id="numberOfBasementsInput"]').val(),10),
-									companies = parseFloat($(':input[id="numberOfCompaniesInput"]').val(),10),
-									parkingSpots = parseFloat($(':input[id="numberOfParkingSpotsInput"]').val(),10),
-									elevators = parseFloat($(':input[id="numberOfElevatorsInput"]').val(),10);									
-								if (									 	  
-									!isNaN(elevators)
-								) {
-									$("#estimatedElevators").val(elevators);
-									$("#estimatedColumns").val(elevators);
-								}
-								break;
-
-							case "corporate":
-								var maxOccupancy = parseFloat($(':input[id="maximumOccupancyInput"]').val(),10),
-									floors = parseFloat($(':input[id="numberOfFloorsInput"]').val(),10),
-									basements = parseFloat($(':input[id="numberOfBasementsInput"]').val(),10),
-									corporations = parseFloat($(':input[id="numberOfCorporationsInput"]').val(),10),
-									parkingSpots = parseFloat($(':input[id="numberOfParkingSpotsInput"]').val(),10);
-								if (
-									!isNaN(maxOccupancy) &&
-									!isNaN(floors) &&
-									!isNaN(basements) 
-								) {
-									calcCorpoHybrid(maxOccupancy, floors, basements);
-								}
-								break;
-
-							case "hybrid":
-								var maxOccupancy = parseFloat($(':input[id="maximumOccupancyInput"]').val(),10),
-									floors = parseFloat($(':input[id="numberOfFloorsInput"]').val(),10),
-									basements = parseFloat($(':input[id="numberOfBasementsInput"]').val(),10),
-									companies = parseFloat($(':input[id="numberOfCompaniesInput"]').val(),10),
-									businessHours = parseFloat($(':input[id="businessHoursInput"]').val(),10),
-									parkingSpots = parseFloat($(':input[id="numberOfParkingSpotsInput"]').val(),10);
-								if (
-									!isNaN(maxOccupancy) &&
-									!isNaN(floors) &&
-									!isNaN(basements) 
-								) {
-									calcCorpoHybrid(maxOccupancy, floors, basements);
-								}
-								break;
-							default: hideQuestions();
-								break;
-						}
-						//price();
-						price($("#lineSelection input[type=radio]:checked").val());
-					}
-				);
-			</script>
-			<!-- End of auto submit-->
-
-			<div class="col-md-4 hidden-sm-down">&nbsp;</div>
-		</div>
-
-		<!--New Row-->
-		<div class="row hidden-sm-down">
-			<div class="col-md-1 ">&nbsp;</div>
-			<div class="col-md-3 ">
-				&nbsp;
-				<!-- <label for="estimatedColumns" class="text-right">Recommended Number Of Columns&nbsp;</label> -->
-			</div>
-			<div class="col-md-3">&nbsp;</div>
-			<div class="col-md-3">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-		</div>
-
-		<div class="row ">
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2 ">
-				&nbsp;
-				<!-- <form> 
-					<div id="elevator-amount" class="fancy-form ">
-						<i class="fa fa-angle-double-right"></i>
-						<input readonly id="estimatedColumns" class="form-control" value="">
-					</div>
-				</form> -->
-			</div>
-			<div class="col-md-1 hidden-sm-down">&nbsp;</div>
-			<div class="col-md-2">
-				<form> <!--Estimated Elevators Form-->
-					<div id="elevator-amount" class="fancy-form ">
-						<label for="estimatedElevators" class="text-center">Number Of Elevators&nbsp;</label>
-						<input readonly id="estimatedElevators" class="form-control" value="">
-					</div>
-				</form>
-				<!-- <element class="sky-form">
-					<element class="input">					  
-						<input readonly id="estimatedElevators" value="">
-					</element>
-				</element> -->
-			</div>
-			<div class="col-md-1 hidden-sm-down">&nbsp;</div>
-			<div class="col-md-2">
-				<label for="lineSelection" class="text-center">Select Your Product Line&nbsp;</label>
-				<form id="lineSelection">
-					<label class="checkbox ">
-						<input type="radio" id="standard" name="radio-btn" value="Standard">
-						<i></i> Standard
-					</label>
-					<br>
-					<label class="checkbox">
-						<input type="radio" id="premium" name="radio-btn" value="Premium">
-						<i></i> Premium
-					</label>
-					<br>
-					<label class="checkbox">
-						<input type="radio" id="excelium" name="radio-btn" value="Excelium">
-						<i></i> Excelium
-					</label>
-				</form>
-				<script>//On product line click calc price
-					$('#lineSelection input[type=radio]').change(function () {
-						price($('#lineSelection input[type=radio]:checked').val());
-					});
-				</script>
-			</div>
-			<div class="col-md-2">&nbsp;</div>
-		</div>
-
-		<div class="row hidden-sm-down">
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-		</div>
-
-		<!--Cost Related Label/Text-->
-		<div class="row hidden-sm-down">
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">&nbsp;</div>
-		</div>
-		<!--/Cost Related Label/Text-->
-
-		<!--Price Estimate Forms-->
-		<div class="row">
-			<div class="col-md-2">&nbsp;</div>
-			<div class="col-md-2">
-				<div id="elevator-unit-price" class="fancy-form ">
-					<label for="elevatorUnitPrice" class="text-center bold">Elevator Unit Price</label>
-					<input readonly id="elevatorUnitPrice" class="form-control" value="">
-				</div>
-			</div>
-
-			<div class="col-md-2">
-				<div id="elevator-total-price" class="fancy-form ">
-					<label for="elevatorPrice" class="text-center bold">Elevator Cost</label>
-					<input readonly id="elevatorPrice" class="form-control" value="">
-				</div>
-			</div>
-
-			<div class="col-md-2">
-				<div id="installation-fees" class="fancy-form ">
-					<label for="installationPrice" class="text-center bold">Installation Cost</label>
-					<input readonly id="installationPrice" class="form-control" value="">
-				</div>
-			</div>
-
-			<div class="col-md-2">
-				<div id="final-price" class="fancy-form ">
-					<label for="totalPrice" class="text-center bold">Total Cost</label>
-					<input readonly id="totalPrice" class="form-control" value="">
-				</div>
+				<!-- /col #2 -->
 			</div>
 		</div>
-		<!--/Price Estimate Forms-->
 
-		<!--Placeholder-->
-		<div class="row hidden-sm-down">
-			<div class="col-md-2">&nbsp;</div>
-			<!--A beautiful line-->
-			<div class="col-md-8"> <hr /></div>
-			<div class="col-md-2">&nbsp;</div>
-		</div>
-
-		<div class="row grid-color">
-			<div class="col-md-4">&nbsp;</div>
-			<div class="col-md-4">&nbsp;
-				<img src="assets/images/R2.png" class="img-fluid">
+		<div class="copyright">
+			<div class="container">
+				&copy; All Rights Reserved, Rocket Elevators LTD
 			</div>
-			<div class="col-md-4">&nbsp;</div>
 		</div>
+	</footer>
+	<!-- /FOOTER -->
+	</div>
+	<!-- /wrapper -->
 
-		<div class="row hidden-sm-down">
-			<div class="col-md-4">&nbsp;</div>
-			<div class="col-md-4">&nbsp;</div>
-			<div class="col-md-4">&nbsp;</div>
+	<!-- PRELOADER -->
+	<div id="preloader">
+		<div class="inner">
+			<span class="loader"></span>
 		</div>
-
-		<div class="row hidden-sm-down">
-			<div class="col-md-4">&nbsp;</div>
-			<div class="col-md-4">&nbsp;</div>
-			<div class="col-md-4">&nbsp;</div>
-		</div>
-	</section>
-
-
+	</div>
+	<!-- /PRELOADER -->
 
 	<!-- JAVASCRIPT FILES -->
 	<script>
