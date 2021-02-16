@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_020019) do
+ActiveRecord::Schema.define(version: 2021_02_16_195314) do
+
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "title"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["first_name"], name: "index_employees_on_first_name"
+  end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -23,6 +33,12 @@ ActiveRecord::Schema.define(version: 2021_02_16_020019) do
     t.integer "elevators"
     t.integer "corporation"
     t.integer "occupants"
+    t.string "product_line"
+    t.float "elevator_unit_price"
+    t.float "elevator_total_cost"
+    t.float "installation_cost"
+    t.float "total_cost"
+    t.string "company_name"
     t.time "hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_020019) do
     t.string "name"
     t.string "surname"
     t.string "title"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
