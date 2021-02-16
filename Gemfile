@@ -22,6 +22,11 @@ gem 'devise'
 # Admin Page Solution
 gem 'rails_admin', '~> 2.0'
 
+gem 'bootstrap-sass', '~> 3.3.4'
+gem 'font-awesome-sass', '~> 4.3.0'
+gem 'jquery-ui-rails'
+gem 'bootstrap-social-rails'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
