@@ -15,4 +15,5 @@ class MainController < ApplicationController
     def quote
       puts "*** QUOTE.html ***"
     end
+    
   end
