@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  apartments: 1
+  floors: 1
+  basements: 1
+  companies: 1
+  parkings: 1
+  elevators: 1
+  corporation: 1
+  occupants: 1
+  hours: 2021-02-15 20:07:35
+
+two:
+  name: MyString
+  type: 
+  apartments: 1
+  floors: 1
+  basements: 1
+  companies: 1
+  parkings: 1
+  elevators: 1
+  corporation: 1
+  occupants: 1
+  hours: 2021-02-15 20:07:35
