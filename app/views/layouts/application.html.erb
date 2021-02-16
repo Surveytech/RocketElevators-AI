@@ -9,9 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-<%= render "main/header"%>
-    <%= yield %>
-<%= render "main/footer"%>
+  <body class="smoothscroll enable-animation bg-grey">
+    <!-- wrapper -->
+	  <div id="wrapper">
+      <%= render "main/header"%>
+        <%= yield %>
+      <%= render "main/footer"%>
+    </div>
+		<!-- /wrapper -->
   </body>
+
 </html>
