@@ -11,20 +11,10 @@
 
   </head>
 
-
-  <body class="smoothscroll enable-animation bg-grey">
-    <!-- wrapper -->
-	  <div id="wrapper">
-      <%= render "main/header"%>
-        <%= yield %>
-      <%= render "main/footer"%>
-    </div>
-		<!-- /wrapper -->
-    
+  <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
   </body>
-
 </html>
