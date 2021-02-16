@@ -22,6 +22,9 @@ gem 'devise'
 # Admin Page Solution
 gem 'rails_admin', '~> 2.0'
 
+# Forms are easy !
+gem 'simple_form'
+
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'jquery-ui-rails'
