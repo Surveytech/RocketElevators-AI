@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :soumissions
   devise_for :users
   #get "/articles", to: "articles#index"
   # root 'index'
