@@ -18,16 +18,16 @@
 
 	<!-- THEME CSS -->
     <%= stylesheet_link_tag    'essentials', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'layout', media: 'all', 'data-turbolinks-track': 'reload' %>	
+    <%= stylesheet_link_tag    'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'layout-dark', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'custom-forms-v2', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 	<!-- CORE CSS -->
 	<%= stylesheet_link_tag    'plugins/bootstrap/css/bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-	<!-- REVOLUTION SLIDER -->	
-	<%= stylesheet_link_tag    'plugins/slider.revolution/css/extralayers', media: 'all', 'data-turbolinks-track': 'reload' %>	
-	<%= stylesheet_link_tag    'plugins/slider.revolution/css/settings', media: 'all', 'data-turbolinks-track': 'reload' %>					
+	<!-- REVOLUTION SLIDER -->
+	<%= stylesheet_link_tag    'plugins/slider.revolution/css/extralayers', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag    'plugins/slider.revolution/css/settings', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 	<!-- mobile settings -->
 	<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -43,7 +43,7 @@
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
 	<!-- Bootstrap theme -->
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
-	
+
 	<!--Favicon need to make it prettier-->
 	<link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC
 	AK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dE
@@ -118,13 +118,26 @@
     <!-- wrapper -->
 	<div id="wrapper">
       <%= render "main/header"%>
+	  <% if user_signed_in? %>
+		Signed in as <%= current_user.email %>. Not you?
+		<%= link_to "Edit profile", edit_user_registration_path %>
+		<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+		<% else %>
+		<%= link_to "Sign up", new_user_registration_path %> or
+		<%= link_to "sign in", new_user_session_path %>
+		<% end %>
+
+		<% flash.each do |name, msg| %>
+		<%= content_tag :div, msg, id: "flash_#{name}" %>
+		<% end %>
         <%= yield %>
       <%= render "main/footer"%>
     </div>
+
 	<!-- /wrapper -->
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> 
+	<!--<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
 
 	<!-- JAVASCRIPT FILES -->
 	<script>var plugin_path = '/assets/plugins/';</script>
@@ -140,6 +153,6 @@
 	<script src="/assets/js/contact.js"></script>
 	<!-- JavaScript -->
 	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    
+
   </body>
 </html>
