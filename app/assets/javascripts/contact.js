@@ -2,6 +2,8 @@
 *************************************************** **/
 var _hash = window.location.hash;
 
+console.log('test');
+
 /**
 	BROWSER HASH - from php/contact.php redirect!
 
