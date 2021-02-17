@@ -1,39 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>RocketElevators</title>
+	<meta charset="utf-8" />
+	<title>Rocket Elevators</title>
+	<meta name="description" content="Rocket Elevators" />
+	<meta name="Author" content="Tommy C." />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-	<meta charset="utf-8" />
-	<title>Rocket Elevators</title>
-	<meta name="description" content="Rocket Elevators" />
-	<meta name="Author" content="Tommy C." />
+	<!-- PAGE LEVEL SCRIPTS -->
+    <%= stylesheet_link_tag    'header-1', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag    'color_scheme/lightgrey', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+	<!-- THEME CSS -->
+    <%= stylesheet_link_tag    'essentials', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'layout', media: 'all', 'data-turbolinks-track': 'reload' %>	
+    <%= stylesheet_link_tag    'layout-dark', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'custom-forms-v2', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+	<!-- CORE CSS -->
+	<%= stylesheet_link_tag    'plugins/bootstrap/css/bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+	<!-- REVOLUTION SLIDER -->	
+	<%= stylesheet_link_tag    'plugins/slider.revolution/css/extralayers', media: 'all', 'data-turbolinks-track': 'reload' %>	
+	<%= stylesheet_link_tag    'plugins/slider.revolution/css/settings', media: 'all', 'data-turbolinks-track': 'reload' %>					
 
 	<!-- mobile settings -->
 	<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
 	<!-- WEB FONTS : use %7C instead of | (pipe) -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
-
-	<!-- CORE CSS -->
-	<link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-	<!-- REVOLUTION SLIDER -->
-	<link href="/assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
-	<link href="/assets/plugins/slider.revolution/css/settings.css" rel="stylesheet" type="text/css" />
-
-	<!-- THEME CSS -->
-	<link href="/assets/css/essentials.css" rel="stylesheet" type="text/css" />
-	<link href="/assets/css/layout.css" rel="stylesheet" type="text/css" />
-	<link href="/assets/css/layout-dark.css" rel="stylesheet" type="text/css" />
-
-	<!-- PAGE LEVEL SCRIPTS -->
-	<link href="/assets/css/header-1.css" rel="stylesheet" type="text/css" />
-	<link href="/assets/css/color_scheme/lightgrey.css" rel="stylesheet" type="text/css" id="color_scheme" />
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
