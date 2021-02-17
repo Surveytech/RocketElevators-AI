@@ -16,7 +16,7 @@
     Enter The Number Of Corporations :<%= f.number_field :number_of_corporations, min: 0  %><br/>
     Enter The Number Of Occupants Per Floors :<%= f.number_field :maximum_occupancy, min: 0  %><br/>
     Enter The Number Of Hours :<%= f.number_field :business_hours, in: 1.0..24.0  %><br/>
-  
+
     <%= radio_button_tag(:product_line, "standard") %>
     <%= label_tag(:product_line_standard, "Standard") %>
     <%= radio_button_tag(:product_line, "premium") %>
@@ -24,14 +24,13 @@
     <%= radio_button_tag(:product_line, "excelium") %>
     <%= label_tag(:product_line_excelium, "Excelium") %>
 
-  
+
     <%= f.input :elevator_unit_price, :disabled=>true %>
     <%= f.input :elevator_total_price, :disabled=>true %>
     <%= f.input :installation_price, :disabled=>true%>
     <%= f.input :total_price, :disabled=>true%>
    </div>
 
-  
 
    <% if user_signed_in? %>
     <div class="form-actions col-md-4 col-sm-4">
@@ -50,7 +49,7 @@
   <div class="col-md-4 col-sm-4">
     <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>   
+    <% end %>
   </div>
 <% end %>
 
