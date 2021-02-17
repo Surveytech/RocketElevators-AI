@@ -13,6 +13,12 @@ class CreateQuotes < ActiveRecord::Migration[5.2]
       t.integer :elevators
       t.integer :corporation
       t.integer :occupants
+      t.string :product_line
+      t.float :elevator_unit_price
+      t.float :elevator_total_cost
+      t.float :installation_cost
+      t.float :total_cost
+      t.string :company_name
       t.time :hours
 
       t.timestamps

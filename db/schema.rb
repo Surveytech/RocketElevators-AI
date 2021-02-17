@@ -10,26 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_02_17_045543) do
 
   create_table "buildingtypes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+ActiveRecord::Schema.define(version: 2021_02_17_153022) do
+
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "title"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["first_name"], name: "index_employees_on_first_name"
+>>>>>>> main
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.integer "apartments"
-    t.integer "floors"
-    t.integer "basements"
-    t.integer "companies"
-    t.integer "parkings"
-    t.integer "elevators"
-    t.integer "corporation"
-    t.integer "occupants"
-    t.time "hours"
+    t.string "building_type"
+    t.integer "number_of_apartments"
+    t.integer "number_of_floors"
+    t.integer "number_of_basements"
+    t.integer "number_of_companies"
+    t.integer "number_of_parking_spots"
+    t.integer "number_of_elevators"
+    t.integer "number_of_corporations"
+    t.integer "maximum_occupancy"
+    t.string "product_line"
+    t.float "elevator_unit_price"
+    t.float "elevator_total_price"
+    t.float "installation_price"
+    t.float "total_price"
+    t.string "company_name"
+    t.time "business_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_quotes_on_name"
@@ -50,6 +69,10 @@ ActiveRecord::Schema.define(version: 2021_02_17_045543) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "surname"
+    t.string "title"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

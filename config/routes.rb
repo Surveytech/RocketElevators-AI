@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   resources :soumissions
+=======
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+>>>>>>> main
   devise_for :users
+<<<<<<< HEAD
   #get "/articles", to: "articles#index"
   # root 'index'
+=======
+
+>>>>>>> 3871e81f3446e46f07e59448c20866e9ba304601
   get "/", to: "main#index"
   get "/index", to: "main#index"
   get "/quote", to: "main#quote"
