@@ -240,7 +240,8 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/projects/ropelessElevator.jpg" width="600" height="300" alt="">
+							<%= image_tag("projects/ropelessElevator.jpg", width:"600", height:"300", atl:"", class:"img-fluid")%>
+							<!-- <img class="img-fluid" src="/assets/images/projects/ropelessElevator.jpg" width="600" height="300" alt=""> -->
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -261,7 +262,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid " src="/assets/images/projects/residentialelevator.jpg"  alt="">
+							<%= image_tag("projects/residentialelevator.jpg", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -281,7 +282,7 @@
 								</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/projects/fastestDouble.jpg"  alt="">
+							<%= image_tag("projects/fastestDouble.jpg", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -304,7 +305,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/projects/boatLift.jpg" alt="">
+							<%= image_tag("projects/boatLift.jpg", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -325,7 +326,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/projects/pillsElevator.jpg"  alt="">
+							<%= image_tag("projects/pillsElevator.jpg", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -346,7 +347,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/projects/dogelevator.jpg" alt="">
+							<%= image_tag("projects/dogelevator.jpg", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -367,7 +368,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/projects/stairlift.jpg" alt="">
+							<%= image_tag("projects/stairlift.jpg", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -388,7 +389,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/projects/tallestElevator.jpg" alt="">
+							<%= image_tag("projects/tallestElevator.jpg", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -417,7 +418,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/awards/safetyAward.jpg" alt="">
+							<%= image_tag("awards/safetyAward.jpg", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 							<ul class="list-inline categories m-0 text-center">
@@ -438,7 +439,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/awards/sammyAward.png" alt="">
+							<%= image_tag("awards/sammyAward.png", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 							<ul class="list-inline categories m-0 text-center">
@@ -459,7 +460,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid" src="/assets/images/awards/votedBest-logo.png" alt="">
+							<%= image_tag("awards/votedBest-logo.png", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -480,7 +481,7 @@
 									</a>
 								</span>
 							</span>
-							<img class="img-fluid " src="/assets/images/awards/bestCEO-logo.png" alt="">
+							<%= image_tag("awards/bestCEO-logo.png", atl:"", class:"img-fluid")%>
 						</figure>
 						<hr /> <!--separator-->
 						<ul class="list-inline categories m-0 text-center">
@@ -545,6 +546,15 @@
 					<cite>Employee</cite>
 				</div>
 			</div>
+				<div id="employee">
+				<figure>
+					<%= image_tag("employee-of-the-monthML.jpg", alt:"", class:"rounded-circle", width:"300")%>
+				</figure>
+				<div>
+					<p>Maxime</p>
+					<cite>Employee</cite>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -575,7 +585,7 @@
 
 			<div class="img-hover">
 				<a href="https://elevatortoday.com/2014/05/02/hyundai-elevator-called-foot/" target="_blank">
-					<img class="img-fluid" src="/assets/images/news/touchless-logo.png" alt="">
+					<%= image_tag("news/touchless-logo.png", atl:"", class:"img-fluid")%>
 				</a>
 				<h4 class="text-left mt-20"><a href="https://elevatortoday.com/2014/05/02/hyundai-elevator-called-foot/" target="_blank">Touchless Footbutton</a></h4>
 				<p class="text-left">The “touchless foot button” system works when sensors pick up foot movement near the elevator’s door and summons the lift to the specific floor without the need to push a button with one’s fingers.</p>
@@ -589,7 +599,7 @@
 
 			<div class="img-hover">
 				<a href="https://elevatortoday.com/2012/10/13/mezolift-first-solar-elevator/" target="_blank">
-					<img class="img-fluid" src="/assets/images/news/solarElevator-logo.jpg" alt="">
+				<%= image_tag("news/solarElevator-logo.jpg", atl:"", class:"img-fluid")%>
 				</a>
 				<h4 class="text-left mt-20"><a href="https://elevatortoday.com/2012/10/13/mezolift-first-solar-elevator/" target="_blank">Solar Elevator</a></h4>
 				<p class="text-left">The elevator consumes 80% less energy than common lifts. <br>
@@ -604,7 +614,7 @@
 
 			<div class="img-hover">
 				<a href="https://elevatortoday.com/2018/01/18/magic-mirror-for-elevators/" target="_blank">
-					<img class="img-fluid" src="/assets/images/news/magicMirror-logo.jpg" alt="">
+					<%= image_tag("news/magicMirror-logo.jpg", atl:"", class:"img-fluid")%>
 				</a>
 				<h4 class="text-left mt-20"><a href="https://elevatortoday.com/2018/01/18/magic-mirror-for-elevators/" target="_blank">Magic Mirror For Elevators</a></h4>
 				<p class="text-left">This product is able to transform a common elevator interior mirror into a full interactive touch-screen & internet-connected video screen.</p>
@@ -618,7 +628,7 @@
 
 			<div class="img-hover">
 				<a href="https://elevatortoday.com/2020/03/03/thyssenkrupp-sells-elevator-technology-business-for-e17-2-billion/" target="_blank">
-					<img class="img-fluid" src="/assets/images/news/thyssen-logo.jpg" alt="">
+					<%= image_tag("news/thyssen-logo.jpg", atl:"", class:"img-fluid")%>
 				</a>
 				<h4 class="text-left mt-20"><a href="https://elevatortoday.com/2020/03/03/thyssenkrupp-sells-elevator-technology-business-for-e17-2-billion/" target="_blank">ThyssenKrupp sells Elevator Technology business for €17.2 billion</a></h4>
 				<p class="text-left">ThyssenKrupp sells its Elevator Technology business entirely to a consortium led by Advent, Cinven and RAG foundation for €17.2 billion. </p>
@@ -632,7 +642,7 @@
 
 			<div class="img-hover">
 				<a href="https://elevatortoday.com/2018/02/26/elevator-door-advertising/" target="_blank">
-					<img class="img-fluid" src="/assets/images/news/advertLobster-logo.jpg" alt="">
+					<%= image_tag("news/advertLobster-logo.jpg", atl:"", class:"img-fluid")%>
 				</a>
 				<h4 class="text-left mt-20"><a href="https://elevatortoday.com/2018/02/26/elevator-door-advertising/" target="_blank">Elevator Door Advertising</a></h4>
 				<p class="text-left">Schindler Elevator has recently introduced a new advertisement solution for your elevator doors. A short-distance projector located above elevator doors in a custom enclosure, animates your messages on the outside of the elevator doors.</p>
@@ -660,84 +670,84 @@
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://codeboxx.biz/" target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/codeboxx.png" alt="client" />
+					<%= image_tag("brands/codeboxx.png", atl:"client", class:"img-fluid")%>
 					<h4>CodeBoxx </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.quebon.ca/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/quebon.png" alt="client" />
+					<%= image_tag("brands/quebon.png", atl:"client", class:"img-fluid")%>
 					<h4>Québon </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.tesla.com/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/tesla.png" alt="client" />
+					<%= image_tag("brands/tesla.png", atl:"client", class:"img-fluid")%>
 					<h4>Tesla </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.audi.ca/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/audi.png" alt="client" />
+					<%= image_tag("brands/audi.png", atl:"client", class:"img-fluid")%>
 					<h4>Audi </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.intel.ca/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/intel.png" alt="client" />
+					<%= image_tag("brands/intel.png", atl:"client", class:"img-fluid")%>
 					<h4>Intel </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.fastly.com/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/fastly.png" alt="client" />
+					<%= image_tag("brands/fastly.png", atl:"client", class:"img-fluid")%>
 					<h4>Fastly </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.adobe.com/ca/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/adobe.png" alt="client" />
+					<%= image_tag("brands/adobe.png", atl:"client", class:"img-fluid")%>
 					<h4>Adobe </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.oracle.com/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/oracle.png" alt="client" />
+					<%= image_tag("brands/oracle.png", atl:"client", class:"img-fluid")%>
 					<h4>Oracle </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://i.pinimg.com/originals/24/5a/e1/245ae17922e87954167a22bb77addf89.jpg"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/batman.png" alt="client" />
+					<%= image_tag("brands/batman.png", atl:"client", class:"img-fluid")%>
 					<h4>The One And Only Batman</h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.youtube.com/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/youtube.png" alt="client" />
+					<%= image_tag("brands/youtube.png", atl:"client", class:"img-fluid")%>
 					<h4>Youtube </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.budlight.ca/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/budlight.png" alt="client" />
+					<%= image_tag("brands/budlight.png", atl:"client", class:"img-fluid")%>
 					<h4>Budlight </h4>
 				</a>
 			</li>
 
 			<li class="col-md-3 col-sm-3 col-6">
 				<a href="https://www.adidas.ca/"target="_blank">
-					<img class="img-fluid" src="/assets/images/brands/adidas.png" alt="client" />
+					<%= image_tag("brands/adidas.png", atl:"client", class:"img-fluid")%>
 					<h4>Adidas </h4>
 				</a>
 			</li>
