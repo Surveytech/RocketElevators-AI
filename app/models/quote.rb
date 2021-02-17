@@ -1,8 +1,14 @@
 class Quote < ApplicationRecord
   belongs_to :user
 
+  # def create
+  #   @quote = Quote.new(quote_params)
+  #   @quote.save!
+  # end
+
   def create
     @quote = Quote.new(quote_params)
+    @quote.user_id = current_user.id
     @quote.save!
   end
 
