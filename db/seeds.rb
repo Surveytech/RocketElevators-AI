@@ -42,4 +42,3 @@ q6 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_ap
 #             number_of_corporations: Faker::Number.between(from: 1, to: 500),
 #             maximum_occupancy: Faker::Number.between(from: 1, to: 500))
 #     end
->>>>>>> main

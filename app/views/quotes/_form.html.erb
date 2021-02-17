@@ -1,0 +1,20 @@
+
+<%= simple_form_for(@quote) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :building_type %>
+    <%= f.input :product_line %>
+    <%= f.input :elevator_unit_price %>
+    <%= f.input :elevator_total_price %>
+    <%= f.input :installation_price %>
+    <%= f.input :total_price %>
+   </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  
+<% end %>

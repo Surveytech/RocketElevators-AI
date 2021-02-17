@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :quotes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
     resources :users
   end
 
->>>>>>> main
   get "/", to: "main#index"
   get "/index", to: "main#index"
   get "/quote", to: "main#quote"
