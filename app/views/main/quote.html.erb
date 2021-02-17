@@ -1,10 +1,42 @@
 #quote.html.erb
 
 
-<%= form_with do |f| %>
+<%= form_with model:@quote do |f| %>
 	
-	<%= f.text_field :line %><br/>
-	<%= f.submit %><br/>
-	<%= f.collection_select(:buildingtype_id, Buildingtype.all, :id, :type, { :prompt => 'Select a Building Type',:selected => @buildingtype.create}, { class: 'form-control' }) %>
+	
+	Select your Building Type :<%= f.collection_select(:buildingtype_id, Buildingtype.all, :id, :type, { :prompt => 'Select a Building Type'}) %><br/>
+	<%= f.submit %><br/><br/>
 
+	Enter The Number Of Appartments :<%= f.number_field :appartments  %> <br/>
+	Enter The Number Of Floors :<%= f.number_field :floors  %><br/>
+	Enter The Number Of Basements :<%= f.number_field :basements  %> <br/>
+	Enter The Number Of Companies :<%= f.number_field :companies  %><br/>
+	Enter The Number Of Parking Spots :<%= f.number_field :parkingspots  %><br/>
+	Enter The Number Of Elevators : <%= f.number_field :elevators  %><br/>
+	Enter The Number Of Corporations :<%= f.number_field :corporations  %><br/>
+	Enter The Number Of Occupants Per Floors :<%= f.number_field :occupancy  %><br/>
+	Enter The Number Of Hours :<%= f.number_field :hours, in: 1.0..24.0  %><br/>
+	<%= f.submit %> <br/>
+
+	<div class="col-md-2">
+		<td><%= f.radio_button :line, "standard" %><%= f.label :line_standard, "Standard" %></td>
+		<td><%= f.radio_button :line, "premium" %><%= f.label :line_premium, "Premium" %></td>
+		<td><%= f.radio_button :line, "excelium" %>	<%= f.label :line_excelium, "Excelium" %></td>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-2">
+			<%= f.label :elevatorunitprice, "Elevator Unit Price" %>
+			<%= f.text_field :elevatorunitprice, :disabled=>true %><br/>
+
+			<%= f.label :elevatorcost, "Elevator Cost" %>
+			<%= f.text_field :elevatorcost, :disabled=>true %><br/>
+
+			<%= f.label :installationcost, "Installation Cost" %>
+			<%= f.text_field :installationcost, :disabled=>true %><br/>
+
+			<%= f.label :totalcost, "Total Cost" %>
+			<%= f.text_field :totalcost, :disabled=>true %><br/>
+		</div>	
+	</div>
 <% end %>
