@@ -11,7 +11,13 @@ one:
   elevators: 1
   corporation: 1
   occupants: 1
-  hours: 2021-02-15 20:07:35
+  product_line: MyString
+  elevator_unit_price: 1.5
+  elevator_total_cost: 1.5
+  installation_cost: 1.5
+  total_cost: 1.5
+  company_name: MyString
+  hours: 2021-02-16 14:18:43
 
 two:
   name: MyString
@@ -24,4 +30,10 @@ two:
   elevators: 1
   corporation: 1
   occupants: 1
-  hours: 2021-02-15 20:07:35
+  product_line: MyString
+  elevator_unit_price: 1.5
+  elevator_total_cost: 1.5
+  installation_cost: 1.5
+  total_cost: 1.5
+  company_name: MyString
+  hours: 2021-02-16 14:18:43
