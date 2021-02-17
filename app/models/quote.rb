@@ -1,8 +1,8 @@
 class Quote < ApplicationRecord
-<<<<<<< HEAD
-    
-=======
   belongs_to :user
+  def new 
+    @quote = Quote.new
+  end
 
   def create
     @quote = Quote.new(quote_params)
@@ -32,5 +32,4 @@ class Quote < ApplicationRecord
       :hours
     )
   end
->>>>>>> main
 end

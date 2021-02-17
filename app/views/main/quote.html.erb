@@ -1,10 +1,10 @@
 #quote.html.erb
 
 
-<%= form_with model:@quote do |f| %>
+<%= form_for @quote do |f| %>
 	
 	
-	Select your Building Type :<%= f.collection_select(:buildingtype_id, Buildingtype.all, :id, :type, { :prompt => 'Select a Building Type'}) %><br/>
+	Select your Building Type :<%= f.collection_select(:quote_id, Quote.all, :id, :name, { :prompt => 'Select a Building Type'}) %><br/>
 	<%= f.submit %><br/><br/>
 
 	Enter The Number Of Appartments :<%= f.number_field :appartments  %> <br/>
@@ -32,11 +32,10 @@
 			<%= f.label :elevatorcost, "Elevator Cost" %>
 			<%= f.text_field :elevatorcost, :disabled=>true %><br/>
 
-<<<<<<< HEAD
+
 			<%= f.label :installationcost, "Installation Cost" %>
 			<%= f.text_field :installationcost, :disabled=>true %><br/>
-=======
-<<<<<<< HEAD
+
 				<div class="col-md-3">
 					<!-- Links -->
 					<h4 class="letter-spacing-1">EXPLORE</h4>
@@ -49,18 +48,13 @@
 					</ul>
 					<!-- /Links -->
 				</div>
-=======
 			<%= f.label :installationcost, "Installation Cost" %>
 			<%= f.text_field :installationcost, :disabled=>true %><br/>
->>>>>>> 3871e81f3446e46f07e59448c20866e9ba304601
->>>>>>> main
+
 
 			<%= f.label :totalcost, "Total Cost" %>
 			<%= f.text_field :totalcost, :disabled=>true %><br/>
 		</div>	
 	</div>
-<<<<<<< HEAD
+
 <% end %>
-=======
-<% end %>
->>>>>>> main

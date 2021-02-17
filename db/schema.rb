@@ -10,14 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_02_17_045543) do
-
-  create_table "buildingtypes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
 ActiveRecord::Schema.define(version: 2021_02_17_153022) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -28,7 +20,6 @@ ActiveRecord::Schema.define(version: 2021_02_17_153022) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["first_name"], name: "index_employees_on_first_name"
->>>>>>> main
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,13 +43,6 @@ ActiveRecord::Schema.define(version: 2021_02_17_153022) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_quotes_on_name"
-  end
-
-  create_table "soumissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "buildingtype_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["buildingtype_id"], name: "index_soumissions_on_buildingtype_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
