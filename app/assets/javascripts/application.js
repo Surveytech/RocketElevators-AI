@@ -17,21 +17,18 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-<<<<<<< HEAD
 //= require bootstrap
-=======
+//= require quotes
+
 // require popper
 
 //= require cable
 //= require contact
-//= require quote
 //= require scripts
-<<<<<<< HEAD
 //= require view/demo.revolution_slider
->>>>>>> main
-=======
+
 
 //= require view/demo.revolution_slider
 //= require plugins/slider.revolution/js/jquery.themepunch.revolution.min
 //= require plugins/slider.revolution/js/jquery.themepunch.tools.min
->>>>>>> main
+

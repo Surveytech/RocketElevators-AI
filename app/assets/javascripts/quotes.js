@@ -1,10 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////
-///                                                                       ///
-///              Quote Request Script                                     ///
-///              Tommy C.                                                 ///
-///                                                                       ///
-///                                                                       ///
-/////////////////////////////////////////////////////////////////////////////
+
 
 //Global Var
 var type;
@@ -20,7 +14,7 @@ function hideQuestions() {
   $("#number_of_apartments").attr("class", "hidden");
   $("#number_of_corporations").attr("class", "hidden");
   $("#number_of_elevators").attr("class", "hidden");
-  $("#business-hours").attr("class", "hidden");
+  $("#business_hours").attr("class", "hidden");
  /////// Reset the values
   $(':input[id="numberOfApartmentsInput"]').val("");
   $(':input[id="numberOfBasementsInput"]').val("");

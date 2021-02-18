@@ -17,41 +17,77 @@ $('document').ready(function () {
     <%= f.label :company_name, "Enter The Name Of Your Company" %>
     <%= f.text_field :company_name %> <br/>
   </div>
-<<<<<<< HEAD
   
-=======
-
->>>>>>> main
   <div>
     <%= f.label :building_type %>
     <%= f.select(:building_type, Quote::TYPE_LIST) %><br/>
   </div>
 
-<<<<<<< HEAD
   
-=======
+        <div id="questionInput"> 
+            <div id="number_of_apartments" class="form-group row">
+              <%= f.label :number_of_apartments, "Enter The Number Of Appartments : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :number_of_apartments, min: 0, class:"form-control" %>
+              </div>
+            </div>
 
->>>>>>> main
-  <div class="form-inputs col-md-4 col-sm-4">
-    <%= f.label :number_of_apartments, "Enter Number Of Apartments" %>
-    <%= f.number_field :number_of_apartments, min: 0  %> <br/>
-    <%= f.label :number_of_floors, "Enter Number Of Floors (excluding basements)" %>
-    <%= f.number_field :number_of_floors, min: 0  %><br/>
-    <%= f.label :number_of_basements, "Enter Number Of Basements" %>
-    <%= f.number_field :number_of_basements, min: 0  %> <br/>
-    <%= f.label :number_of_companies, "Enter Number Of Companies" %>
-    <%= f.number_field :number_of_companies, min: 0  %><br/>
-    <%= f.label :number_of_parking_spots, "Enter Number Of Parking Spots" %>
-    <%= f.number_field :number_of_parking_spots, min: 0  %><br/>
-    <%= f.label :number_of_elevators, "Enter Number Of Elevators" %>
-    <%= f.number_field :number_of_elevators, min: 0  %><br/>
-    <%= f.label :number_of_corporations, "Enter Number Of Corporations" %>
-    <%= f.number_field :number_of_corporations, min: 0  %><br/>
-    <%= f.label :maximum_occupancy, "Enter Number Of Occupants Per Floor (approx.)" %>
-    <%= f.number_field :maximum_occupancy, min: 0  %><br/>
-    <%= f.label :business_hours, "Enter Number Of Business Hours" %>
-    <%= f.number_field :business_hours, in: 1.0..24.0  %><br/>
-  </div>
+            <div id="number_of_floors" class="form-group row">
+              <%= f.label :number_of_floors, "Enter The Number Of Floors : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :number_of_floors, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_of_basements" class="form-group row">
+              <%= f.label :number_of_basements, "Enter The Number Of Basements : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :number_of_basements, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_of_companies" class="form-group row">
+              <%= f.label :number_of_companies, "Enter The Number Of Companies : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :number_of_companies, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_of_parking_spots" class="form-group row">
+              <%= f.label :number_of_parking_spots, "Enter The Number Of Parking Spots : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :number_of_parking_spots, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_elevators" class="form-group row">
+              <%= f.label :number_of_elevators, "Enter The Number Of Elevators : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :number_of_elevators, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_of_corporations" class="form-group row">
+              <%= f.label :number_of_corporations, "Enter The Number Of Corporations : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :number_of_corporations, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="maximum_occupancy" class="form-group row">
+              <%= f.label :maximum_occupancy, "Enter The Number Of Occupants Per Floors : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :maximum_occupancy, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="business_hours" class="form-group row">
+              <%= f.label :business_hours, "Enter The Number Of Hours : ", class: 'col-sm-8 col-form-label' %>
+              <div class="col-sm-4">
+                <%= f.number_field :business_hours, in: 1.0..24.0, class:"form-control" %>
+              </div>
+        </div>
+</div>  
 
     <div class="form-inputs col-md-4 col-sm-4">
       <%= radio_button_tag(:product_line, "standard") %>
@@ -61,11 +97,7 @@ $('document').ready(function () {
       <%= radio_button_tag(:product_line, "excelium") %>
       <%= label_tag(:product_line_excelium, "Excelium") %>
     </div>
-<<<<<<< HEAD
   
-=======
-
->>>>>>> main
   <div class="form-inputs col-md-4 col-sm-4">
     <%= f.label :elevator_unit_price, "Elevator Unit Price" %>
     <%= f.text_field :elevator_unit_price, :disabled=>true %></br>
@@ -77,10 +109,7 @@ $('document').ready(function () {
     <%= f.text_field :total_price, :disabled=>true%></br>
   </div>
 
-<<<<<<< HEAD
   
-=======
->>>>>>> main
 
    <% if user_signed_in? %>
     <div class="form-actions col-md-4 col-sm-4">
@@ -99,11 +128,7 @@ $('document').ready(function () {
   <div class="col-md-4 col-sm-4">
     <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, id: "flash_#{name}" %>
-<<<<<<< HEAD
     <% end %>   
-=======
-    <% end %>
->>>>>>> main
   </div>
 <% end %>
 

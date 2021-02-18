@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
   resources :quotes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
