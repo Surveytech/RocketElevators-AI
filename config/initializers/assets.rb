@@ -14,5 +14,3 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += ["manifest.js"]
 Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'plugins', 'jquery')
-Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'plugins', 'slider.revolution')
