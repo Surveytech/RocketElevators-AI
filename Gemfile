@@ -32,7 +32,6 @@ gem 'bootstrap-social-rails'
 
 gem "font-awesome-rails"
 
-# Popper for bootstrap
 gem 'popper_js', '~> 2.6.0'
 
 # Generate new users
