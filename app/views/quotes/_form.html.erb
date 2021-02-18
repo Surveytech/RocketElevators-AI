@@ -1,17 +1,10 @@
 
-<script>
-$('document').ready(function () {
-  $("select").change(function () {
-    getBuildingType();
-  });
-});
-</script>
 
 <%= simple_form_for(@quote) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs col-md-4 col-sm-4">
+  <div class="">
     <%= f.label :name,""%>
     <%= f.text_field :name%></br>
     <%= f.label :company_name, "Enter The Name Of Your Company" %>
@@ -60,7 +53,7 @@ $('document').ready(function () {
               </div>
             </div>
 
-            <div id="number_elevators" class="form-group row">
+            <div id="number_of_elevators" class="form-group row">
               <%= f.label :number_of_elevators, "Enter The Number Of Elevators : ", class: 'col-sm-8 col-form-label' %>
               <div class="col-sm-4">
                 <%= f.number_field :number_of_elevators, min: 0, class:"form-control" %>
@@ -87,9 +80,11 @@ $('document').ready(function () {
                 <%= f.number_field :business_hours, in: 1.0..24.0, class:"form-control" %>
               </div>
         </div>
-</div>  
 
-    <div class="form-inputs col-md-4 col-sm-4">
+
+
+
+    <div id="lineSelection" class="">
       <%= radio_button_tag(:product_line, "standard") %>
       <%= label_tag(:product_line_standard, "Standard") %>
       <%= radio_button_tag(:product_line, "premium") %>
@@ -97,40 +92,48 @@ $('document').ready(function () {
       <%= radio_button_tag(:product_line, "excelium") %>
       <%= label_tag(:product_line_excelium, "Excelium") %>
     </div>
-  
-  <div class="form-inputs col-md-4 col-sm-4">
-    <%= f.label :elevator_unit_price, "Elevator Unit Price" %>
-    <%= f.text_field :elevator_unit_price, :disabled=>true %></br>
-    <%= f.label :elevator_total_price, "Elevator Total Price" %>
-    <%= f.text_field :elevator_total_price, :disabled=>true %></br>
-    <%= f.label :installation_price, "Elevator Installation Price" %>
-    <%= f.text_field :installation_price, :disabled=>true%></br>
-    <%= f.label :total_price, "Total Price" %>
-    <%= f.text_field :total_price, :disabled=>true%></br>
-  </div>
+
+
+
+    <div class="">
+        <%= f.label :elevator_unit_price, "Elevator Unit Price" %>
+        <%= f.text_field :elevator_unit_price, :disabled=>true %></br>
+        <%= f.label :elevator_total_price, "Elevator Total Price" %>
+        <%= f.text_field :elevator_total_price, :disabled=>true %></br>
+        <%= f.label :installation_price, "Elevator Installation Price" %>
+        <%= f.text_field :installation_price, :disabled=>true%></br>
+        <%= f.label :total_price, "Total Price" %>
+        <%= f.text_field :total_price, :disabled=>true%></br>
+    </div>
+
 
   
 
    <% if user_signed_in? %>
-    <div class="form-actions col-md-4 col-sm-4">
-      <%= f.button :submit %>
-    </div>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Edit profile", edit_user_registration_path %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <div class="">
+                <%= f.button :submit %>
+          </div>
+          Signed in as <%= current_user.email %>. Not you?
+          <%= link_to "Edit profile", edit_user_registration_path %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     <% else %>
-    <div class="form-actions col-md-4 col-sm-4">
-      <%= f.button :submit, :disabled=> true%>
-    </div>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "sign in", new_user_session_path %>
+            <div class="">
+              <%= f.button :submit, :disabled=> true%>
+            </div>
+            <%= link_to "Sign up", new_user_registration_path %> or
+            <%= link_to "sign in", new_user_session_path %>
     <% end %>
-  <div class="col-md-4 col-sm-4">
+
+ 
+    <div class="">
     <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, id: "flash_#{name}" %>
     <% end %>   
-  </div>
-<% end %>
+    </div>
+
+			</div>
+			
+		</div>
 
 <div class="col-md-3">
 					<!-- Links -->
@@ -144,3 +147,5 @@ $('document').ready(function () {
 					</ul>
 					<!-- /Links -->
 </div>
+<% end %>
+
