@@ -6,6 +6,8 @@ class Ability
   def initialize(user)
     if user.admin?
       can :manage, :all
+    elsif user.employee?
+      can :manage, :all
     elsif user.regular?
       can :read, Quote
       can :create, Quote

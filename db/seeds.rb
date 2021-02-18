@@ -43,11 +43,14 @@ Employee.all.each do |employee|
     name: employee.first_name,
     surname: employee.last_name,
     title: employee.title,
-    role_id: 3,
+    role_id: 2,
     password: 123456,
     password_confirmation: 123456})
-  employee.save
-  puts(employee.first_name)
+  employee.save!
+  employee.user_id = employee.user.id
+  employee.save!
+  # puts(employee.first_name, employee.user_id)
+  print("\n\t\t\t",employee.first_name, " user_id => ", employee.user_id, "\n")
  end
 
 puts "Done!"
