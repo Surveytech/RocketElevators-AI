@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/quote", to: "main#quote"
   get "/residential", to: "main#residential"
   get "/commercial", to: "main#commercial"
+  get "/new", to: "registrations#new"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
