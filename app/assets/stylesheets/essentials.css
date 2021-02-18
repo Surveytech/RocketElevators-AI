@@ -74,7 +74,8 @@
  ** ************************************* **/
  @font-face {
     font-family: 'awesome-webfont';
-    src: url("fontawesome-webfont.ttf");
+	src: url(asset-path('fontawesome-webfont.ttf'));
+
  }
  
 /**	01. Resets
