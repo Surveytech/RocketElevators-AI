@@ -30,6 +30,9 @@ gem 'font-awesome-sass', '~> 4.3.0'
 gem 'jquery-ui-rails'
 gem 'bootstrap-social-rails'
 
+# Popper for bootstrap
+gem 'popper_js', '~> 2.6.0'
+
 # Generate new users
 gem 'faker'
 
