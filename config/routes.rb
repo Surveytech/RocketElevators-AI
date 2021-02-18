@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :quotes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
@@ -12,5 +13,6 @@ Rails.application.routes.draw do
   get "/quote", to: "main#quote"
   get "/residential", to: "main#residential"
   get "/commercial", to: "main#commercial"
+  get "/new", to: "registrations#new"
 
 end
