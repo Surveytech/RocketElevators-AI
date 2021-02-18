@@ -17,7 +17,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-//= require popper
+// require popper
 
 //= require cable
 //= require contact

@@ -48,14 +48,17 @@
                             </a>
                         </li>
                         <li><!-- Log in -->
-                            <a href="/new.html">
-                                SIGN UP
-                            </a>
-                        </li>
-                        <li><!-- Log in -->
-                            <a href="">
-                                SIGN IN
-                            </a>
+                            <% if user_signed_in? %>
+                                Signed in as <%= current_user.email %>. Not you?
+                                <%= link_to "Edit profile", edit_user_registration_path %>
+                                <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+                                <% else %>
+                                <div><br><br><%= link_to "SIGN UP", new_user_registration_path %> or
+                                <%= link_to "SIGN IN", new_user_session_path %></div>
+                                <% end %>
+                                <% flash.each do |name, msg| %>
+                                <%= content_tag :div, msg, id: "flash_#{name}" %>
+                                <% end %>
                         </li>
                     </ul>
                 </nav>
