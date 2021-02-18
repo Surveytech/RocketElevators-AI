@@ -26,9 +26,13 @@ gem 'rails_admin', '~> 2.0'
 gem 'simple_form'
 
 gem 'bootstrap-sass', '~> 3.3.4'
-gem 'font-awesome-sass', '~> 4.3.0'
+#gem 'font-awesome-sass', '~> 4.3.0'
 gem 'jquery-ui-rails'
 gem 'bootstrap-social-rails'
+
+gem "font-awesome-rails"
+
+gem 'popper_js', '~> 2.6.0'
 
 # Generate new users
 gem 'faker'

@@ -9,14 +9,12 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require jquery
-// require jquery3
-//= require jquery_ujs
 //= require jquery-ui
-//= require bootstrap-sprockets
+
 //= require rails-ujs
-//= require activestorage
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
 <<<<<<< HEAD
@@ -24,9 +22,16 @@
 =======
 // require popper
 
-//= require contact
 //= require cable
+//= require contact
 //= require quote
 //= require scripts
+<<<<<<< HEAD
 //= require view/demo.revolution_slider
+>>>>>>> main
+=======
+
+//= require view/demo.revolution_slider
+//= require plugins/slider.revolution/js/jquery.themepunch.revolution.min
+//= require plugins/slider.revolution/js/jquery.themepunch.tools.min
 >>>>>>> main

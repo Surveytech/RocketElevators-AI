@@ -17,13 +17,21 @@ $('document').ready(function () {
     <%= f.label :company_name, "Enter The Name Of Your Company" %>
     <%= f.text_field :company_name %> <br/>
   </div>
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> main
   <div>
     <%= f.label :building_type %>
     <%= f.select(:building_type, Quote::TYPE_LIST) %><br/>
   </div>
 
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> main
   <div class="form-inputs col-md-4 col-sm-4">
     <%= f.label :number_of_apartments, "Enter Number Of Apartments" %>
     <%= f.number_field :number_of_apartments, min: 0  %> <br/>
@@ -53,7 +61,11 @@ $('document').ready(function () {
       <%= radio_button_tag(:product_line, "excelium") %>
       <%= label_tag(:product_line_excelium, "Excelium") %>
     </div>
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> main
   <div class="form-inputs col-md-4 col-sm-4">
     <%= f.label :elevator_unit_price, "Elevator Unit Price" %>
     <%= f.text_field :elevator_unit_price, :disabled=>true %></br>
@@ -65,7 +77,10 @@ $('document').ready(function () {
     <%= f.text_field :total_price, :disabled=>true%></br>
   </div>
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> main
 
    <% if user_signed_in? %>
     <div class="form-actions col-md-4 col-sm-4">
@@ -84,7 +99,11 @@ $('document').ready(function () {
   <div class="col-md-4 col-sm-4">
     <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, id: "flash_#{name}" %>
+<<<<<<< HEAD
     <% end %>   
+=======
+    <% end %>
+>>>>>>> main
   </div>
 <% end %>
 
