@@ -5,13 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :role, optional: true
+  belongs_to :employee, optional: true
   has_many :quotes, dependent: :destroy
   validates :name, presence: true
   # before_save :assign_role
 
-  # def assign_role
-  #   self.role = Role.find_by name: 'User' if role.nil?
-  # end
 
   def admin?
     role.name == 'Admin'
