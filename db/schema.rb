@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_205119) do
+ActiveRecord::Schema.define(version: 2021_02_18_010700) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -19,30 +19,39 @@ ActiveRecord::Schema.define(version: 2021_02_16_205119) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_id"
     t.index ["first_name"], name: "index_employees_on_first_name"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.integer "apartments"
-    t.integer "floors"
-    t.integer "basements"
-    t.integer "companies"
-    t.integer "parkings"
-    t.integer "elevators"
-    t.integer "corporation"
-    t.integer "occupants"
+    t.string "building_type"
+    t.integer "number_of_apartments"
+    t.integer "number_of_floors"
+    t.integer "number_of_basements"
+    t.integer "number_of_companies"
+    t.integer "number_of_parking_spots"
+    t.integer "number_of_elevators"
+    t.integer "number_of_corporations"
+    t.integer "maximum_occupancy"
     t.string "product_line"
     t.float "elevator_unit_price"
-    t.float "elevator_total_cost"
-    t.float "installation_cost"
-    t.float "total_cost"
+    t.float "elevator_total_price"
+    t.float "installation_price"
+    t.float "total_price"
     t.string "company_name"
-    t.time "hours"
+    t.time "business_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_id"
     t.index ["name"], name: "index_quotes_on_name"
+  end
+
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -57,6 +66,8 @@ ActiveRecord::Schema.define(version: 2021_02_16_205119) do
     t.string "surname"
     t.string "title"
     t.boolean "admin", default: false
+    t.string "role_id", default: "User"
+    t.string "employee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
