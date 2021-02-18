@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get "/quote", to: "main#quote"
   get "/residential", to: "main#residential"
   get "/commercial", to: "main#commercial"
+  get "/new", to: "registrations#new"
 
 end
