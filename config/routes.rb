@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
+  resources :quotes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+  scope '/admin' do
+    resources :users
+  end
 
   get "/", to: "main#index"
   get "/index", to: "main#index"
@@ -9,5 +14,4 @@ Rails.application.routes.draw do
   get "/commercial", to: "main#commercial"
   get "/new", to: "registrations#new"
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

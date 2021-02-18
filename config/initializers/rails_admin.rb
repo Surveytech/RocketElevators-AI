@@ -3,6 +3,10 @@ RailsAdmin.config do |config|
   config.main_app_name = ["Rocket Elevators", "BackOffice"]
   ### Popular gems integration
 
+  # config.authorize_with do
+  #   redirect_to main_app.root_path unless current_user.is_admin?
+  # end
+
   # == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :user
@@ -19,8 +23,8 @@ RailsAdmin.config do |config|
 #   end
 
 
-  ## == CancanCan ==
-  # config.authorize_with :cancancan
+  # == CancanCan ==
+  config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
