@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_010700) do
+ActiveRecord::Schema.define(version: 2021_02_18_154914) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_010700) do
     t.string "surname"
     t.string "title"
     t.boolean "admin", default: false
-    t.string "role_id", default: "User"
+    t.string "role_id", default: "1"
     t.string "employee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
