@@ -1,35 +1,69 @@
 
+<script>
+$('document').ready(function () {
+  $("select").change(function () {
+    getBuildingType();
+  });
+});
+</script>
+
 <%= simple_form_for(@quote) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs col-md-4 col-sm-4">
-    <%= f.input :name %>
-    <%= f.input :building_type %>
-
-    Enter The Number Of Appartments :<%= f.number_field :number_of_apartments, min: 0  %> <br/>
-    Enter The Number Of Floors :<%= f.number_field :number_of_floors, min: 0  %><br/>
-    Enter The Number Of Basements :<%= f.number_field :number_of_basements, min: 0  %> <br/>
-    Enter The Number Of Companies :<%= f.number_field :number_of_companies, min: 0  %><br/>
-    Enter The Number Of Parking Spots :<%= f.number_field :number_of_parking_spots, min: 0  %><br/>
-    Enter The Number Of Elevators : <%= f.number_field :number_of_elevators, min: 0  %><br/>
-    Enter The Number Of Corporations :<%= f.number_field :number_of_corporations, min: 0  %><br/>
-    Enter The Number Of Occupants Per Floors :<%= f.number_field :maximum_occupancy, min: 0  %><br/>
-    Enter The Number Of Hours :<%= f.number_field :business_hours, in: 1.0..24.0  %><br/>
+    <%= f.label :name,""%>
+    <%= f.text_field :name%></br>
+    <%= f.label :company_name, "Enter The Name Of Your Company" %>
+    <%= f.text_field :company_name %> <br/>
+  </div>
   
-    <%= radio_button_tag(:product_line, "standard") %>
-    <%= label_tag(:product_line_standard, "Standard") %>
-    <%= radio_button_tag(:product_line, "premium") %>
-    <%= label_tag(:product_line_premium, "Premium") %>
-    <%= radio_button_tag(:product_line, "excelium") %>
-    <%= label_tag(:product_line_excelium, "Excelium") %>
+  <div>
+    <%= f.label :building_type %>
+    <%= f.select(:building_type, Quote::TYPE_LIST) %><br/>
+  </div>
 
   
-    <%= f.input :elevator_unit_price, :disabled=>true %>
-    <%= f.input :elevator_total_price, :disabled=>true %>
-    <%= f.input :installation_price, :disabled=>true%>
-    <%= f.input :total_price, :disabled=>true%>
-   </div>
+  <div class="form-inputs col-md-4 col-sm-4">
+    <%= f.label :number_of_apartments, "Enter Number Of Apartments" %>
+    <%= f.number_field :number_of_apartments, min: 0  %> <br/>
+    <%= f.label :number_of_floors, "Enter Number Of Floors (excluding basements)" %>
+    <%= f.number_field :number_of_floors, min: 0  %><br/>
+    <%= f.label :number_of_basements, "Enter Number Of Basements" %>
+    <%= f.number_field :number_of_basements, min: 0  %> <br/>
+    <%= f.label :number_of_companies, "Enter Number Of Companies" %>
+    <%= f.number_field :number_of_companies, min: 0  %><br/>
+    <%= f.label :number_of_parking_spots, "Enter Number Of Parking Spots" %>
+    <%= f.number_field :number_of_parking_spots, min: 0  %><br/>
+    <%= f.label :number_of_elevators, "Enter Number Of Elevators" %>
+    <%= f.number_field :number_of_elevators, min: 0  %><br/>
+    <%= f.label :number_of_corporations, "Enter Number Of Corporations" %>
+    <%= f.number_field :number_of_corporations, min: 0  %><br/>
+    <%= f.label :maximum_occupancy, "Enter Number Of Occupants Per Floor (approx.)" %>
+    <%= f.number_field :maximum_occupancy, min: 0  %><br/>
+    <%= f.label :business_hours, "Enter Number Of Business Hours" %>
+    <%= f.number_field :business_hours, in: 1.0..24.0  %><br/>
+  </div>
+
+    <div class="form-inputs col-md-4 col-sm-4">
+      <%= radio_button_tag(:product_line, "standard") %>
+      <%= label_tag(:product_line_standard, "Standard") %>
+      <%= radio_button_tag(:product_line, "premium") %>
+      <%= label_tag(:product_line_premium, "Premium") %>
+      <%= radio_button_tag(:product_line, "excelium") %>
+      <%= label_tag(:product_line_excelium, "Excelium") %>
+    </div>
+  
+  <div class="form-inputs col-md-4 col-sm-4">
+    <%= f.label :elevator_unit_price, "Elevator Unit Price" %>
+    <%= f.text_field :elevator_unit_price, :disabled=>true %></br>
+    <%= f.label :elevator_total_price, "Elevator Total Price" %>
+    <%= f.text_field :elevator_total_price, :disabled=>true %></br>
+    <%= f.label :installation_price, "Elevator Installation Price" %>
+    <%= f.text_field :installation_price, :disabled=>true%></br>
+    <%= f.label :total_price, "Total Price" %>
+    <%= f.text_field :total_price, :disabled=>true%></br>
+  </div>
 
   
 
