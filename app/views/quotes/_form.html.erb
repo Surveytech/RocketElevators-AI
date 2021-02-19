@@ -1,10 +1,4 @@
-<body class=" enable-animation bg-grey">
-	<!-- Dark Title container -->
-	<section class="page-header dark">
-		<div class="container text-center">
-			<h1 class="fw-800 fs-60 font-latoo">Request A Quote</h1>
-		</div>
-	</section>
+
 
 	<script>
 		$('document').ready(function () {
@@ -27,17 +21,15 @@
 					<%= f.input :name%><br/>
 					<%= f.label :company_name, "Enter The Name Of Your Company" %>
 					<%= f.input :company_name %> <br/>
-	  			</div>       
-					<!--First Selection, Building Type -->
-					<%= f.label :building_type %>
-                	<%= f.select(:building_type, Quote::TYPE_LIST) %><br/>
+	  			</div> 
+					  <%= f.label :building_type %>
+            <%= f.select(:building_type, Quote::TYPE_LIST) %><br/>
 				</div>
 				<div class="col-md-2 col-xs-4">&nbsp;</div>
 				<div class="col-md-2 col-xs-4">&nbsp;</div>
 			</div>
 			<div class="row hidden-sm-down">
 				<div class="col-md-2 col-xs-4">&nbsp;</div>
-				<!--Line Separator-->
 				<div class="col-md-8 col-xs-12"> <hr /></div>
 				<div class="col-md-2 col-xs-4">&nbsp;</div>
 			</div>
@@ -111,10 +103,12 @@
 		<!--New Row-->
 		<div class="row hidden-sm-down">
 			<div class="col-md-1 ">&nbsp;</div>
+      <% if false %>
 			<div class="col-md-3 ">
 				&nbsp;
 				<label for="estimatedColumns" class="text-right">Recommended Number Of Columns&nbsp;</label> 
 			</div>
+      <% end %>
 			<div class="col-md-3">&nbsp;</div>
 			<div class="col-md-3">&nbsp;</div>
 			<div class="col-md-2">&nbsp;</div>
@@ -209,6 +203,28 @@
 			</div>
 		</div>
 		<!--/Price Estimate Forms-->
+
+    <div>
+                <% if user_signed_in? %>
+                        <div class="">
+                              <%= f.button :submit %>
+                        </div>
+                        Signed in as <%= current_user.email %>. Not you?
+                        <%= link_to "Edit profile", edit_user_registration_path %>
+                        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+                  <% else %>
+                          <div class="">
+                            <%= f.button :submit, :disabled=> true%>
+                          </div>
+                          <%= link_to "Sign up", new_user_registration_path %> or
+                          <%= link_to "sign in", new_user_session_path %>
+                  <% end %>
+
+                  <div class="">
+                  <% flash.each do |name, msg| %>
+                  <%= content_tag :div, msg, id: "flash_#{name}" %>
+                  <% end %>   
+    </div>
 
 		<!--Placeholder-->
 		<div class="row hidden-sm-down">
