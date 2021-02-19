@@ -42,22 +42,6 @@ This responsive website has:
 
 
 
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
 ### The rest is w.i.p
 
 * Ruby version => 2.6.6
