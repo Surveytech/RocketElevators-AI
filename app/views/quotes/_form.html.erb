@@ -10,72 +10,72 @@
     <%= f.label :company_name, "Enter The Name Of Your Company" %>
     <%= f.input :company_name %> <br/>
   </div>
-  
+
   <div>
     <%= f.label :building_type %>
     <%= f.select(:building_type, Quote::TYPE_LIST) %><br/>
   </div>
 
-  
-        <div id="questionInput" class="form-inputs col-md-4 col-sm-4"> 
+
+        <div id="questionInput" class="form-inputs col-md-4 col-sm-4">
             <div id="number_of_apartments" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :number_of_apartments, min: 0, class:"form-control" %>
               </div>
             </div>
 
             <div id="number_of_floors" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :number_of_floors, min: 0, class:"form-control" %>
               </div>
             </div>
 
             <div id="number_of_basements" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :number_of_basements, min: 0, class:"form-control" %>
               </div>
             </div>
 
             <div id="number_of_companies" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :number_of_companies, min: 0, class:"form-control" %>
               </div>
             </div>
 
             <div id="number_of_parking_spots" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :number_of_parking_spots, min: 0, class:"form-control" %>
               </div>
             </div>
 
             <div id="number_of_elevators" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :number_of_elevators, min: 0, class:"form-control" %>
               </div>
             </div>
 
             <div id="number_of_corporations" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :number_of_corporations, min: 0, class:"form-control" %>
               </div>
             </div>
 
             <div id="maximum_occupancy" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :maximum_occupancy, min: 0, class:"form-control" %>
               </div>
             </div>
 
             <div id="business_hours" class="form-group row">
-              
+
               <div class="col-sm-4">
                 <%= f.input :business_hours, in: 1.0..24.0, class:"form-control" %>
               </div>
@@ -88,13 +88,13 @@
         <%= label_tag(:product_line_premium, "Premium") %>
         <%= radio_button_tag(:product_line, "excelium") %>
         <%= label_tag(:product_line_excelium, "Excelium") %>
-    
-      
+
+
     <script>
       $('#lineSelection input[type=radio]').change(function () {
         price($('#lineSelection input[type=radio]:checked').val());
       });
-      </script>    
+      </script>
     </div>
 
 
@@ -110,7 +110,7 @@
     </div>
 
 
-  
+
 
    <% if user_signed_in? %>
           <div class="">
@@ -127,28 +127,15 @@
             <%= link_to "sign in", new_user_session_path %>
     <% end %>
 
- 
+
     <div class="">
     <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>   
+    <% end %>
     </div>
 
 			</div>
-			
+
 		</div>
 
-<div class="col-md-3">
-					<!-- Links -->
-					<h4 class="letter-spacing-1">EXPLORE</h4>
-					<ul class="footer-lin3ks list-unstyled">
-						<li><a href="index.html#home-nav">Home</a></li>
-						<li><a href="index.html#services">Our Services</a></li>
-						<li><a href="index.html#clients">Our Clients</a></li>
-						<li><a href="quote.html">Request a Quote</a></li>
-						<li><a href="index.html#contact-nav">Contact Us</a></li>
-					</ul>
-					<!-- /Links -->
-</div>
 <% end %>
-
