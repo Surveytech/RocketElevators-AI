@@ -1,44 +1,43 @@
-/////////////////////////////////////////////////////////////////////////////
-///                                                                       ///
-///              Quote Request Script                                     ///
-///              Tommy C.                                                 ///
-///                                                                       ///
-///                                                                       ///
-/////////////////////////////////////////////////////////////////////////////
+
 
 //Global Var
 var type;
 //////
+
+$('document').ready(function () {
+  $("select").change(function () {
+    getBuildingType();
+  });
+});
 
 function hideQuestions() {
   /////// Hide the questions
   $("#number_of_floors").attr("class", "hidden");
   $("#number_of_basements").attr("class", "hidden");
   $("#number_of_companies").attr("class", "hidden");
-  $("#number_of_parking-spots").attr("class", "hidden");
+  $("#number_of_parking_spots").attr("class", "hidden");
   $("#maximum_occupancy").attr("class", "hidden");
   $("#number_of_apartments").attr("class", "hidden");
   $("#number_of_corporations").attr("class", "hidden");
   $("#number_of_elevators").attr("class", "hidden");
-  $("#business-hours").attr("class", "hidden");
+  $("#business_hours").attr("class", "hidden");
  /////// Reset the values
-  $(':input[id="numberOfApartmentsInput"]').val("");
-  $(':input[id="numberOfBasementsInput"]').val("");
-  $(':input[id="numberOfElevatorsInput"]').val("");
-  $(':input[id="numberOfFloorsInput"]').val("");
-  $(':input[id="numberOfCompaniesInput"]').val("");
-  $(':input[id="numberOfParkingSpotsInput"]').val("");
-  $(':input[id="maximumOccupancyInput"]').val("");
-  $(':input[id="numberOfCorporationsInput"]').val("");
-  $(':input[id="businessHoursInput"]').val("");
-  $(':input[id="numberOfParkingSpotsInput"]').val("");
+  $(':input[id="quote_number_of_apartments"]').val("");
+  $(':input[id="quote_number_of_basements"]').val("");
+  $(':input[id="quote_number_of_elevatores"]').val("");
+  $(':input[id="quote_number_of_floors"]').val("");
+  $(':input[id="quote_number_of_companies"]').val("");
+  $(':input[id="quote_number_of_parking_spots"]').val("");
+  $(':input[id="quote_maximum_occupancy"]').val("");
+  $(':input[id="quote_number_of_corporations"]').val("");
+  $(':input[id="quote_business_hours"]').val("");
 ////// reset the estimated price
   $("#estimatedElevators").val("");
-  // $("#estimatedColumns").val("");
-  $("#elevatorUnitPrice").val("");
-  $("#elevatorPrice").val("");
-  $("#installationPrice").val("");
-  $("#totalPrice").val("");
+  $("#estimatedColumns").val("");
+  $("#quote_elevator_unit_price").val("");
+  $("#quote_elevator_price").val("");
+  $("#quote_installation_price").val("");
+  $("#quote_total_price").val("");
 /////////// reset the product line button
   $("#lineSelection input[type=radio]:checked").prop('checked', false);
  return;
@@ -100,7 +99,7 @@ function hybridQuestions() {
   $("#number_of_companies").attr("class", "visible");
   $("#number_of_parking-spots").attr("class", "visible");
   $("#maximum_occupancy").attr("class", "visible");
-  $("#business-hours").attr("class", "visible");
+  $("#business_hours").attr("class", "visible");
 }
 
 function calcCommercial(elevatorInput) {
@@ -141,17 +140,17 @@ function price(productType) {
   var unitPrice,installFees,elevator,column,elevatorPrice,installationPrice,totalPrice,productType;
   // defines the prices depending on the type
   switch (productType) {
-    case "Standard":
+    case "standard":
       unitPrice = 7565;
       installFees = 10;
       price(unitPrice, installFees);
       break;
-    case "Premium":
+    case "premium":
       unitPrice = 12345;
       installFees = 13;
       price(unitPrice, installFees);
       break;
-    case "Excelium":
+    case "excelium":
       unitPrice = 15400;
       installFees = 16;
       price(unitPrice, installFees);
@@ -159,6 +158,74 @@ function price(productType) {
     default:
       return;
   }
+
+  $("#questionInput :input").bind(
+    "keypress keydown keyup change",
+    function () {
+      if (parseFloat($(':input[id="quote_business_hours"]').val(), 10) > 24) {
+        $("#quote_business_hours").val(24);
+      };
+      switch (type) {
+        case "residential":
+          var apts = parseFloat($(':input[id="quote_number_of_apartments"]').val(),10),
+            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
+            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10);
+          if (!isNaN(apts) && !isNaN(floors)) {
+            calcResidential(apts, floors);
+          }
+          break;
+
+        case "commercial":
+          var 									
+            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
+            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
+            companies = parseFloat($(':input[id="quote_number_of_companies"]').val(),10),
+            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10),
+            elevators = parseFloat($(':input[id="quote_number_of_elevators"]').val(),10);									
+          if (									 	  
+            !isNaN(elevators)
+          ) {
+            $("#estimatedElevators").val(elevators);
+          }
+          break;
+
+        case "corporate":
+          var maxOccupancy = parseFloat($(':input[id="quote_maximum_occupancy"]').val(),10),
+            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
+            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
+            corporations = parseFloat($(':input[id="quote_number_of_corporation"]').val(),10),
+            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10);
+          if (
+            !isNaN(maxOccupancy) &&
+            !isNaN(floors) &&
+            !isNaN(basements) 
+          ) {
+            calcCorpoHybrid(maxOccupancy, floors, basements);
+          }
+          break;
+
+        case "hybrid":
+          var maxOccupancy = parseFloat($(':input[id="quote_maximum_occupancy"]').val(),10),
+            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
+            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
+            companies = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
+            businessHours = parseFloat($(':input[id="quote_business_hours"]').val(),10),
+            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10);
+          if (
+            !isNaN(maxOccupancy) &&
+            !isNaN(floors) &&
+            !isNaN(basements) 
+          ) {
+            calcCorpoHybrid(maxOccupancy, floors, basements);
+          }
+          break;
+        default: hideQuestions();
+          break;
+      }
+      
+      price($("#lineSelection input[type=radio]:checked").val());
+    }
+  );
   // Final calculations
   elevator = $("#estimatedElevators").val();
   // column = $("#estimatedColumns").val();
@@ -167,10 +234,10 @@ function price(productType) {
   installationPrice = (elevatorPrice * installFees) / 100;
   totalPrice = elevatorPrice + installationPrice;
 
-  $("#elevatorUnitPrice").val(formatter.format(unitPrice));
-  $("#elevatorPrice").val(formatter.format(elevatorPrice));
-  $("#installationPrice").val(formatter.format(installationPrice));
-  $("#totalPrice").val(formatter.format(totalPrice));
+  $("#quote_elevator_unit_price").val(formatter.format(unitPrice));
+  $("#quote_elevator_total_price").val(formatter.format(elevatorPrice));
+  $("#quote_installation_price").val(formatter.format(installationPrice));
+  $("#quote_total_price").val(formatter.format(totalPrice));
   
 }
 
@@ -181,3 +248,8 @@ const formatter = new Intl.NumberFormat('en-US', {
   currency: 'USD',
   minimumFractionDigits: 2
 })
+
+
+
+
+			

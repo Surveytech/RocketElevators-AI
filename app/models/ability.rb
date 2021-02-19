@@ -9,7 +9,7 @@ class Ability
     elsif user.employee?
       can :manage, :all
     elsif user.regular?
-      can :read, Quote
+      can :read, Quote, user_id: user.id
       can :create, Quote
       can :update, Quote do |quote|
         quote.try(:user) == user
@@ -18,7 +18,7 @@ class Ability
         quote.try(:user) == user
       end
     else
-      can :read, Quote
+      can :read #, Quote
     end
   end
 end

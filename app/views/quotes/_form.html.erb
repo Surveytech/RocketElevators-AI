@@ -1,101 +1,274 @@
 
-<script>
-$('document').ready(function () {
-  $("select").change(function () {
-    getBuildingType();
-  });
-});
-</script>
 
-<%= simple_form_for(@quote) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs col-md-4 col-sm-4">
-    <%= f.label :name,""%>
-    <%= f.text_field :name%></br>
-    <%= f.label :company_name, "Enter The Name Of Your Company" %>
-    <%= f.text_field :company_name %> <br/>
-  </div>
-
-  <div>
-    <%= f.label :building_type %>
-    <%= f.select(:building_type, Quote::TYPE_LIST) %><br/>
-  </div>
+<div id="wrapper">
 
 
-  <div class="form-inputs col-md-4 col-sm-4">
-    <%= f.label :number_of_apartments, "Enter Number Of Apartments" %>
-    <%= f.number_field :number_of_apartments, min: 0  %> <br/>
-    <%= f.label :number_of_floors, "Enter Number Of Floors (excluding basements)" %>
-    <%= f.number_field :number_of_floors, min: 0  %><br/>
-    <%= f.label :number_of_basements, "Enter Number Of Basements" %>
-    <%= f.number_field :number_of_basements, min: 0  %> <br/>
-    <%= f.label :number_of_companies, "Enter Number Of Companies" %>
-    <%= f.number_field :number_of_companies, min: 0  %><br/>
-    <%= f.label :number_of_parking_spots, "Enter Number Of Parking Spots" %>
-    <%= f.number_field :number_of_parking_spots, min: 0  %><br/>
-    <%= f.label :number_of_elevators, "Enter Number Of Elevators" %>
-    <%= f.number_field :number_of_elevators, min: 0  %><br/>
-    <%= f.label :number_of_corporations, "Enter Number Of Corporations" %>
-    <%= f.number_field :number_of_corporations, min: 0  %><br/>
-    <%= f.label :maximum_occupancy, "Enter Number Of Occupants Per Floor (approx.)" %>
-    <%= f.number_field :maximum_occupancy, min: 0  %><br/>
-    <%= f.label :business_hours, "Enter Number Of Business Hours" %>
-    <%= f.number_field :business_hours, in: 1.0..24.0  %><br/>
-  </div>
-
-    <div class="form-inputs col-md-4 col-sm-4">
-      <%= radio_button_tag(:product_line, "standard") %>
-      <%= label_tag(:product_line_standard, "Standard") %>
-      <%= radio_button_tag(:product_line, "premium") %>
-      <%= label_tag(:product_line_premium, "Premium") %>
-      <%= radio_button_tag(:product_line, "excelium") %>
-      <%= label_tag(:product_line_excelium, "Excelium") %>
+  <section class="page-header dark">
+    <div class="container text-center">
+      <h1 class="fw-800 fs-60 font-latoo">Request A Quote</h1>
     </div>
+  </section>
+  <!-- /PAGE HEADER -->
 
-  <div class="form-inputs col-md-4 col-sm-4">
-    <%= f.label :elevator_unit_price, "Elevator Unit Price" %>
-    <%= f.text_field :elevator_unit_price, :disabled=>true %></br>
-    <%= f.label :elevator_total_price, "Elevator Total Price" %>
-    <%= f.text_field :elevator_total_price, :disabled=>true %></br>
-    <%= f.label :installation_price, "Elevator Installation Price" %>
-    <%= f.text_field :installation_price, :disabled=>true%></br>
-    <%= f.label :total_price, "Total Price" %>
-    <%= f.text_field :total_price, :disabled=>true%></br>
-  </div>
+  <script>
+    $('document').ready(function () {
+      $("select").change(function () {
+        getBuildingType();
+      });
+    });
+  </script>
+
+  <section >
+
+  <%= simple_form_for(@quote) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <style>
+        .weirdClass {
+          background-color: pink;
+          color: pink;
+        }
+      </style>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <center>
+              <%= f.input :name %><br/>
+              <%= f.input :company_name %> <br/>
+              <%= f.select :building_type, Quote::TYPE_LIST %><br/>
+          </center>
+        </div>
+      </div>
+
+      <div class="row hidden-sm-down">
+        <div class="col-md-2 col-xs-4">&nbsp;</div>
+        <!--Line Separator-->
+        <div class="col-md-8 col-xs-12"> <hr /></div>
+        <div class="col-md-2 col-xs-4">&nbsp;</div>
+      </div>
+
+      <div class="row ">
+      <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <!--Questions-->
+          <div id="questionInput">
+                <div id="number_of_apartments" class="hidden">
+                  <%= f.input :number_of_apartments, min: 0, class:"form-control" %>
+              </div>
+
+              <div id="number_of_floors" class="hidden">
+
+                  <%= f.input :number_of_floors, min: 0, class:"form-control" %>
+
+              </div>
+
+              <div id="number_of_basements" class="hidden">
+
+                  <%= f.input :number_of_basements, min: 0, class:"form-control" %>
+
+              </div>
+
+              <div id="number_of_companies" class="hidden">
+
+                  <%= f.input :number_of_companies, min: 0, class:"form-control" %>
+
+              </div>
+
+              <div id="number_of_parking_spots" class="hidden">
+
+                  <%= f.input :number_of_parking_spots, min: 0, class:"form-control" %>
+
+              </div>
+
+              <div id="number_of_elevators" class="hidden">
+
+                  <%= f.input :number_of_elevators, min: 0, class:"form-control" %>
+
+              </div>
+
+              <div id="number_of_corporations" class="hidden">
+
+                  <%= f.input :number_of_corporations, min: 0, class:"form-control" %>
+
+              </div>
+
+              <div id="maximum_occupancy" class="hidden">
+
+                  <%= f.input :maximum_occupancy, min: 0, class:"form-control" %>
+
+              </div>
+
+              <div id="business_hours" class="hidden">
+
+                  <%= f.input :business_hours, in: 1.0..24.0, class:"form-control" %>
+
+              </div>
+                </div>
+        </div>
+      </div>
 
 
-   <% if user_signed_in? %>
-    <div class="form-actions col-md-4 col-sm-4">
-      <%= f.button :submit %>
-    </div>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Edit profile", edit_user_registration_path %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-    <div class="form-actions col-md-4 col-sm-4">
-      <%= f.button :submit, :disabled=> true%>
-    </div>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "sign in", new_user_session_path %>
-    <% end %>
-  <div class="col-md-4 col-sm-4">
-    <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>
-  </div>
-<% end %>
-
-<div class="col-md-3">
-					<!-- Links -->
-					<h4 class="letter-spacing-1">EXPLORE</h4>
-					<ul class="footer-lin3ks list-unstyled">
-						<li><a href="index.html#home-nav">Home</a></li>
-						<li><a href="index.html#services">Our Services</a></li>
-						<li><a href="index.html#clients">Our Clients</a></li>
-						<li><a href="quote.html">Request a Quote</a></li>
-						<li><a href="index.html#contact-nav">Contact Us</a></li>
-					</ul>
-					<!-- /Links -->
+<div class="col-md-4 hidden-sm-down">&nbsp;</div>
 </div>
+
+<!--New Row-->
+
+
+<div class="row">
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2 ">
+
+    &nbsp;
+    <!-- <form>
+      <div id="elevator-amount" class="fancy-form ">
+        <i class="fa fa-angle-double-right"></i>
+        <input readonly id="estimatedColumns" class="form-control" value="">
+      </div>
+    </form> -->
+  </div>
+  <div class="col-md-1 hidden-sm-down">&nbsp;</div>
+  <div class="col-md-2">
+
+    <form> <!--Estimated Elevators Form-->
+      <div id="elevator-amount" class="fancy-form ">
+        <label for="estimatedElevators" class="text-center">Number Of Elevators&nbsp;</label>
+        <input readonly id="estimatedElevators" class="form-control" value="">
+      </div>
+    </form>
+
+    <!-- <element class="sky-form">
+        <element class="input">
+        <input readonly id="estimatedElevators" value="">
+        </element>
+    </element> -->
+  </div>
+  </div>
+
+  <div class="row">
+
+  <div class="col-md-5 ">&nbsp;</div>
+    <div class="col-md-2">
+      <div id="lineSelection" class="">
+
+        <f.label :product_line class=:"text-center", Select Your Product Line %>
+        <%= f.input :product_line,input_html: { class:"checkbox" }, as: :radio_buttons, collection: Quote::PRODUCT %>
+
+          <script>//On product line click calc price
+            $('#lineSelection input[type=radio]').change(function () {
+              price($('#lineSelection input[type=radio]:checked').val());
+            });
+          </script>
+        </div>
+    </div>
+  <div class="col-md-2">&nbsp;</div>
+</div>
+
+<div class="row hidden-sm-down">
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+</div>
+
+<!--Cost Related Label/Text-->
+
+<div class="row hidden-sm-down">
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+  <div class="col-md-2">&nbsp;</div>
+</div>
+<!--/Cost Related Label/Text-->
+
+<!--Price Estimate Forms-->
+<div class="row">
+        <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-2">
+            <div id="elevator-unit-price" class="fancy-form ">
+              <%= f.label :elevator_unit_price, "Elevator Unit Price", class:"text-center bold" %>
+              <%= f.text_field :elevator_unit_price, class:"form-control" %><br/>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div id="elevator-total-price" class="fancy-form ">
+              <%= f.label :elevator_total_price, "Elevator Total Price", class:"text-center bold" %>
+              <%= f.text_field :elevator_total_price, class:"form-control" %><br/>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div id="installation-fees" class="fancy-form ">
+              <%= f.label :installation_price, "Elevator Installation Price", class:"text-center bold" %>
+              <%= f.text_field :installation_price, class:"form-control" %><br/>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div id="final-price" class="fancy-form ">
+              <%= f.label :total_price, "Total Price", class:"text-center bold" %>
+              <%= f.text_field :total_price, class:"form-control" %><br/>
+            </div>
+        </div>
+
+
+            <% if user_signed_in? %>
+
+                    <div class="">
+                          <%= f.button :submit %>
+                    </div>
+                    Signed in as <%= current_user.email %>. Not you?
+                    <%= link_to "Edit profile", edit_user_registration_path %>
+                    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+              <% else %>
+                      <div class="">
+                        <%= f.button :submit, :disabled=> true%>
+                      </div>
+                      <%= link_to "Sign up", new_user_registration_path %> or
+                      <%= link_to "sign in", new_user_session_path %>
+              <% end %>
+</div>
+        <div class="">
+              <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, id: "flash_#{name}" %>
+              <% end %>
+        </div>
+<!--/Price Estimate Forms-->
+
+
+
+<!--Placeholder-->
+<div class="row hidden-sm-down">
+  <div class="col-md-2">&nbsp;</div>
+  <!--A beautiful line-->
+  <div class="col-md-8"> <hr /></div>
+  <div class="col-md-2">&nbsp;</div>
+</div>
+<div class="row grid-color">
+  <div class="col-md-4">&nbsp;</div>
+  <div class="col-md-4">&nbsp;
+
+  </div>
+  <div class="col-md-4">&nbsp;</div>
+</div>
+<div class="row hidden-sm-down">
+  <div class="col-md-4">&nbsp;</div>
+  <div class="col-md-4">&nbsp;</div>
+  <div class="col-md-4">&nbsp;</div>
+</div>
+<div class="row hidden-sm-down">
+  <div class="col-md-4">&nbsp;</div>
+  <div class="col-md-4">&nbsp;</div>
+  <div class="col-md-4">&nbsp;</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<% end %>

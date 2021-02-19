@@ -2,7 +2,11 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @quote.name %>
+  <%= @quote.name %><br/>
+  <strong>Number of Elevators:</strong>
+  <%= @quote.number_of_elevators %><br/>
+  <strong>Total Price:</strong>
+  <%= @quote.total_price %><br/>
 </p>
 
 <%= link_to 'Edit', edit_quote_path(@quote) %> |
