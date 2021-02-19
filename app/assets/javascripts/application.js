@@ -15,7 +15,6 @@
 
 //= require rails-ujs
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require_tree .
 //= require bootstrap
 //= require quotes
@@ -31,4 +30,3 @@
 //= require view/demo.revolution_slider
 //= require plugins/slider.revolution/js/jquery.themepunch.revolution.min
 //= require plugins/slider.revolution/js/jquery.themepunch.tools.min
-

@@ -1,6 +1,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-    
+  <%= csrf_meta_tags %>
+
     <div class="container-fluid">
       <h1 class="fw-800 fs-40 font-lato text-center">Log in</h1>
 
