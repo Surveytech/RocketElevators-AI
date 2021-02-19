@@ -14,6 +14,9 @@ Team Member:
 
 This is a responsive website for Rocket Elevators, in Ruby on Rails architecture, MVC (Model - View - Controller), using MySQL for its database.
 
+The link for this siteweb: https://tommycote.com/
+
+
 This responsive website has:
 
   - A Quote table allowing:
@@ -36,6 +39,12 @@ This responsive website has:
   - A Backoffice administrative section that:
     - is secured behind an authentication page, validated using the users table;
     - stores the quotes.
+
+
+
+
+
+
 
   
 
