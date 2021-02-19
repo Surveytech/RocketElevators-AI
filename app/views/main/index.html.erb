@@ -8,7 +8,6 @@
 				<li data-transition="parallaxtobottom" data-slotamount="7" data-masterspeed="600"  data-saveperformance="off"  data-title="Let's Rise Together!">
 						<!-- MAIN IMAGE -->
 						<%= image_tag("slide1.jpeg", alt:"elevator cover image")%>
-				<!--	<img src="/assets/images/slide1.jpeg"  alt="elevator cover image"  data-bgposition="center" data-bgfit="cover" data-bgrepeat="no-repeat"> -->
 					<div class="tp-caption white_big skewfromleft tp-resizeme"
 						data-x="100"
 						data-y="100"
@@ -97,7 +96,7 @@
 						data-endelementdelay="0.1"
 						data-endspeed="500"
 						style="z-index: 3; font-size:20px; color:#fff; font-weight:normal; text-shadow:1px 1px 2px black;">
-							You heard it right! <br />
+							You heard it right! <br/><br/>
 							Rocket Elevators also does residential installation!
 					</div>
 					<div class="tp-caption skewfromleft tp-resizeme  un-button-2-lg"
@@ -132,7 +131,7 @@
 						data-endelementdelay="0.1"
 						data-endspeed="500"
 						style="z-index: 3; font-size:45px; color:#fff; font-weight:normal; text-shadow:1px 1px 2px black;">
-							Rocket Elevators also provides service <br>
+							Rocket Elevators also provides service <br/><br/><br/>
 							for all your corporation building needs!
 					</div>
 					<div class="tp-caption skewfromleft tp-resizeme  un-button-2-lg"
@@ -185,17 +184,18 @@
 	<a id="services-nav" class="hidden-anchor"></a>
 	<div class="container">
 		<h1 class="text-center bold font-lato">Our Available Services</h1>
+		<br>
 		<div class="row">
 			<div class="col-sm-4 fs-20 text-center">
-				<p>Rocket Elevators has participated <br>in many projects and won <br>numerous awards.</p>
+				<p>We participated in many projects <br>and won numerous awards.<br> <br> </p>
 				<a href="#portfolio" class="btn btn-lg btn-dark">Our Portfolio</a>
 			</div>
 			<div class="col-sm-4 fs-20 text-center">
-				<p>Rocket Elevators offers a service for residential building<br> </br> </p>
+				<p>Rocket Elevators offers a service for residential building<br> <br> </p>
 				<a href="residential.html" class="btn btn-lg btn-dark">Residential Services</a>
 			</div>
 			<div class="col-sm-4 fs-20 text-center">
-				<p>Rocket Elevators also offers a service for corporate buildings<br> </br> </p>
+				<p>Rocket Elevators also offers a service for corporate buildings<br> <br> </p>
 				<a href="commercial.html" class="btn btn-lg btn-dark">Corporate Services</a>
 			</div>
 
@@ -205,8 +205,7 @@
 <!-- /Services -->
 
 <!-- Parallax / Ribbon / inbusiness -->
-<section class="parallax parallax-1">
-<!-- <%= image_tag("elevatorParallax.jpeg")%> -->
+<section class="parallax parallax-1" style="background-image: url(<%= asset_path 'elevatorParallax.jpeg' %>); background-position:50% 40px;">
 	<div class="overlay dark-5"></div>
 	<div class="container">
 		<div class="text-center">
@@ -572,7 +571,7 @@
 <!-- News -->
 <section id="news">
 	<div class="container">
-		<div class=" heading-title heading-dotted text-center">
+		<div class="heading-title heading-dotted text-center">
 			<h2>Recent News</h2>
 		</div>
 		<a id="news-nav" class="hidden-anchor-news"></a>
@@ -825,13 +824,12 @@
 								</div>
 						</div>
 						<div class="row">
-								<div class="col-md-12">
-									<label for="contact:attachment">File Attachment</label>
-									<!-- custom file upload -->
-									<input class="custom-file-upload" type="file" id="attachment" id="file" name="contact[attachment]" id="contact:attachment" data-btn-text="Select a File" />
-									<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
-
-								</div>
+							<div class="col-12">
+								<label for="contact:attachment">File Attachment</label>
+								<!-- custom file upload -->
+								<input class="custom-file-upload" type="file" id="attachment" id="file" name="contact[attachment]" id="contact:attachment" data-btn-text="Select a File" />
+								<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
+							</div>
 						</div>
 					</fieldset>
 				</form>

@@ -9,6 +9,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+	<script>var plugin_path = 'assets/plugins/';</script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -117,7 +119,9 @@
 	AElFTkSuQmCC" rel="icon" type="image/x-icon" />
   </head>
 
-  <body class="enable-animation bg-grey">
+
+
+  <body class="enable-animation">
     <!-- wrapper -->
 	<div id="wrapper">
       <%= render "main/header"%>
@@ -128,8 +132,6 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-	<script>var plugin_path = 'assets/plugins/';</script>
 
   </body>
 </html>

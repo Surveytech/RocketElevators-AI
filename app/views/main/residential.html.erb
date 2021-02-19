@@ -1,21 +1,38 @@
-<!-- Dark Title container -->
-<section class="page-header dark">
-	<div class="container text-center fw-800 fs">
-		<h1 class="fw-800 fs-60 font-lato">Residential Services</h1>
-	</div>
-</section>
+<!-- HOME -->
+<section id="home_res">
+			
+	<div class="container text-center">
+		
+		<h1 class="m-0 fs-40 fw-300 wow fadeInUp" data-wow-delay="0.4s">RESIDENTIAL SERVICES</h1>
+		<p class="lead font-lato fs-30 wow fadeInUp" data-wow-delay="0.7s">No matter how successful you get, always send the elevator <br>back down for someone else.</p>
 
-<!-- Some text with a slogan-->
-<section class="dark">
-	<div class="container">				
-			<div class="text-center">
-				<small class="font-lato fs-22 mb-20 block">Here at Rocket Elevators we have <br> elevators for all your needs!
-				<br> <br />Once you go Rocket, you never go back!</small>							
+		<div class="row mt-100 text-left">
+			<div class="col-md-8 col-sm-12 mb-30">
+				<%= image_tag("homeElevator.jpg", atl:"", style:"border:5x solid black", class:"img-fluid")%>
 			</div>
+
+			<div class="col-md-4 col-sm-12 wow">
+				<h1 class="fw-300"><strong>Product Overview</strong></h1>
+			
+				<p>If a family member has difficulty with mobility, a home elevator system is often chief among these needs. Give your home an elevator that makes an impact and provide security.</p>
+				
+				<hr />
+
+				<ul class="list-unstyled list-icons">
+					<li><i class="fa fa-check"></i> Eco-Friendly home elevator.</li>
+					<li><i class="fa fa-check"></i> A smooth and silent ride.</li>
+					<li><i class="fa fa-check"></i> Low carbon footprint.</li>
+					<li><i class="fa fa-check"></i> No pit, hoist way, or machine room required.</li>
+					<li><i class="fa fa-check"></i> Customer services during the entire lifespan of the building.</li>
+					<li><i class="fa fa-check"></i> Mechanical emergency safety brake system.</li>
+				</ul>
+			</div>
+
 		</div>
+
 	</div>
 </section>
-<!-- / -->
+<!-- /HOME -->
 
 <!--Example of our work and some pictures-->
 <section class="dark">
@@ -23,8 +40,8 @@
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-4 border-right">
 				<h3 class="text-center">New Construction</h3>
-				<p class="text-center">We can do new construction,<br>
-				Rocket Elevators helps architects for planning!</p>
+				<p class="text-center">We can do new construction<br>
+				and helps architects for planning!</p>
 				<%= image_tag("projects/buildersExample-logo.jpg", atl:"", style:"border:5x solid black", class:"img-fluid")%>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 border-right">
@@ -43,16 +60,57 @@
 	</div>
 </section>
 
-<!--Request quote button with text-->
-<section>
+<!-- PRICING -->
+<section id="pricing">
 	<div class="container">
-		<div class="text-center">
-			<h3 class="mb-0">So What Are You Waiting For? </h3>
-			<small class="font-lato fs-22 mb-20 block">Don't forget to check out our quote calculator!</small>
-			<a class="btn btn-dark btn-lg" href="quote.html">Click Here To Get A Quote! &nbsp; <i class="fa fa-angle-right"></i></a>
+
+		<header class="text-center mb-60">
+			<h1>Our Pricing</h1>
+			<p class="lead font-lato">Your satisfaction is our priority.</p>
+		</header>
+
+		<div class="row">
+
+			<div class="col-sm-4">
+				<div class="price-clean">                                
+					<h4><sup>$</sup>7,565</h4>
+					<br>
+					<h5> STANDARD </h5>
+					<hr />
+					<p>Installation fees of 10%.</p>
+					<hr />
+					<a href="/quotes" class="btn btn-3d btn-teal">Request a quote</a>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="price-clean">                                
+					<h4><sup>$</sup>12,345</h4>
+					<br>
+					<h5> PREMIUM </h5>
+					<hr />
+					<p>Installation fees of 13%.</p>
+					<hr />
+					<a href="/quotes" class="btn btn-3d btn-teal">Request a quote</a>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="price-clean">  
+					<h4><sup>$</sup>15,400</h4>
+					<br>
+					<h5> EXCELIUM </h5>
+					<hr />
+					<p>Installation fees of 16%.</p>
+					<hr />
+					<a href="/quotes" class="btn btn-3d btn-teal">Request a quote</a>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </section>
+<!-- /PRICING -->
 
 <!--Testimonials section-->
 <section id="testimonial" class="dark">
