@@ -1,1 +1,1 @@
-json.array! @quotes, partial: "quote1s/quote", as: :quote
+json.array! @quotes, partial: "quotes/quote", as: :quote
