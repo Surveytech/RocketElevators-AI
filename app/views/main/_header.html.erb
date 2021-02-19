@@ -25,40 +25,47 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/residential.html">RESIDENTIAL</a></li>
                                 <li><a href="/commercial.html">COMMERCIAL</a></li>
+                                <li><a href="/quotes">REQUEST QUOTE</a></li>
                             </ul>
                         </li>
                         <li><!-- portfolio -->
-                            <a href="/index.html#portfolio-nav">
+                            <a href="/#portfolio-nav">
                                 PORTFOLIO
                             </a>
                         </li>
                         <li><!-- news -->
-                            <a href="/index.html#news-nav">
+                            <a href="/#news-nav">
                                 NEWS
                             </a>
                         </li>
                         <li><!-- clients -->
-                            <a href="/index.html#clients-nav">
+                            <a href="/#clients-nav">
                                 CLIENTS
                             </a>
                         </li>
                         <li><!-- CONTACT -->
-                            <a href="/index.html#contact-nav">
+                            <a href="/#contact-nav">
                                 CONTACT
                             </a>
                         </li>
-                        <li><!-- Log in -->
-                            <% if user_signed_in? %>
-                                Signed in as <%= current_user.email %>. Not you?
-                                <%= link_to "Edit profile", edit_user_registration_path %>
-                                <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-                                <% else %>
-                                <div><br><br><%= link_to "SIGN UP", new_user_registration_path %> or
-                                <%= link_to "SIGN IN", new_user_session_path %></div>
-                                <% end %>
-                                <% flash.each do |name, msg| %>
-                                <%= content_tag :div, msg, id: "flash_#{name}" %>
-                                <% end %>
+                        <!-- ADMIN -->
+                        <% if user_signed_in? %>
+                        <li class="dropdown">
+                            <a class="dropdown">
+                                <%= current_user.name %>
+                                <ul class="dropdown-menu">
+                                    <li><%= link_to "EDIT PROFILE", edit_user_registration_path %></li>
+                                    <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
+                                    <% if can? :manage, :all %>
+                                        <li><a href="/admin">BACK OFFICE</a></li>
+                                    <% end %>
+                                </ul>
+                            </a>
+                        </li>
+                        <% else %>
+                        <li> <!-- Log in -->
+                            <%= link_to "LOG IN", new_user_session_path %>
+                            <% end %>                                
                         </li>
                     </ul>
                 </nav>
@@ -66,4 +73,15 @@
         </div>
     </header>
     <!-- /END TOP NAV -->
+    <% unless flash.empty? %>
+    <script type="text/javascript">
+        <% flash.each do |f| %>
+        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+            toastr.options.positionClass = 'toast-top-left';
+            toastr['<%= type %>']('<%= f[1] %>');
+    <% end %>
+    </script>
+    <% end %>
 </div>
+
+

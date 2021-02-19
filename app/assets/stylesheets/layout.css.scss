@@ -87,9 +87,9 @@ body.bg-grey #wrapper {
 section {
 	display: block;
 	position: relative;
-	padding: 100px 0;
-	border-bottom:rgba(0,0,0,0.1) 1px solid;
-	background-color: #fff;
+	padding: 50px 0;
+	border-bottom:rgba(209, 0, 0, 0.1) 1px solid;
+	background-color: rgb(0, 0, 0);
 
 	/*
 	-webkit-transition: all .400s;
@@ -154,8 +154,8 @@ section header.section-header {
 	}
 
 	section.dark {
-		background-color:#212121 !important;
-		border-bottom:rgba(255,255,255,0.1) 1px solid;
+		background-color:#000000 !important;
+		border-bottom:rgb(230, 0, 0) 1px solid;
 	}
 	section.dark.alternate {
 		background-color:#151515 !important;
