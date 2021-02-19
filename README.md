@@ -12,23 +12,32 @@ Team Member:
 - Tommy Cote
 ```
 
-This is a responsive website for Rocket Elevators, a web application on MVC (Model - View - Controller), using Ruby on Rails and MySQL.
+This is a responsive website for Rocket Elevators, in Ruby on Rails architecture, MVC (Model - View - Controller), using MySQL for its database.
 
-This responsive version has:
+This responsive website has:
 
-  - A user's login page, allowing users to authenticate and also saving user's data such as:
+  - A Quote table allowing:
+    - users, eventhow not loged in, being able to simulate a quote;
+    - save quotes once loged in;
+    - eventually permitting to turn them (quotes) into prospects.
+
+  - A User's login page, allowing users to authenticate and also saving user's data such as:
     - first name;
     - last name;
     - encrypted password.
 
-  - An employees's table having:
-    - employee user ID;
-    - employee last name;
-    - employee first name;
+  - An Employees's table, reserved to authenticated users only, having:
+    - employee's user ID;
+    - employee's last name;
+    - employee's first name;
     - his/her title or function;
     - users attached to his/her profile.
 
-  - 
+  - A Backoffice administrative section that:
+    - is secured behind an authentication page, validated using the users table;
+    - stores the quotes.
+
+  
 
 
 
