@@ -1,11 +1,4 @@
 
-<script>
-$('document').ready(function () {
-  $("select").change(function () {
-    getBuildingType();
-  });
-});
-</script>
 
 <%= simple_form_for(@quote) do |f| %>
   <%= f.error_notification %>
@@ -13,79 +6,137 @@ $('document').ready(function () {
 
   <div class="form-inputs col-md-4 col-sm-4">
     <%= f.label :name,""%>
-    <%= f.text_field :name%></br>
+    <%= f.input :name%><br/>
     <%= f.label :company_name, "Enter The Name Of Your Company" %>
-    <%= f.text_field :company_name %> <br/>
+    <%= f.input :company_name %> <br/>
   </div>
-
+  
   <div>
     <%= f.label :building_type %>
     <%= f.select(:building_type, Quote::TYPE_LIST) %><br/>
   </div>
 
+  
+        <div id="questionInput" class="form-inputs col-md-4 col-sm-4"> 
+            <div id="number_of_apartments" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :number_of_apartments, min: 0, class:"form-control" %>
+              </div>
+            </div>
 
-  <div class="form-inputs col-md-4 col-sm-4">
-    <%= f.label :number_of_apartments, "Enter Number Of Apartments" %>
-    <%= f.number_field :number_of_apartments, min: 0  %> <br/>
-    <%= f.label :number_of_floors, "Enter Number Of Floors (excluding basements)" %>
-    <%= f.number_field :number_of_floors, min: 0  %><br/>
-    <%= f.label :number_of_basements, "Enter Number Of Basements" %>
-    <%= f.number_field :number_of_basements, min: 0  %> <br/>
-    <%= f.label :number_of_companies, "Enter Number Of Companies" %>
-    <%= f.number_field :number_of_companies, min: 0  %><br/>
-    <%= f.label :number_of_parking_spots, "Enter Number Of Parking Spots" %>
-    <%= f.number_field :number_of_parking_spots, min: 0  %><br/>
-    <%= f.label :number_of_elevators, "Enter Number Of Elevators" %>
-    <%= f.number_field :number_of_elevators, min: 0  %><br/>
-    <%= f.label :number_of_corporations, "Enter Number Of Corporations" %>
-    <%= f.number_field :number_of_corporations, min: 0  %><br/>
-    <%= f.label :maximum_occupancy, "Enter Number Of Occupants Per Floor (approx.)" %>
-    <%= f.number_field :maximum_occupancy, min: 0  %><br/>
-    <%= f.label :business_hours, "Enter Number Of Business Hours" %>
-    <%= f.number_field :business_hours, in: 1.0..24.0  %><br/>
-  </div>
+            <div id="number_of_floors" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :number_of_floors, min: 0, class:"form-control" %>
+              </div>
+            </div>
 
-    <div class="form-inputs col-md-4 col-sm-4">
-      <%= radio_button_tag(:product_line, "standard") %>
-      <%= label_tag(:product_line_standard, "Standard") %>
-      <%= radio_button_tag(:product_line, "premium") %>
-      <%= label_tag(:product_line_premium, "Premium") %>
-      <%= radio_button_tag(:product_line, "excelium") %>
-      <%= label_tag(:product_line_excelium, "Excelium") %>
+            <div id="number_of_basements" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :number_of_basements, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_of_companies" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :number_of_companies, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_of_parking_spots" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :number_of_parking_spots, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_of_elevators" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :number_of_elevators, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="number_of_corporations" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :number_of_corporations, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="maximum_occupancy" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :maximum_occupancy, min: 0, class:"form-control" %>
+              </div>
+            </div>
+
+            <div id="business_hours" class="form-group row">
+              
+              <div class="col-sm-4">
+                <%= f.input :business_hours, in: 1.0..24.0, class:"form-control" %>
+              </div>
+        </div>
+
+    <div id="lineSelection" class="">
+        <%= radio_button_tag(:product_line, "standard") %>
+        <%= label_tag(:product_line_standard, "Standard") %>
+        <%= radio_button_tag(:product_line, "premium") %>
+        <%= label_tag(:product_line_premium, "Premium") %>
+        <%= radio_button_tag(:product_line, "excelium") %>
+        <%= label_tag(:product_line_excelium, "Excelium") %>
+    
+      
+    <script>
+      $('#lineSelection input[type=radio]').change(function () {
+        price($('#lineSelection input[type=radio]:checked').val());
+      });
+      </script>    
     </div>
 
-  <div class="form-inputs col-md-4 col-sm-4">
-    <%= f.label :elevator_unit_price, "Elevator Unit Price" %>
-    <%= f.text_field :elevator_unit_price, :disabled=>true %></br>
-    <%= f.label :elevator_total_price, "Elevator Total Price" %>
-    <%= f.text_field :elevator_total_price, :disabled=>true %></br>
-    <%= f.label :installation_price, "Elevator Installation Price" %>
-    <%= f.text_field :installation_price, :disabled=>true%></br>
-    <%= f.label :total_price, "Total Price" %>
-    <%= f.text_field :total_price, :disabled=>true%></br>
-  </div>
 
+    <div class="">
+        <%= f.label :elevator_unit_price, "Elevator Unit Price" %>
+        <%= f.text_field :elevator_unit_price %><br/>
+        <%= f.label :elevator_total_price, "Elevator Total Price" %>
+        <%= f.text_field :elevator_total_price %><br/>
+        <%= f.label :installation_price, "Elevator Installation Price" %>
+        <%= f.text_field :installation_price %><br/>
+        <%= f.label :total_price, "Total Price" %>
+        <%= f.text_field :total_price %><br/>
+    </div>
+
+
+  
 
    <% if user_signed_in? %>
-    <div class="form-actions col-md-4 col-sm-4">
-      <%= f.button :submit %>
-    </div>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Edit profile", edit_user_registration_path %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <div class="">
+                <%= f.button :submit %>
+          </div>
+          Signed in as <%= current_user.email %>. Not you?
+          <%= link_to "Edit profile", edit_user_registration_path %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     <% else %>
-    <div class="form-actions col-md-4 col-sm-4">
-      <%= f.button :submit, :disabled=> true%>
-    </div>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "sign in", new_user_session_path %>
+            <div class="">
+              <%= f.button :submit, :disabled=> true%>
+            </div>
+            <%= link_to "Sign up", new_user_registration_path %> or
+            <%= link_to "sign in", new_user_session_path %>
     <% end %>
-  <div class="col-md-4 col-sm-4">
+
+ 
+    <div class="">
     <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, id: "flash_#{name}" %>
-    <% end %>
-  </div>
-<% end %>
+    <% end %>   
+    </div>
+
+			</div>
+			
+		</div>
 
 <div class="col-md-3">
 					<!-- Links -->
@@ -99,3 +150,5 @@ $('document').ready(function () {
 					</ul>
 					<!-- /Links -->
 </div>
+<% end %>
+
