@@ -34,7 +34,7 @@
                 <%= f.input :company_name %> <br/>
         <%= f.label :building_type %>
         <%= f.select :building_type, Quote::TYPE_LIST %><br/>
-          
+
         </div>
         <div class="col-md-2 col-xs-4">&nbsp;</div>
         <div class="col-md-2 col-xs-4">&nbsp;</div>
@@ -56,58 +56,58 @@
                   <%= f.input :number_of_apartments, min: 0, class:"form-control" %>
               </div>
 
-              <div id="number_of_floors" class="hidden">              
-                
+              <div id="number_of_floors" class="hidden">
+
                   <%= f.input :number_of_floors, min: 0, class:"form-control" %>
-                
+
               </div>
 
-              <div id="number_of_basements" class="hidden">              
-                
+              <div id="number_of_basements" class="hidden">
+
                   <%= f.input :number_of_basements, min: 0, class:"form-control" %>
-                
+
               </div>
 
-              <div id="number_of_companies" class="hidden">              
-                
+              <div id="number_of_companies" class="hidden">
+
                   <%= f.input :number_of_companies, min: 0, class:"form-control" %>
-                
+
               </div>
 
               <div id="number_of_parking_spots" class="hidden">
-                
+
                   <%= f.input :number_of_parking_spots, min: 0, class:"form-control" %>
-                
+
               </div>
 
               <div id="number_of_elevators" class="hidden">
-                
+
                   <%= f.input :number_of_elevators, min: 0, class:"form-control" %>
-                
+
               </div>
 
-              <div id="number_of_corporations" class="hidden">              
-                
+              <div id="number_of_corporations" class="hidden">
+
                   <%= f.input :number_of_corporations, min: 0, class:"form-control" %>
-                
+
               </div>
 
-              <div id="maximum_occupancy" class="hidden">              
-                
+              <div id="maximum_occupancy" class="hidden">
+
                   <%= f.input :maximum_occupancy, min: 0, class:"form-control" %>
-                
+
               </div>
 
-              <div id="business_hours" class="hidden">              
-                
+              <div id="business_hours" class="hidden">
+
                   <%= f.input :business_hours, in: 1.0..24.0, class:"form-control" %>
-                
+
               </div>
                 </div>
         </div>
       </div>
 
-      
+
 <div class="col-md-4 hidden-sm-down">&nbsp;</div>
 </div>
 
@@ -119,7 +119,7 @@
   <div class="col-md-2 ">
 
     &nbsp;
-    <!-- <form> 
+    <!-- <form>
       <div id="elevator-amount" class="fancy-form ">
         <i class="fa fa-angle-double-right"></i>
         <input readonly id="estimatedColumns" class="form-control" value="">
@@ -137,7 +137,7 @@
     </form>
 
     <!-- <element class="sky-form">
-        <element class="input">					  
+        <element class="input">
         <input readonly id="estimatedElevators" value="">
         </element>
     </element> -->
@@ -214,7 +214,7 @@
             </div>
         </div>
 
-        
+
             <% if user_signed_in? %>
                     <div class="">
                           <%= f.button :submit %>
@@ -233,7 +233,7 @@
         <div class="">
               <% flash.each do |name, msg| %>
               <%= content_tag :div, msg, id: "flash_#{name}" %>
-              <% end %>  
+              <% end %>
         </div>
 <!--/Price Estimate Forms-->
 
