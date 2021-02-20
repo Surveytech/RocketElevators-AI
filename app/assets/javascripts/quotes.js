@@ -103,7 +103,7 @@ function hybridQuestions() {
 }
 
 function calcCommercial(elevatorInput) {
-  //Commercial Calc 
+  //Commercial Calc
   var elevatorInput
   $("#estimatedElevators").val(elevators);
   // $("#estimatedColumns").val(elevators);
@@ -111,7 +111,7 @@ function calcCommercial(elevatorInput) {
 
 function calcResidential(apts, floors) {
   //Residential Calc
-  var elevators, column, floors, avgD, apts; 
+  var elevators, column, floors, avgD, apts;
   // Really advanced complicated maths
   avgD = Math.ceil(apts / floors);
   elevators = Math.ceil(avgD / 6);
@@ -176,13 +176,13 @@ function price(productType) {
           break;
 
         case "commercial":
-          var 									
+          var
             floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
             basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
             companies = parseFloat($(':input[id="quote_number_of_companies"]').val(),10),
             parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10),
-            elevators = parseFloat($(':input[id="quote_number_of_elevators"]').val(),10);									
-          if (									 	  
+            elevators = parseFloat($(':input[id="quote_number_of_elevators"]').val(),10);
+          if (
             !isNaN(elevators)
           ) {
             $("#estimatedElevators").val(elevators);
@@ -198,7 +198,7 @@ function price(productType) {
           if (
             !isNaN(maxOccupancy) &&
             !isNaN(floors) &&
-            !isNaN(basements) 
+            !isNaN(basements)
           ) {
             calcCorpoHybrid(maxOccupancy, floors, basements);
           }
@@ -214,7 +214,7 @@ function price(productType) {
           if (
             !isNaN(maxOccupancy) &&
             !isNaN(floors) &&
-            !isNaN(basements) 
+            !isNaN(basements)
           ) {
             calcCorpoHybrid(maxOccupancy, floors, basements);
           }
@@ -222,7 +222,7 @@ function price(productType) {
         default: hideQuestions();
           break;
       }
-      
+
       price($("#lineSelection input[type=radio]:checked").val());
     }
   );
@@ -240,18 +240,13 @@ function price(productType) {
   $("#quote_elevator_total_price").val(formatter.format(elevatorPrice));
   $("#quote_installation_price").val(formatter.format(installationPrice));
   $("#quote_total_price").val(formatter.format(totalPrice));
-  
+
 }
 
-// I think I'm in love with the person who made 
+// I think I'm in love with the person who made
 //  into Js
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
   minimumFractionDigits: 2
 })
-
-
-
-
-			
