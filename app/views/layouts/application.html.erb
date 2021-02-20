@@ -9,27 +9,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-	<script>var plugin_path = 'assets/plugins/';</script>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application'%>
 
 	<!-- PAGE LEVEL SCRIPTS -->
-    <%= stylesheet_link_tag    'header-1', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag    'color_scheme/lightgrey', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'header-1', media: 'all'%>
+	<%= stylesheet_link_tag    'color_scheme/lightgrey', media: 'all'%>
 
 	<!-- THEME CSS -->
-    <%= stylesheet_link_tag    'essentials', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'layout', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'layout-dark', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'custom-forms-v2', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'essentials', media: 'all'%>
+    <%= stylesheet_link_tag    'layout', media: 'all'%>
+    <%= stylesheet_link_tag    'layout-dark', media: 'all'%>
+    <%= stylesheet_link_tag    'custom-forms-v2', media: 'all'%>
 
 	<!-- CORE CSS -->
-	<%= stylesheet_link_tag    'plugins/bootstrap/css/bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag    'plugins/bootstrap/css/bootstrap.min', media: 'all'%>
 
 	<!-- REVOLUTION SLIDER -->
-	<%= stylesheet_link_tag    'plugins/slider.revolution/css/extralayers', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_link_tag    'plugins/slider.revolution/css/settings', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag    'plugins/slider.revolution/css/extralayers', media: 'all'%>
+	<%= stylesheet_link_tag    'plugins/slider.revolution/css/settings', media: 'all'%>
 
 	<!-- mobile settings -->
 	<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -120,7 +119,7 @@
   </head>
 
 
-
+	<script>var plugin_path = 'assets/plugins/';</script>
   <body class="enable-animation">
     <!-- wrapper -->
 	<div id="wrapper">
@@ -129,9 +128,6 @@
       <%= render "main/footer"%>
     </div>
 	<!-- /wrapper -->
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
   </body>
 </html>

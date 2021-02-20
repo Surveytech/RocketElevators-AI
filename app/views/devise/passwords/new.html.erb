@@ -1,29 +1,48 @@
+<section class="page-header dark">
+  <div class="container text-center">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="container-fluid">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-      <h1 class="fw-800 fs-40 font-lato text-center">Forgot your password?</h1>
-      <div class="form-row justify-content-center">
-        <div class="col-md-4"></div>
-          <div class="col-md-2 text-center">
-            <%= f.label :email %><br>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
-        <div class="col-md-4"></div>
+
+  <div class="container-fluid">
+
+    <h1 class="fw-700 fs-40 font-roboto text-center">Forgot your password?</h1>
+
+    <br /><br /><br />
+
+    <div class="form-row justify-content-center">
+
+      <div class="col-md-0"></div>
+
+
+      <div class="col-md-8 text-center">
+          <label for="email" class="fs-18">Email&nbsp;</label>
+          <input id="email" name="user[email]" type="text" autocomplete="email" class="form-control" placeholder="Email"/>
       </div>
 
-      <div class="form-row justify-content-center">
-        <div class="col-md-4"></div>
-          <div class="actions"><br>
-            <%= f.submit "Send me reset password instructions" %>
-          </div>
-        <div class="col-md-4"></div>
-      </div>
-      <% end %>
-      <div class="form-row justify-content-center">
-        <div class="col-md-2 text-center">
-          <%= render "devise/shared/links" %>
-        </div>
-      </div>
+      <div class="col-md-4"></div>
+
     </div>
+
+    <br />
+
+    <div class="form-row justify-content-center">
+
+      <div class="col-md-3"></div>
+
+      <div class="col-md-2 text-center">
+          <div class="form-actions">
+          <button type="submit" class="btn btn-outline-primary fs-20">Send me reset password instructions</button>
+          </div>
+          <% end %>
+      </div>
+
+      <div class="col-md-5"></div>
+
+    </div>
+
+  </div>
+
+  <%= render "devise/shared/links" %>
+</section>

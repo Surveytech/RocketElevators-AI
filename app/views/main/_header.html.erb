@@ -25,7 +25,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/residential.html">RESIDENTIAL</a></li>
                                 <li><a href="/commercial.html">COMMERCIAL</a></li>
-                                <li><a href="/quotes">REQUEST QUOTE</a></li>
+                                <li><a href="/quotes/new">REQUEST QUOTE</a></li>
                             </ul>
                         </li>
                         <li><!-- portfolio -->
@@ -54,6 +54,7 @@
                             <a class="dropdown">
                                 <%= current_user.name %>
                                 <ul class="dropdown-menu">
+                                    <li><%= link_to "QUOTES", quotes_path %></li>
                                     <li><%= link_to "EDIT PROFILE", edit_user_registration_path %></li>
                                     <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
                                     <% if can? :manage, :all %>
@@ -65,7 +66,7 @@
                         <% else %>
                         <li> <!-- Log in -->
                             <%= link_to "LOG IN", new_user_session_path %>
-                            <% end %>                                
+                            <% end %>
                         </li>
                     </ul>
                 </nav>
@@ -83,5 +84,3 @@
     </script>
     <% end %>
 </div>
-
-
