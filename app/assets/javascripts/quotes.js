@@ -4,11 +4,6 @@
 var type;
 //////
 
-$('document').ready(function () {
-  $("select").change(function () {
-    getBuildingType();
-  });
-});
 
 function hideQuestions() {
   /////// Hide the questions
