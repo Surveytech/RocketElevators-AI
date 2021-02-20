@@ -113,6 +113,7 @@ section {
 }
 
 
+
 section:after,
 section:before {
 	content:" ";
@@ -300,6 +301,31 @@ body.bg-grey #wrapper {
 .container {
 	position:relative;
 }
+.form-container {
+	display:grid;
+	grid-template-columns:33% 33% 33%;
+	grid-gap:25px;
+	justify-content: space-around;
+	align-items: stretch;
+	font-size: 15px ;
+}
+
+.grid1{
+}
+
+.grid2{
+}
+
+.grid3{
+}
+
+.grid4{
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+}
+
+
 
 a:active,
 a:focus,

@@ -160,7 +160,7 @@ function price(productType) {
   }
 
   $("#questionInput :input").bind(
-    "keypress keydown keyup change",
+    "keypress keydown keyup change onblur",
     function () {
       if (parseFloat($(':input[id="quote_business_hours"]').val(), 10) > 24) {
         $("#quote_business_hours").val(24);
@@ -226,6 +226,8 @@ function price(productType) {
       price($("#lineSelection input[type=radio]:checked").val());
     }
   );
+
+
   // Final calculations
   elevator = $("#estimatedElevators").val();
   // column = $("#estimatedColumns").val();
