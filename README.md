@@ -1,3 +1,23 @@
+COMPANY
+-------
+Rocket Elevators
+
+
+AUTHOR: 
+-------
+## Team #4
+
+Team Leader:
+- Daniela Grumbach Kinder
+
+Team Member:
+- Etienne G.Lapointe
+- Gabriel Rioux
+- Maxime Lachance
+- Tommy Cote
+
+
+
 # Rocket_Elevators_Information_System
 
 ## Team #4
