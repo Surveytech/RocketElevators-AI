@@ -18,7 +18,7 @@
     });
   </script>
 
-  <section >
+  <section class="dark">
 
   <%= simple_form_for(@quote) do |f| %>
     <%= f.error_notification %>
@@ -190,22 +190,22 @@
           <div class="">
             <div id="elevator-unit-price" class="fancy-form ">
               <%= f.label :elevator_unit_price, "Elevator Unit Price", class:"text-center bold" %>
-                        <%= f.text_field :elevator_unit_price, class:"form-control", :readonly=>true %><br/>
+                        <%= f.input :elevator_unit_price, class:"form-control", :readonly=>true %><br/>
             </div>
 
             <div id="elevator-total-price" class="fancy-form ">
               <%= f.label :elevator_total_price, "Elevator Total Price", class:"text-center bold" %>
-                      <%= f.text_field :elevator_total_price, class:"form-control", :readonly=>true %><br/>
+                      <%= f.input :elevator_total_price, class:"form-control", :readonly=>true %><br/>
             </div>
 
             <div id="installation-fees" class="fancy-form ">
                       <%= f.label :installation_price, "Installation Price", class:"text-center bold" %>
-                      <%= f.text_field :installation_price, class:"form-control", :readonly=>true %><br/>
+                      <%= f.input :installation_price, class:"form-control", :readonly=>true %><br/>
             </div>
 
             <div id="final-price" class="fancy-form ">
               <%= f.label :total_price, "Total Price", class:"text-center bold" %>
-                      <%= f.text_field :total_price, class:"form-control", :readonly=>true %><br/>
+                      <%= f.input :total_price, class:"form-control", :readonly=>true %><br/>
             </div>
             </div>
 

@@ -231,17 +231,9 @@ function price(productType) {
   installationPrice = (elevatorPrice * installFees) / 100;
   totalPrice = elevatorPrice + installationPrice;
 
-  $("#quote_elevator_unit_price").val(formatter.format(unitPrice));
-  $("#quote_elevator_total_price").val(formatter.format(elevatorPrice));
-  $("#quote_installation_price").val(formatter.format(installationPrice));
-  $("#quote_total_price").val(formatter.format(totalPrice));
+  $("#quote_elevator_unit_price").val(unitPrice);
+  $("#quote_elevator_total_price").val(elevatorPrice);
+  $("#quote_installation_price").val(installationPrice);
+  $("#quote_total_price").val(totalPrice);
 
 }
-
-// I think I'm in love with the person who made
-//  into Js
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2
-})
