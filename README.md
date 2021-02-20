@@ -42,33 +42,9 @@ This responsive website has:
 
 
 How the Back Office works, the complete progress of a submission:
- - a submission is sent, filling the quote's avaiable fields for each interest;
- - creation of a submission, 
+ - creation of a submission, by filling the quote's avaiable fields for each interest;
  - the access to the Back Office, 
  - the viewing of this newly created submission, 
  - the features available in the Back Office 
  - and  any other details deemed relevant.
 
-
-
-
-
-### The rest is w.i.p
-
-* Ruby version => 2.6.6
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
