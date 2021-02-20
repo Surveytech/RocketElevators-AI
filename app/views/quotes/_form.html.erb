@@ -25,13 +25,13 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
     <div class="container">
     <div class="form-container">
-  
+
       <div class="grid1">
                 <%= f.input :name%><br/>
                 <%= f.input :company_name, :label=>"Enter Your Company Name (optionnal)" %> <br/>
                 <%= f.select :building_type, Quote::TYPE_LIST, :label=>"Select Your Building Type"%><br/>
         </div>
-      
+
 
 
       <div class="grid2">
@@ -99,12 +99,12 @@
 
               </div>
                 </div>
-                
+
         </div>
 
         <div>
 
-    
+
 
     <form> <!--Estimated Elevators Form-->
       <div id="elevator-amount" class="fancy-form ">
@@ -137,17 +137,18 @@
               <%= f.label :total_price, "Total Price", class:"text-center bold" %>
                       <%= f.text_field :total_price, class:"form-control", :readonly=>true %><br/>
             </div>
-            </div> 
+            </div>
 
         </div>
 
 
       <div class="text-center grid4">
             <% if user_signed_in? %>
+
                     <div class="">
                           <%= f.button :submit %>
                     </div>
-        Signed in as <%= current_user.email %>. 
+        Signed in as <%= current_user.email %>.
         <%= link_to "Edit profile", edit_user_registration_path %><br/> Not you?
                     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
               <% else %>
@@ -157,7 +158,7 @@
                       <%= link_to "Sign up", new_user_registration_path %> or
                       <%= link_to "sign in", new_user_session_path %>
               <% end %>
-          <% end %>       
+          <% end %>
                 <% if false%>
         <div class="">
               <% flash.each do |name, msg| %>

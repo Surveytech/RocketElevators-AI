@@ -4,6 +4,7 @@ class QuotesController < ApplicationController
   # GET /quotes or /quotes.json
   def index
     @quotes = Quote.all
+    @quotesList = Quote.where(user_id: current_user.id)
   end
 
   # GET /quotes/1 or /quotes/1.json
@@ -65,7 +66,7 @@ class QuotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_params
-      params.require(:quote).permit(:name, :building_type, :product_line, :elevator_unit_price, :elevator_total_price, :installation_price, :total_price)
+      params.require(:quote).permit(:name, :company_name, :number_of_apartments, :number_of_floors, :number_of_basements, :number_of_companies, :number_of_parking_spots, :number_of_elevators, :number_of_corporations, :maximum_occupancy, :business_hours, :building_type, :product_line, :elevator_unit_price, :elevator_total_price, :installation_price, :total_price)
     end
 
 
@@ -84,4 +85,7 @@ class QuotesController < ApplicationController
 # :hours
     #   )
     # end
+
+
+
 end
