@@ -42,9 +42,7 @@ This responsive website has:
 
 
 How the Back Office works, the complete progress of a submission:
- - creation of a submission, by filling the quote's avaiable fields for each interest;
- - the access to the Back Office, 
- - the viewing of this newly created submission, 
- - the features available in the Back Office 
- - and  any other details deemed relevant.
+ - creation of a submission, by filling the quote's avaiable fields for each interest (Residential, Commercial, Corporative, Hybrid);
+ - by loging in on his/her own account, the employee have access of his/her client's (users) informations (sauf the client's password) and also to have access to the client's quotes informations;
+ - in the Back Office the employee can create, modify or delete the client's informations and/or any quotes wanted.
 
