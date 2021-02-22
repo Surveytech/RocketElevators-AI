@@ -10,7 +10,133 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_154914) do
+ActiveRecord::Schema.define(version: 2021_02_22_181607) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "address_type"
+    t.string "status"
+    t.string "notes"
+    t.string "entity"
+    t.string "address_formatted_address"
+    t.string "address_street_number"
+    t.string "address_street_name"
+    t.string "address_street"
+    t.string "address_city"
+    t.string "address_zip_code"
+    t.string "address_department"
+    t.string "address_department_code"
+    t.string "address_state"
+    t.string "address_state_code"
+    t.string "address_country"
+    t.string "address_country_code"
+    t.float "address_lat"
+    t.float "address_lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "attachment_binaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "attachment_id"
+    t.binary "data", limit: 16777215
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachment_id"], name: "index_attachment_binaries_on_attachment_id"
+  end
+
+  create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "owner_id"
+    t.string "owner_type"
+    t.string "token"
+    t.string "digest"
+    t.string "role"
+    t.string "type"
+    t.string "file_name"
+    t.string "file_type"
+    t.string "cache_type"
+    t.string "cache_max_age"
+    t.string "disposition"
+    t.integer "file_size"
+    t.integer "parent_id"
+    t.boolean "processed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "custom"
+    t.boolean "serve", default: true
+    t.index ["owner_id"], name: "index_attachments_on_owner_id"
+    t.index ["token"], name: "index_attachments_on_token", length: 10
+  end
+
+  create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "building_id", null: false
+    t.string "type", null: false
+    t.string "status", null: false
+    t.bigint "employee_id", null: false
+    t.datetime "date_of_comissioning", null: false
+    t.datetime "date_of_last_inspection", null: false
+    t.string "certificate_of_operations", null: false
+    t.string "information", null: false
+    t.string "notes", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "building_id", null: false
+    t.string "information_key", null: false
+    t.string "information_value", null: false
+  end
+
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.string "building_address"
+    t.string "building_admin_full_name", null: false
+    t.string "building_admin_email", null: false
+    t.string "building_admin_phone", null: false
+    t.string "building_technical_full_name", null: false
+    t.string "building_technical_email", null: false
+    t.string "building_technical_phone", null: false
+  end
+
+  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "battery_id", null: false
+    t.string "building_type", null: false
+    t.integer "number_of_floors_served", null: false
+    t.string "status", null: false
+    t.string "information", null: false
+    t.string "notes", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.string "company_name", null: false
+    t.string "company_address"
+    t.string "company_contact_full_name", null: false
+    t.string "company_phone", null: false
+    t.string "company_email", null: false
+    t.string "company_description", null: false
+    t.string "service_technical_authority_full_name", null: false
+    t.string "service_technical_authority_phone", null: false
+    t.string "service_technical_authority_email", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "column_id", null: false
+    t.bigint "serial_number", null: false
+    t.string "model_type", null: false
+    t.string "building_type", null: false
+    t.string "status", null: false
+    t.datetime "date_of_comissioning", null: false
+    t.datetime "date_of_last_inspection", null: false
+    t.string "certificate_of_operations", null: false
+    t.string "information", null: false
+    t.string "notes", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -21,6 +147,22 @@ ActiveRecord::Schema.define(version: 2021_02_18_154914) do
     t.datetime "updated_at", null: false
     t.string "user_id"
     t.index ["first_name"], name: "index_employees_on_first_name"
+  end
+
+  create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "full_name", null: false
+    t.string "company_name", null: false
+    t.string "email", null: false
+    t.string "phone", null: false
+    t.string "project_name", null: false
+    t.string "project_description", null: false
+    t.string "department_in_charge_of_the_elevators"
+    t.string "message", null: false
+    t.string "file_name"
+    t.string "file_type"
+    t.binary "file_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

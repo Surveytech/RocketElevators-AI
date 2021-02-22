@@ -4,11 +4,6 @@
 var type;
 //////
 
-$('document').ready(function () {
-  $("select").change(function () {
-    getBuildingType();
-  });
-});
 
 function hideQuestions() {
   /////// Hide the questions
@@ -103,7 +98,7 @@ function hybridQuestions() {
 }
 
 function calcCommercial(elevatorInput) {
-  //Commercial Calc 
+  //Commercial Calc
   var elevatorInput
   $("#estimatedElevators").val(elevators);
   // $("#estimatedColumns").val(elevators);
@@ -111,7 +106,7 @@ function calcCommercial(elevatorInput) {
 
 function calcResidential(apts, floors) {
   //Residential Calc
-  var elevators, column, floors, avgD, apts; 
+  var elevators, column, floors, avgD, apts;
   // Really advanced complicated maths
   avgD = Math.ceil(apts / floors);
   elevators = Math.ceil(avgD / 6);
@@ -160,7 +155,7 @@ function price(productType) {
   }
 
   $("#questionInput :input").bind(
-    "keypress keydown keyup change",
+    "keypress keydown keyup change onblur",
     function () {
       if (parseFloat($(':input[id="quote_business_hours"]').val(), 10) > 24) {
         $("#quote_business_hours").val(24);
@@ -176,13 +171,13 @@ function price(productType) {
           break;
 
         case "commercial":
-          var 									
+          var
             floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
             basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
             companies = parseFloat($(':input[id="quote_number_of_companies"]').val(),10),
             parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10),
-            elevators = parseFloat($(':input[id="quote_number_of_elevators"]').val(),10);									
-          if (									 	  
+            elevators = parseFloat($(':input[id="quote_number_of_elevators"]').val(),10);
+          if (
             !isNaN(elevators)
           ) {
             $("#estimatedElevators").val(elevators);
@@ -198,7 +193,7 @@ function price(productType) {
           if (
             !isNaN(maxOccupancy) &&
             !isNaN(floors) &&
-            !isNaN(basements) 
+            !isNaN(basements)
           ) {
             calcCorpoHybrid(maxOccupancy, floors, basements);
           }
@@ -214,7 +209,7 @@ function price(productType) {
           if (
             !isNaN(maxOccupancy) &&
             !isNaN(floors) &&
-            !isNaN(basements) 
+            !isNaN(basements)
           ) {
             calcCorpoHybrid(maxOccupancy, floors, basements);
           }
@@ -222,10 +217,12 @@ function price(productType) {
         default: hideQuestions();
           break;
       }
-      
+
       price($("#lineSelection input[type=radio]:checked").val());
     }
   );
+
+
   // Final calculations
   elevator = $("#estimatedElevators").val();
   // column = $("#estimatedColumns").val();
@@ -234,22 +231,9 @@ function price(productType) {
   installationPrice = (elevatorPrice * installFees) / 100;
   totalPrice = elevatorPrice + installationPrice;
 
-  $("#quote_elevator_unit_price").val(formatter.format(unitPrice));
-  $("#quote_elevator_total_price").val(formatter.format(elevatorPrice));
-  $("#quote_installation_price").val(formatter.format(installationPrice));
-  $("#quote_total_price").val(formatter.format(totalPrice));
-  
+  $("#quote_elevator_unit_price").val(unitPrice);
+  $("#quote_elevator_total_price").val(elevatorPrice);
+  $("#quote_installation_price").val(installationPrice);
+  $("#quote_total_price").val(totalPrice);
+
 }
-
-// I think I'm in love with the person who made 
-//  into Js
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2
-})
-
-
-
-
-			

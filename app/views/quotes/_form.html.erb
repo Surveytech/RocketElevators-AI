@@ -18,40 +18,32 @@
     });
   </script>
 
-  <section >
+  <section class="dark">
 
   <%= simple_form_for(@quote) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-      <style>
-        .weirdClass {
-          background-color: pink;
-          color: pink;
-        }
-      </style>
-
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-          <center>
-              <%= f.input :name %><br/>
-              <%= f.input :company_name %> <br/>
-              <%= f.select :building_type, Quote::TYPE_LIST %><br/>
-          </center>
+    <div class="form-container">
+      <div class="grid1">
+                <%= f.input :name%><br/>
+                <%= f.input :company_name, :label=>"Enter Your Company Name (optional)" %> <br/>
+                <%= f.select :building_type, Quote::TYPE_LIST, :label=>"Select Your Building Type"%><br/>
         </div>
-      </div>
 
-      <div class="row hidden-sm-down">
-        <div class="col-md-2 col-xs-4">&nbsp;</div>
-        <!--Line Separator-->
-        <div class="col-md-8 col-xs-12"> <hr /></div>
-        <div class="col-md-2 col-xs-4">&nbsp;</div>
-      </div>
 
-      <div class="row ">
-      <div class="col-md-4"></div>
-        <div class="col-md-4">
+
+      <div class="grid2">
+            <div class="">
+                <div id="lineSelection" class="">
+                  <%= f.input :product_line, :label=>"Select Your Product Line", as: :radio_buttons, collection: Quote::PRODUCT, wrapper: :vertical_collection_inline %>
+      </div>
+                  <script>//On product line click calc price
+                    $('#lineSelection input[type=radio]').change(function () {
+                      price($('#lineSelection input[type=radio]:checked').val());
+                    });
+                  </script>
+      </div>
           <!--Questions-->
           <div id="questionInput">
                 <div id="number_of_apartments" class="hidden">
@@ -106,30 +98,83 @@
 
               </div>
                 </div>
+
         </div>
-      </div>
+
+        <div>
+
+        <script>
+
+   $("#questionInput :input").bind(
+    "keypress keydown keyup change onblur",
+    function () {
+      if (parseFloat($(':input[id="quote_business_hours"]').val(), 10) > 24) {
+        $("#quote_business_hours").val(24);
+      };
+      switch (type) {
+        case "residential":
+          var apts = parseFloat($(':input[id="quote_number_of_apartments"]').val(),10),
+            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
+            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10);
+          if (!isNaN(apts) && !isNaN(floors)) {
+            calcResidential(apts, floors);
+          }
+          break;
+
+        case "commercial":
+          var
+            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
+            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
+            companies = parseFloat($(':input[id="quote_number_of_companies"]').val(),10),
+            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10),
+            elevators = parseFloat($(':input[id="quote_number_of_elevators"]').val(),10);
+          if (
+            !isNaN(elevators)
+          ) {
+            $("#estimatedElevators").val(elevators);
+          }
+          break;
+
+        case "corporate":
+          var maxOccupancy = parseFloat($(':input[id="quote_maximum_occupancy"]').val(),10),
+            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
+            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
+            corporations = parseFloat($(':input[id="quote_number_of_corporation"]').val(),10),
+            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10);
+          if (
+            !isNaN(maxOccupancy) &&
+            !isNaN(floors) &&
+            !isNaN(basements)
+          ) {
+            calcCorpoHybrid(maxOccupancy, floors, basements);
+          }
+          break;
+
+        case "hybrid":
+          var maxOccupancy = parseFloat($(':input[id="quote_maximum_occupancy"]').val(),10),
+            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
+            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
+            companies = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
+            businessHours = parseFloat($(':input[id="quote_business_hours"]').val(),10),
+            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10);
+          if (
+            !isNaN(maxOccupancy) &&
+            !isNaN(floors) &&
+            !isNaN(basements)
+          ) {
+            calcCorpoHybrid(maxOccupancy, floors, basements);
+          }
+          break;
+        default: hideQuestions();
+          break;
+      }
+
+      price($("#lineSelection input[type=radio]:checked").val());
+    }
+  );
+ </script>
 
 
-<div class="col-md-4 hidden-sm-down">&nbsp;</div>
-</div>
-
-<!--New Row-->
-
-
-<div class="row">
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2 ">
-
-    &nbsp;
-    <!-- <form>
-      <div id="elevator-amount" class="fancy-form ">
-        <i class="fa fa-angle-double-right"></i>
-        <input readonly id="estimatedColumns" class="form-control" value="">
-      </div>
-    </form> -->
-  </div>
-  <div class="col-md-1 hidden-sm-down">&nbsp;</div>
-  <div class="col-md-2">
 
     <form> <!--Estimated Elevators Form-->
       <div id="elevator-amount" class="fancy-form ">
@@ -138,92 +183,40 @@
       </div>
     </form>
 
-    <!-- <element class="sky-form">
-        <element class="input">
-        <input readonly id="estimatedElevators" value="">
-        </element>
-    </element> -->
-  </div>
-  </div>
 
-  <div class="row">
 
-  <div class="col-md-5 ">&nbsp;</div>
-    <div class="col-md-2">
-      <div id="lineSelection" class="">
-
-        <f.label :product_line class=:"text-center", Select Your Product Line %>
-        <%= f.input :product_line,input_html: { class:"checkbox" }, as: :radio_buttons, collection: Quote::PRODUCT %>
-
-          <script>//On product line click calc price
-            $('#lineSelection input[type=radio]').change(function () {
-              price($('#lineSelection input[type=radio]:checked').val());
-            });
-          </script>
-        </div>
-    </div>
-  <div class="col-md-2">&nbsp;</div>
-</div>
-
-<div class="row hidden-sm-down">
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-</div>
-
-<!--Cost Related Label/Text-->
-
-<div class="row hidden-sm-down">
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-  <div class="col-md-2">&nbsp;</div>
-</div>
-<!--/Cost Related Label/Text-->
 
 <!--Price Estimate Forms-->
-<div class="row">
-        <div class="col-md-2">&nbsp;</div>
-        <div class="col-md-2">
+          <div class="">
             <div id="elevator-unit-price" class="fancy-form ">
-              <%= f.label :elevator_unit_price, "Elevator Unit Price", class:"text-center bold" %>
-              <%= f.text_field :elevator_unit_price, class:"form-control" %><br/>
+                        <%= f.input :elevator_unit_price, class:"form-control", :readonly=>true %><br/>
             </div>
-        </div>
 
-        <div class="col-md-2">
             <div id="elevator-total-price" class="fancy-form ">
-              <%= f.label :elevator_total_price, "Elevator Total Price", class:"text-center bold" %>
-              <%= f.text_field :elevator_total_price, class:"form-control" %><br/>
+                      <%= f.input :elevator_total_price, class:"form-control", :readonly=>true %><br/>
             </div>
-        </div>
 
-        <div class="col-md-2">
             <div id="installation-fees" class="fancy-form ">
-              <%= f.label :installation_price, "Elevator Installation Price", class:"text-center bold" %>
-              <%= f.text_field :installation_price, class:"form-control" %><br/>
+                      <%= f.input :installation_price, class:"form-control", :readonly=>true %><br/>
             </div>
-        </div>
 
-        <div class="col-md-2">
             <div id="final-price" class="fancy-form ">
-              <%= f.label :total_price, "Total Price", class:"text-center bold" %>
-              <%= f.text_field :total_price, class:"form-control" %><br/>
+                      <%= f.input :total_price, class:"form-control", :readonly=>true %><br/>
             </div>
+            </div>
+
         </div>
+      <div class="grid4">
+      </div>
 
-
+      <div class="text-center grid5">
             <% if user_signed_in? %>
 
                     <div class="">
                           <%= f.button :submit %>
                     </div>
-                    Signed in as <%= current_user.email %>. Not you?
-                    <%= link_to "Edit profile", edit_user_registration_path %>
+        Signed in as <%= current_user.email %>.
+        <%= link_to "Edit profile", edit_user_registration_path %><br/> Not you?
                     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
               <% else %>
                       <div class="">
@@ -232,43 +225,17 @@
                       <%= link_to "Sign up", new_user_registration_path %> or
                       <%= link_to "sign in", new_user_session_path %>
               <% end %>
-</div>
+          <% end %>
+                <% if false%>
         <div class="">
               <% flash.each do |name, msg| %>
               <%= content_tag :div, msg, id: "flash_#{name}" %>
               <% end %>
+              </div>
+            </div>
+         </div>
         </div>
-<!--/Price Estimate Forms-->
-
-
-
-<!--Placeholder-->
-<div class="row hidden-sm-down">
-  <div class="col-md-2">&nbsp;</div>
-  <!--A beautiful line-->
-  <div class="col-md-8"> <hr /></div>
-  <div class="col-md-2">&nbsp;</div>
-</div>
-<div class="row grid-color">
-  <div class="col-md-4">&nbsp;</div>
-  <div class="col-md-4">&nbsp;
-
-  </div>
-  <div class="col-md-4">&nbsp;</div>
-</div>
-<div class="row hidden-sm-down">
-  <div class="col-md-4">&nbsp;</div>
-  <div class="col-md-4">&nbsp;</div>
-  <div class="col-md-4">&nbsp;</div>
-</div>
-<div class="row hidden-sm-down">
-  <div class="col-md-4">&nbsp;</div>
-  <div class="col-md-4">&nbsp;</div>
-  <div class="col-md-4">&nbsp;</div>
-</div>
-</div>
-</div>
-
-</div>
-
-<% end %>
+      </div>
+    </div>
+  <% end %>
+</section>
