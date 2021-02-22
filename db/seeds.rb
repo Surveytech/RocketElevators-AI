@@ -29,25 +29,20 @@ q4 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_ap
 q5 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
 q6 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
 
-# thomas = Employee.last
-# puts(thomas)
-# thomas.build_user({ name: 'Thomas', email: thomas.email, password: '123456', password_confirmation: '123456', title: thomas.title, role_id: r3.id })
-# puts(thomas.user)
-# thomas.save
-# puts("saved")
-# puts(User.all)
-
 Employee.all.each do |employee|
   employee.build_user({
     email: employee.email,
     name: employee.first_name,
     surname: employee.last_name,
     title: employee.title,
-    role_id: 3,
+    role_id: 2,
     password: 123456,
     password_confirmation: 123456})
-  employee.save
-  puts(employee.first_name)
+  employee.save!
+  employee.user_id = employee.user.id
+  employee.save!
+  # puts(employee.first_name, employee.user_id)
+  print("\n\t\t\t",employee.first_name, " user_id => ", employee.user_id, "\n")
  end
 
 puts "Done!"
