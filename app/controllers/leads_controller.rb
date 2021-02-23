@@ -16,16 +16,29 @@ class LeadsController < ApplicationController
 
 
   def create
-    file = lead_params[:file]
 
-    filename = file.original_filename
-    filedata = file.read
+    if(lead_params[:file].present?)
+      file = lead_params[:file]
 
-    @lead = Lead.new(lead_params.except(:file))
-    @lead.file_data = filedata
-    @lead.file_name = filename
-    @lead.save
+      filename = file.original_filename
+      filedata = file.read
+      filetype = file.content_type
 
+      @lead = Lead.new(lead_params.except(:file))
+      @lead.file_data = filedata
+      @lead.file_name = filename
+      @lead.file_type = filetype
+      @lead.save
+    else
+      @lead = Lead.new(lead_params.except(:file))
+      @lead.save
+    end
+
+    respond_to do |format|
+      if @lead.save
+        format.html  { redirect_to "/", notice: 'Thank You!' }
+      end
+    end
 
   end
 
