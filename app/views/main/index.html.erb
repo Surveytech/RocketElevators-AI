@@ -777,57 +777,13 @@
 		<div class="row">
 			<!-- FORM -->
 			<div class="col-md-8 col-sm-8">
-				<h3>Send us an E-mail</h3>
-				<!--
-						MESSAGES
-
-							How it works?
-							The form data is posted to php/contact.php where the fields are verified!
-							php.contact.php will redirect back here and will add a hash to the end of the URL:
-								#alert_success 		= email sent
-								#alert_failed		= email not sent - internal server error (404 error or SMTP problem)
-								#alert_mandatory	= email not sent - required fields empty
-								Hashes are handled by assets/js/contact.js
-							Form data: required to be an array. Example:
-								contact[email]  WHERE: [email] = field name,  = only if this field is required (PHP will check this)
-								Also, add `required` to input fields if is a mandatory field.
-								Example: <input required type="email" value="" class="form-control" name="contact[email]">
-							PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
-											ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
-							WARNING! Do not change the `email` and `name`!
-										contact[name] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
-										contact[email][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
-					-->
-
-					<!-- Alert Success -->
-					<div id="alert_success" class="alert alert-success mb-30">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<strong>Thank You!</strong> Your message successfully sent!
-					</div><!-- /Alert Success -->
-
-
-					<!-- Alert Failed -->
-					<div id="alert_failed" class="alert alert-danger mb-30">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<strong>[SMTP] Error!</strong> Internal server error!
-					</div><!-- /Alert Failed -->
-
-
-					<!-- Alert Mandatory -->
-					<div id="alert_mandatory" class="alert alert-danger mb-30">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
-					</div><!-- /Alert Mandatory -->
 
 					<%= form_for Lead.new do |f| %>
 						<fieldset>
-							<%# <input type="hidden" name="action" value="contact_send" /> %>
-
 							<div class="row">
 									<div class="col-md-4">
 										<label for="lead:full_name">Full Name *</label>
 										<input type="text" value="" class="form-control" name="lead[full_name]" id="lead:full_name">
-										<%# <input id="full_name" name="lead[full_name]" type="text" class="form-control" placeholder="Full name"/> %>
 									</div>
 									<div class="col-md-4">
 										<label for="lead:company_name">Business Name *</label>
@@ -839,7 +795,7 @@
 									</div>
 									<div class="col-md-4">
 										<label for="lead:phone">Phone Number *</label>
-										<input type="text" value="" class="form-control" name="lead[phone]" id="lead:phone">
+										<input type="tel" value="" class="form-control" name="lead[phone]" id="lead:phone">
 									</div>
 									<div class="col-md-4">
 										<label for="lead:project_name">Project Name *</label>
@@ -849,10 +805,10 @@
 										<label for="department_in_charge_of_the_elevators">Department</label>
 										<select class="form-control pointer" name="lead[department_in_charge_of_the_elevators]">
 											<option value="">--- Select ---</option>
-											<option value="Project">Project</option>
-											<option value="Careers">Careers</option>
-											<option value="Billing">Billing</option>
-											<option value="Partners">Partners</option>
+											<option value="Residential">Residential</option>
+											<option value="Commercial">Commercial</option>
+											<option value="Corporate">Corporate</option>
+											<option value="Hybrid">Hybrid</option>
 											<option value="Miscellaneous">Miscellaneous</option>
 										</select>
 									</div>
@@ -873,16 +829,10 @@
 							<div class="row">
 									<div class="col-md-12">
 										<label for="lead:file">File Attachment</label>
-
-										<!-- custom file upload -->
-										<input class="custom-file-upload" type="file" id="file" name="lead[file]" id="lead:file" data-btn-text="Select a File" />
+										<input class="form-control" type="file" id="file" name="lead[file]" id="lead:file" data-btn-text="Select a File" />
 										<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
-
-										<%= f.file_field :file %>
-
-
 									</div>
-							</div>
+							</div><br />
 
 						</fieldset>
 
