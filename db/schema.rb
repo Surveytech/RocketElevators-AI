@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_181607) do
+ActiveRecord::Schema.define(version: 2021_02_23_133605) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_181607) do
     t.string "type", null: false
     t.string "status", null: false
     t.bigint "employee_id", null: false
-    t.datetime "date_of_comissioning", null: false
+    t.datetime "date_of_commissioning", null: false
     t.datetime "date_of_last_inspection", null: false
     t.string "certificate_of_operations", null: false
     t.string "information", null: false
@@ -150,14 +150,14 @@ ActiveRecord::Schema.define(version: 2021_02_22_181607) do
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "full_name", null: false
-    t.string "company_name", null: false
-    t.string "email", null: false
-    t.string "phone", null: false
-    t.string "project_name", null: false
-    t.string "project_description", null: false
+    t.string "full_name"
+    t.string "company_name"
+    t.string "email"
+    t.string "phone"
+    t.string "project_name"
+    t.string "project_description"
     t.string "department_in_charge_of_the_elevators"
-    t.string "message", null: false
+    t.string "message"
     t.string "file_name"
     t.string "file_type"
     t.binary "file_data"
