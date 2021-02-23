@@ -21,13 +21,19 @@ class LeadsController < ApplicationController
 
   # POST /leads or /leads.json
   def create
+    #puts params
+
     file = lead_params.delete(:file)
+
     filename = file.original_filename
     filedata = file.read
-    @lead = Lead.new(lead_params)
+
+    @lead = Lead.new(lead_params.except(:file))
     @lead.file_data = filedata
     @lead.file_name = filename
     @lead.save
+
+
   end
 
   # PATCH/PUT /leads/1 or /leads/1.json

@@ -872,13 +872,14 @@
 							</div>
 							<div class="row">
 									<div class="col-md-12">
-										<%# <label for="lead:file">File Attachment</label> %>
+										<label for="lead:file">File Attachment</label>
 
 										<!-- custom file upload -->
-										<%# <input class="form-control-file" type="file" id="file" name="lead[file]" id="lead:file" data-btn-text="Select a File" />
-										<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small> %>
+										<input class="custom-file-upload" type="file" id="file" name="lead[file]" id="lead:file" data-btn-text="Select a File" />
+										<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
 
 										<%= f.file_field :file %>
+
 
 									</div>
 							</div>
