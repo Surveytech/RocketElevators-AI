@@ -73,7 +73,7 @@ form div.form-group label {
 input.form-control:hover, 
 select.form-control:hover, 
 textarea.form-control:hover {
-	background-color: #fafafa !important;
+	background-color: #272e33 !important;
 }
 
 	section.dark input.form-control:hover, 
