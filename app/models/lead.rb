@@ -1,3 +1,3 @@
 class Lead < ApplicationRecord
-    attachment :lead_file
+    attachment :file_data
 end
