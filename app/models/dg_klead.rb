@@ -1,0 +1,2 @@
+class DgKlead < ApplicationRecord
+end
