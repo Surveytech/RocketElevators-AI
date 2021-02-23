@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+<<<<<<< HEAD
   resources :dg_kleads
+=======
+  resources :leads
+>>>>>>> 6300ceeb2c4cd0bb8ab985c3dccad7350bf1f3ac
   resources :quotes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
