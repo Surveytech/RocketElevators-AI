@@ -98,5 +98,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # PostGres
-gem = 'pg'
-gem = 'multiverse'
+gem 'pg'
+gem 'multiverse'
+gem 'pgsync'
