@@ -49,14 +49,109 @@ puts "Done!"
 
 # puts "= Seeding Quotes ="
 # 50.times do
-#     Quote.create(
-#             #building_type: Faker::Number.between(from: , to: ),
-#             number_of_apartments: Faker::Number.between(from: 50, to: 600),
-#             number_of_floors: Faker::Number.between(from: 1, to: 50),
-#             number_of_basements: Faker::Number.between(from: 1, to: 400),
-#             number_of_companies: Faker::Number.between(from: 1, to: 500),
-#             number_of_parking_spots: Faker::Number.between(from: 1, to: 700),
-#             number_of_elevators: Faker::Number.between(from: 1, to: 200),
-#             number_of_corporations: Faker::Number.between(from: 1, to: 500),
-#             maximum_occupancy: Faker::Number.between(from: 1, to: 500))
-#     end
+#  Quote.create(
+#   #building_type: Faker::Number.between(from: , to: ),
+#   number_of_apartments: Faker::Number.between(from: 50, to: 600),
+#   umber_of_floors: Faker::Number.between(from: 1, to: 50),
+#   number_of_basements: Faker::Number.between(from: 1, to: 400),
+#   number_of_companies: Faker::Number.between(from: 1, to: 500),
+#   number_of_parking_spots: Faker::Number.between(from: 1, to: 700),
+#   number_of_elevators: Faker::Number.between(from: 1, to: 200),
+#   number_of_corporations: Faker::Number.between(from: 1, to: 500),
+#   maximum_occupancy: Faker::Number.between(from: 1, to: 500))
+# end
+
+puts "= Addresses Seeds ="
+300.times do
+  addresses.create(
+    address_type: "#Residential or Commercial or Corporate",
+    status: "#if Customer or Building",
+    notes: "Confidential",
+    entity: "#is it from Customer or Building...",
+    address: "#from .csv",
+    timestamps: ""
+end
+
+puts "= Customer Seeds ="
+100.times do
+  customer.create(
+    created_at: Faker::Date.between(from: 3.years.ago, to: Date.today),
+    company_name: "#from .csv",
+    company_address: "#from .csv",
+    company_contact_full_name: Faker::Name.name,
+    company_phone: Faker::PhoneNumber.cell_phone,
+    company_email: Faker::Internet.email,
+    company_description: "Confidential",
+    service_technical_authority_full_name: Faker::Company.name,
+    service_technical_authority_phone: Faker::PhoneNumber.cell_phone,
+    service_technical_authority_email: Faker::Internet.email,
+    timestamps: "",
+
+    updated_at: "",
+    address_id: "#from addresses",
+    user_id: "#from himself"
+end
+
+puts "= Building Seeds ="
+100.times do
+  building.create(
+    customer_id: "#from customer",
+    building_address: '#from addresses',
+    building_admin_full_name: Faker::Name.name,
+    building_admin_email: Faker::Internet.email,
+    building_admin_phone: Faker::PhoneNumber.cell_phone,
+    building_technical_full_name: Faker::Company.name,
+    building_technical_email: Faker::Internet.email,
+    building_technical_phone: Faker::PhoneNumber.cell_phone
+end
+
+puts "= Building_details Seeds ="
+100.times do
+  building_details.create(
+    building_id: "#from building",
+    information_key: "Confidential",
+    information_value: "Confidential"
+end
+
+puts "= Batteries Seeds ="
+100.times do
+  batteries.create(
+    building_id: "#from building",
+    type: Rand("Commercial", "Corporate", "Hybrid"),
+    status: Rand("Active", "intervention", "inactive"),
+    employee_id: Faker::IDNumber.valid,
+    date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
+    date_of_last_inspection: "#after commissioning",
+    certificate_of_operations: Faker::Crypto.md5,
+    information: "Confidential",
+    notes: "Confidential",
+    timestamps: ""
+end
+
+puts "= Columns Seeds ="
+100.times do
+  columns.create(
+    battery_id: "#from battery",
+    building_type: "#Residential or Commercial or Corporate?",
+    number_of_floors_served: Faker::Number.between(from: 2, to: 60),
+    status: "#from batterie",
+    information: "Confidential",
+    notes: "Confidential",
+    timestamps: ""
+end
+
+puts "= Elevators Seeds ="
+100.times do
+  elevators.create(
+    column_id: "#from column",
+    serial_number: Faker::Device.serial,
+    model_type: "#Residential, Commercial, Corporate, Hybrid",
+    building_type: "#from building",
+    status: "#from column",
+    date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
+    date_of_last_inspection: "#after comissioning",
+    certificate_of_operations: Faker::Crypto.md5,
+    information: "Confidential",
+    notes: "Confidential",
+    timestamps: ""
+end
