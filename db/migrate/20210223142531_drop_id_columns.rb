@@ -9,7 +9,6 @@ class DropIdColumns < ActiveRecord::Migration[5.2]
     remove_column :users, :role_id
     remove_column :quotes, :user_id
     remove_column :customers, :user_id
-    remove_column :attachment_binaries, :attachment_id
     # remove_column :addresses, :building_id
   end
 end
