@@ -46,8 +46,8 @@ gem 'hirb'
 # Address Parser
 gem 'jt-rails-address'
 
-# attach
-gem 'attach'
+# charts
+gem "chartkick"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -99,3 +99,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# PostGres
+gem 'pg'
+gem 'multiverse'
+gem 'csv'
+

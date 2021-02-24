@@ -1,47 +1,48 @@
 class LeadsController < ApplicationController
-  before_action :set_lead, only: %i[ show edit update destroy ]
 
-  # GET /leads or /leads.json
   def index
     @leads = Lead.all
   end
 
-  # GET /leads/1 or /leads/1.json
   def show
   end
 
-  # GET /leads/new
   def new
     @lead = Lead.new
   end
 
-  # GET /leads/1/edit
   def edit
   end
 
-  # POST /leads or /leads.json
+
   def create
-    @lead = Lead.new(lead_params)
-    @lead.file_data.file_name = @lead.file_name
-    @lead.file_data.file_type = @lead.file_type
-    # @lead.file_data.file_data = @lead.file_data
-    @lead.save
 
+    if(lead_params[:file].present?)
+      file = lead_params[:file]
 
-  end
+      filename = file.original_filename
+      filedata = file.read
+      filetype = file.content_type
 
-  # PATCH/PUT /leads/1 or /leads/1.json
-  def update
+      @lead = Lead.new(lead_params.except(:file))
+      @lead.file_data = filedata
+      @lead.file_name = filename
+      @lead.file_type = filetype
+      @lead.save
+    else
+      @lead = Lead.new(lead_params.except(:file))
+      @lead.save
+    end
+
     respond_to do |format|
-      if @lead.update(lead_params)
-        format.html { redirect_to @lead, notice: "Lead was successfully updated." }
-        format.json { render :show, status: :ok, location: @lead }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+      if @lead.save
+        format.html  { redirect_to "/", notice: 'Thank You!' }
       end
     end
+
   end
+
+
 
   # DELETE /leads/1 or /leads/1.json
   def destroy

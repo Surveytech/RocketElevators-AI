@@ -30,3 +30,6 @@
 //= require view/demo.revolution_slider
 //= require plugins/slider.revolution/js/jquery.themepunch.revolution.min
 //= require plugins/slider.revolution/js/jquery.themepunch.tools.min
+
+//= require chartkick
+//= require Chart.bundle
