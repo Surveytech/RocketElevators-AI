@@ -80,7 +80,7 @@ puts "= Customer Seeds Finished ="
 puts "= Starting Building Seeds ="
 CSV.foreach(Rails.root.join('app/mailers/building-300.csv'), headers: true) do |row|
   Building.create({
-    customer_id: customer_id,
+    # customer_id: customer_id,
     building_address: row["address"],
     building_admin_full_name: Faker::Name.name,
     building_admin_email: Faker::Internet.email,
