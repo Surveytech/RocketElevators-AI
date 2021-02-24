@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_214057) do
+ActiveRecord::Schema.define(version: 2021_02_24_141412) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
@@ -101,6 +101,21 @@ ActiveRecord::Schema.define(version: 2021_02_23_214057) do
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
+  create_table "dg_kleads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "fullNameOfTheContact"
+    t.string "companyName"
+    t.string "email"
+    t.string "phone"
+    t.string "projectName"
+    t.string "projectDescription"
+    t.string "departmentInChargeOfTheElevators"
+    t.string "message"
+    t.binary "attachedFileStoredAsABinaryFile"
+    t.datetime "dateOfTheContactRequest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "serial_number", null: false
     t.string "model_type", null: false
@@ -127,6 +142,9 @@ ActiveRecord::Schema.define(version: 2021_02_23_214057) do
     t.bigint "user_id"
     t.index ["first_name"], name: "index_employees_on_first_name"
     t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "exemples", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
