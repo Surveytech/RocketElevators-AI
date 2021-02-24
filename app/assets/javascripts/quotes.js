@@ -99,7 +99,6 @@ function hybridQuestions() {
 
 function calcCommercial(elevatorInput) {
   //Commercial Calc
-  var elevatorInput
   $("#estimatedElevators").val(elevators);
   // $("#estimatedColumns").val(elevators);
 }
@@ -119,7 +118,7 @@ function calcResidential(apts, floors) {
 
 function calcCorpoHybrid(maxOccupancy, floors, basements) {
   //Corporation and Hybrid Calc
-  var maxOccupancy,floors,basements,totalOccupants,elevators,column,elevatorsPerC,totalElevators;
+  var totalOccupants,elevators,column,elevatorsPerC,totalElevators;
   // Really advanced complicated maths
   totalOccupants = maxOccupancy * (floors + basements);
   elevators = Math.ceil(totalOccupants / 1000);
@@ -128,27 +127,26 @@ function calcCorpoHybrid(maxOccupancy, floors, basements) {
   totalElevators = elevatorsPerC * column;
   //set the values
   $("#estimatedElevators").val(totalElevators);
-  // $("#estimatedColumns").val(column);
 }
 
 function price(productType) {
-  var unitPrice,installFees,elevator,column,elevatorPrice,installationPrice,totalPrice,productType;
+  var unitPrice,installFees,elevator,elevatorPrice,installationPrice,totalPrice;
   // defines the prices depending on the type
   switch (productType) {
     case "standard":
       unitPrice = 7565;
       installFees = 10;
-      price(unitPrice, installFees);
+      // price(unitPrice, installFees);
       break;
     case "premium":
       unitPrice = 12345;
       installFees = 13;
-      price(unitPrice, installFees);
+      // price(unitPrice, installFees);
       break;
     case "excelium":
       unitPrice = 15400;
       installFees = 16;
-      price(unitPrice, installFees);
+      // price(unitPrice, installFees);
       break;
     default:
       return;
@@ -157,8 +155,7 @@ function price(productType) {
 
   // Final calculations
   elevator = $("#estimatedElevators").val();
-  // column = $("#estimatedColumns").val();
-  /////////
+
   elevatorPrice = elevator * unitPrice;
   installationPrice = (elevatorPrice * installFees) / 100;
   totalPrice = elevatorPrice + installationPrice;
