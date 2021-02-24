@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_142626) do
+ActiveRecord::Schema.define(version: 2021_02_23_214057) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
@@ -35,39 +35,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_142626) do
     t.datetime "updated_at", null: false
     t.bigint "building_id"
     t.index ["building_id"], name: "index_addresses_on_building_id"
-  end
-
-  create_table "attachment_binaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.binary "data", limit: 16777215
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "attachment_id"
-    t.index ["attachment_id"], name: "index_attachment_binaries_on_attachment_id"
-  end
-
-  create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "owner_id"
-    t.string "owner_type"
-    t.string "token"
-    t.string "digest"
-    t.string "role"
-    t.string "type"
-    t.string "file_name"
-    t.string "file_type"
-    t.string "cache_type"
-    t.string "cache_max_age"
-    t.string "disposition"
-    t.integer "file_size"
-    t.integer "parent_id"
-    t.boolean "processed", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "custom"
-    t.boolean "serve", default: true
-    t.bigint "leads_id"
-    t.index ["leads_id"], name: "index_attachments_on_leads_id"
-    t.index ["owner_id"], name: "index_attachments_on_owner_id"
-    t.index ["token"], name: "index_attachments_on_token", length: 10
   end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -230,8 +197,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_142626) do
   end
 
   add_foreign_key "addresses", "buildings"
-  add_foreign_key "attachment_binaries", "attachments"
-  add_foreign_key "attachments", "leads", column: "leads_id"
   add_foreign_key "batteries", "buildings"
   add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "customers"
