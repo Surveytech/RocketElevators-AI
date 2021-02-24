@@ -99,7 +99,6 @@ function hybridQuestions() {
 
 function calcCommercial(elevatorInput) {
   //Commercial Calc
-  var elevatorInput
   $("#estimatedElevators").val(elevators);
   // $("#estimatedColumns").val(elevators);
 }
@@ -119,7 +118,7 @@ function calcResidential(apts, floors) {
 
 function calcCorpoHybrid(maxOccupancy, floors, basements) {
   //Corporation and Hybrid Calc
-  var maxOccupancy,floors,basements,totalOccupants,elevators,column,elevatorsPerC,totalElevators;
+  var totalOccupants,elevators,column,elevatorsPerC,totalElevators;
   // Really advanced complicated maths
   totalOccupants = maxOccupancy * (floors + basements);
   elevators = Math.ceil(totalOccupants / 1000);
@@ -128,105 +127,35 @@ function calcCorpoHybrid(maxOccupancy, floors, basements) {
   totalElevators = elevatorsPerC * column;
   //set the values
   $("#estimatedElevators").val(totalElevators);
-  // $("#estimatedColumns").val(column);
 }
 
 function price(productType) {
-  var unitPrice,installFees,elevator,column,elevatorPrice,installationPrice,totalPrice,productType;
+  var unitPrice,installFees,elevator,elevatorPrice,installationPrice,totalPrice;
   // defines the prices depending on the type
   switch (productType) {
     case "standard":
       unitPrice = 7565;
       installFees = 10;
-      price(unitPrice, installFees);
+      // price(unitPrice, installFees);
       break;
     case "premium":
       unitPrice = 12345;
       installFees = 13;
-      price(unitPrice, installFees);
+      // price(unitPrice, installFees);
       break;
     case "excelium":
       unitPrice = 15400;
       installFees = 16;
-      price(unitPrice, installFees);
+      // price(unitPrice, installFees);
       break;
     default:
       return;
   }
 
-  $("#questionInput :input").bind(
-    "keypress keydown keyup change onblur",
-    function () {
-      if (parseFloat($(':input[id="quote_business_hours"]').val(), 10) > 24) {
-        $("#quote_business_hours").val(24);
-      };
-      switch (type) {
-        case "residential":
-          var apts = parseFloat($(':input[id="quote_number_of_apartments"]').val(),10),
-            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
-            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10);
-          if (!isNaN(apts) && !isNaN(floors)) {
-            calcResidential(apts, floors);
-          }
-          break;
-
-        case "commercial":
-          var
-            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
-            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
-            companies = parseFloat($(':input[id="quote_number_of_companies"]').val(),10),
-            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10),
-            elevators = parseFloat($(':input[id="quote_number_of_elevators"]').val(),10);
-          if (
-            !isNaN(elevators)
-          ) {
-            $("#estimatedElevators").val(elevators);
-          }
-          break;
-
-        case "corporate":
-          var maxOccupancy = parseFloat($(':input[id="quote_maximum_occupancy"]').val(),10),
-            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
-            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
-            corporations = parseFloat($(':input[id="quote_number_of_corporation"]').val(),10),
-            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10);
-          if (
-            !isNaN(maxOccupancy) &&
-            !isNaN(floors) &&
-            !isNaN(basements)
-          ) {
-            calcCorpoHybrid(maxOccupancy, floors, basements);
-          }
-          break;
-
-        case "hybrid":
-          var maxOccupancy = parseFloat($(':input[id="quote_maximum_occupancy"]').val(),10),
-            floors = parseFloat($(':input[id="quote_number_of_floors"]').val(),10),
-            basements = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
-            companies = parseFloat($(':input[id="quote_number_of_basements"]').val(),10),
-            businessHours = parseFloat($(':input[id="quote_business_hours"]').val(),10),
-            parkingSpots = parseFloat($(':input[id="quote_number_of_parking_spots"]').val(),10);
-          if (
-            !isNaN(maxOccupancy) &&
-            !isNaN(floors) &&
-            !isNaN(basements)
-          ) {
-            calcCorpoHybrid(maxOccupancy, floors, basements);
-          }
-          break;
-        default: hideQuestions();
-          break;
-      }
-
-      price($("#lineSelection input[type=radio]:checked").val());
-    }
-  );
-
 
   // Final calculations
   elevator = $("#estimatedElevators").val();
-  // column = $("#estimatedColumns").val();
-  /////////
+
   elevatorPrice = elevator * unitPrice;
   installationPrice = (elevatorPrice * installFees) / 100;
   totalPrice = elevatorPrice + installationPrice;
