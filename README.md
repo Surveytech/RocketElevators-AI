@@ -76,27 +76,6 @@
   3. Linking the quotes to a user
   4. Being able to edit/delete the quote once logged in
 
-```
-first name;
-last name;
-encrypted password.
-```
-An Employees's table, reserved to authenticated users only, storing:
-
-employee's user ID;
-employee's last name;
-employee's first name;
-his/her title or function;
-users attached to his/her profile.
-A Back Office, the administrative section, that:
-
-is secured behind an authentication page, validated using the users table;
-stores the quotes.
-How the Back Office works, the complete progress of a submission:
-
-creation of a submission, by filling the quote's avaiable fields for each interest (Residential, Commercial, Corporative, Hybrid);
-by loging in on his/her own account, the employee have access of his/her client's (users) informations (sauf the client's password) and also to have access to the client's quotes informations;
-in the Back Office the employee can create, modify or delete the client's informations and/or any quotes wanted.
+## :construction: THE REST IS W.I.P :construction:
 
 
----
