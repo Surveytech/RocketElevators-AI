@@ -1,68 +1,81 @@
-COMPANY
--------
-Rocket Elevators
+# Rocket Elevators Information System
 
+---
 
-AUTHOR: 
--------
-## Team #4
+## :busts_in_silhouette: Team Members
+  ```
+    Team Leader:
+    - Daniela Grumbach Kinder
 
-Team Leader:
-- Daniela Grumbach Kinder
+    Team Member:
+    - Tommy Cote
+    - Daniel Foti
+    - Gabriel Rioux
+    - Maxime Lachance
+    - Etienne G.Lapointe
+  ```
+---
+## :warning: The Prerequisites To Run The App (Skip If On The Website)
 
-Team Member:
-- Etienne G.Lapointe
-- Gabriel Rioux
-- Maxime Lachance
-- Tommy Cote
+- Ruby `v2.6.6`
+- Rails `v5.2.4.5`
+- Ubuntu
+- MySQL
+- PostgreSQL
+> The rest is included in the gemFile
+---
+## :grey_exclamation: First thing to do
 
+- Once you have cloned the repo, the first thing you should run in your terminal is: `bundle`
 
+> This will get and update the required gems
 
-# Rocket_Elevators_Information_System
+---
+## :pencil2: To Setup The Database
+- Once you have edited your database.yml with the correct infos :arrow_heading_down:
+- Run the following command: `rails db:setup`
 
-## Team #4
-```
-Team Leader:
-- Daniela Grumbach Kinder
+![](https://github.com/CoteTommy/CoteTommy/blob/main/runDbSetup.gif?raw=true)
 
-Team Member:
-- Etienne G.Lapointe
-- Gabriel Rioux
-- Maxime Lachance
-- Tommy Cote
-```
+> That step created the database, migrated, and seeded it
 
-This is a responsive website for Rocket Elevators in Ruby on Rails architecture, MVC (Model - View - Controller), using MySQL for its database.
+---
 
-The link for the website is the following: https://tommycote.com/
+## :pencil2: To Run The Application
+- To start the rails server you need to run the following command: `rails s`
 
+![](https://github.com/CoteTommy/CoteTommy/blob/main/runRailsServer.gif?raw=true)
 
-This responsive website has:
+> This started the rails server on localhost:3000
 
-  - A Quote table allowing:
-    - users simulate a quote;
-    - save quotes once loged in;
-    - eventually permitting to turn the quotes into prospects.
+---
 
-  - A User's login page, allowing users to authenticate and also saving user's data such as:
-    - first name;
-    - last name;
-    - encrypted password.
+## :large_blue_circle: Now That The Server Is Running
 
-  - An Employees's table, reserved to authenticated users only, storing:
-    - employee's user ID;
-    - employee's last name;
-    - employee's first name;
-    - his/her title or function;
-    - users attached to his/her profile.
+- You can access the website by going to the following URL `http://localhost:3000/`
 
-  - A Back Office, the administrative section, that:
-    - is secured behind an authentication page, validated using the users table;
-    - stores the quotes.
+- Then you can login by clicking the button on the top right
+![](https://github.com/CoteTommy/CoteTommy/blob/main/topnav.png?raw=true)
 
+- User credentials :arrow_heading_down:
 
-How the Back Office works, the complete progress of a submission:
- - creation of a submission, by filling the quote's avaiable fields for each interest (Residential, Commercial, Corporative, Hybrid);
- - by loging in on his/her own account, the employee have access of his/her client's (users) informations (sauf the client's password) and also to have access to the client's quotes informations;
- - in the Back Office the employee can create, modify or delete the client's informations and/or any quotes wanted.
+  1. Admin User :arrow_right: email: `admin@admin` password: `123456`
+  2. Employee User :arrow_right: email: `The employee's email` password: `123456`
+
+- To access the back office hover over your name at the right of the top nav bar  then click back office
+---
+
+### :small_blue_diamond:Some Extra Informations About The Project
+
+#### This responsive website has:
+
+- Quote system allowing the following:
+
+  1. Creation of a new quote using the client's informations
+  2. Saving the said quote in a new column inside the Quote table
+  3. Linking the quotes to a user
+  4. Being able to edit/delete the quote once logged in
+
+## :construction: THE REST IS W.I.P :construction:
+
 
