@@ -27,12 +27,3 @@ def lead
     end
 end
 
-
-def lead2
-        conn.exec( "SELECT id FROM leads" ) do |result|
-            puts " id "
-                puts " WHAT " %
-                row.values_at('id')
-        end
-    end
-end
