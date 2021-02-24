@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2021_02_24_180334) do
-
+  
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
     t.string "status"
@@ -35,39 +35,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_180334) do
     t.datetime "updated_at", null: false
     t.bigint "building_id"
     t.index ["building_id"], name: "index_addresses_on_building_id"
-  end
-
-  create_table "attachment_binaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.binary "data", limit: 16777215
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "attachment_id"
-    t.index ["attachment_id"], name: "index_attachment_binaries_on_attachment_id"
-  end
-
-  create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "owner_id"
-    t.string "owner_type"
-    t.string "token"
-    t.string "digest"
-    t.string "role"
-    t.string "type"
-    t.string "file_name"
-    t.string "file_type"
-    t.string "cache_type"
-    t.string "cache_max_age"
-    t.string "disposition"
-    t.integer "file_size"
-    t.integer "parent_id"
-    t.boolean "processed", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "custom"
-    t.boolean "serve", default: true
-    t.bigint "leads_id"
-    t.index ["leads_id"], name: "index_attachments_on_leads_id"
-    t.index ["owner_id"], name: "index_attachments_on_owner_id"
-    t.index ["token"], name: "index_attachments_on_token", length: 10
   end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -134,6 +101,21 @@ ActiveRecord::Schema.define(version: 2021_02_24_180334) do
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
+  create_table "dg_kleads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "fullNameOfTheContact"
+    t.string "companyName"
+    t.string "email"
+    t.string "phone"
+    t.string "projectName"
+    t.string "projectDescription"
+    t.string "departmentInChargeOfTheElevators"
+    t.string "message"
+    t.binary "attachedFileStoredAsABinaryFile"
+    t.datetime "dateOfTheContactRequest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "serial_number", null: false
     t.string "model_type", null: false
@@ -160,6 +142,9 @@ ActiveRecord::Schema.define(version: 2021_02_24_180334) do
     t.bigint "user_id"
     t.index ["first_name"], name: "index_employees_on_first_name"
     t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "exemples", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -230,8 +215,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_180334) do
   end
 
   add_foreign_key "addresses", "buildings"
-  add_foreign_key "attachment_binaries", "attachments"
-  add_foreign_key "attachments", "leads", column: "leads_id"
   add_foreign_key "batteries", "buildings"
   add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "customers"

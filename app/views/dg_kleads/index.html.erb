@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dg Kleads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fullnameofthecontact</th>
+      <th>Companyname</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Projectname</th>
+      <th>Projectdescription</th>
+      <th>Departmentinchargeoftheelevators</th>
+      <th>Message</th>
+      <th>Attachedfilestoredasabinaryfile</th>
+      <th>Dateofthecontactrequest</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dg_kleads.each do |dg_klead| %>
+      <tr>
+        <td><%= dg_klead.fullNameOfTheContact %></td>
+        <td><%= dg_klead.companyName %></td>
+        <td><%= dg_klead.email %></td>
+        <td><%= dg_klead.phone %></td>
+        <td><%= dg_klead.projectName %></td>
+        <td><%= dg_klead.projectDescription %></td>
+        <td><%= dg_klead.departmentInChargeOfTheElevators %></td>
+        <td><%= dg_klead.message %></td>
+        <td><%= dg_klead.attachedFileStoredAsABinaryFile %></td>
+        <td><%= dg_klead.dateOfTheContactRequest %></td>
+        <td><%= link_to 'Show', dg_klead %></td>
+        <td><%= link_to 'Edit', edit_dg_klead_path(dg_klead) %></td>
+        <td><%= link_to 'Destroy', dg_klead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dg Klead', new_dg_klead_path %>
