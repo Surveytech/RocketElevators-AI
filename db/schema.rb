@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_185040) do
+ActiveRecord::Schema.define(version: 2021_02_24_201202) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_185040) do
     t.string "title"
     t.boolean "admin", default: false
     t.string "employee_id"
-    t.bigint "role_id"
+    t.bigint "role_id", default: 1
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
