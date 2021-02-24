@@ -153,3 +153,21 @@ puts "= Starting Elevators Seeds ="
     notes: "Confidential")
 end
 puts "= Elevators Seeds Finished ="
+
+puts "= Starting Leads Seeds ="
+100.times do
+  Lead.create(
+    full_name: Faker::Name.name,
+    company_name: Faker::Company.name,
+    email: Faker::Internet.email,
+    phone: Faker::PhoneNumber.cell_phone,
+    project_name: "Elevator project",
+    project_description: "Confidential",
+    department_in_charge_of_the_elevators: ["Sales", "Support", "Administration"].sample,
+    message: "Confidential",
+    file_name: "",
+    file_type: "",
+    file_data: "",
+    created_at: Faker::Date.between(from: '2020-01-02', to: '2021-01-01'))
+end
+puts "= Elevators Seeds Leads ="
