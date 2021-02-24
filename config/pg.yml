@@ -5,13 +5,14 @@ default: &default
   username: gabrielrioux
   password: 
 
-development:
+controllerpg_development:
   <<: *default
   database: controllerpg_development
-  username: gabrielrioux
 
-
-test:
+controllerpg_test:
   <<: *default
   database: controllerpg_test
-  username: gabrielrioux
+
+controllerpg_production:
+  <<: *default
+  url: <%= ENV['CONTROLLERPG_DATABASE_URL'] %>
