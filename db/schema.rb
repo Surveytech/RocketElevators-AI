@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_211842) do
     t.string "model_type", null: false
     t.string "building_type", null: false
     t.string "status", null: false
-    t.datetime "date_of_comissioning", null: false
+    t.datetime "date_of_commissioning", null: false
     t.datetime "date_of_last_inspection", null: false
     t.string "certificate_of_operations", null: false
     t.string "information", null: false
