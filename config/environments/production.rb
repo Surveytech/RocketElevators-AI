@@ -110,6 +110,7 @@ Rails.application.configure do
   ssl: true
  }
 
+
  config.action_mailer.default_url_options = { :host => 'tommycote.com' }
 
 end
