@@ -1,7 +1,4 @@
-
-
 <div id="wrapper">
-
 
   <section class="page-header dark">
     <div class="container text-center">
@@ -10,7 +7,7 @@
   </section>
   <!-- /PAGE HEADER -->
 
-  
+
 
   <section class="dark">
 
@@ -132,27 +129,24 @@
       </div>
 
       <div class="text-center grid5">
-            <% if user_signed_in? %>
-
-                    <div class="">
-                          <%= f.button :submit %>
-                    </div>
-        Signed in as <%= current_user.email %>.
+        <% if user_signed_in? %>
+          <div class="">
+                <%= f.button :submit %>
+          </div>
+          Signed in as <%= current_user.email %>.
         <%= link_to "Edit profile", edit_user_registration_path %><br/> Not you?
                     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
               <% else %>
-                      <div class="">
+                      <div>
                         <%= f.button :submit, :disabled=> true%>
                       </div>
                       <%= link_to "Sign up", new_user_registration_path %> or
                       <%= link_to "sign in", new_user_session_path %>
               <% end %>
           <% end %>
-                <% if false%>
-        <div class="">
-              <% flash.each do |name, msg| %>
-              <%= content_tag :div, msg, id: "flash_#{name}" %>
-              <% end %>
+             <div>
+                <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, id: "flash_#{name}" %>
               </div>
             </div>
          </div>
