@@ -61,9 +61,6 @@ puts "Done!"
  #  maximum_occupancy: Faker::Number.between(from: 1, to: 500))
  #end
 
- Random_address_type = ["#Residential or Commercial or Corporate"]
-
-
 puts "= Starting Customer Seeds ="
 CSV.foreach(Rails.root.join('app/mailers/customer-200.csv'), headers: true) do |row|
   Customer.create({
@@ -149,7 +146,7 @@ puts "= Starting Elevators Seeds ="
     model_type: ["Residential", "Commercial", "Corporate", "Hybrid"].sample,
     building_type: "",
     status: "",
-    date_of_comissioning: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
+    date_of_commissioning: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
     date_of_last_inspection: Faker::Date.between(from: '2020-01-02', to: '2021-01-01'),
     certificate_of_operations: Faker::Crypto.md5,
     information: "Confidential",
