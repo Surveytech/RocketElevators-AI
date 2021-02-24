@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_141412) do
-
+ActiveRecord::Schema.define(version: 2021_02_24_180334) do
+  
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
     t.string "status"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_141412) do
     t.string "model_type", null: false
     t.string "building_type", null: false
     t.string "status", null: false
-    t.datetime "date_of_comissioning", null: false
+    t.datetime "date_of_commissioning", null: false
     t.datetime "date_of_last_inspection", null: false
     t.string "certificate_of_operations", null: false
     t.string "information", null: false
