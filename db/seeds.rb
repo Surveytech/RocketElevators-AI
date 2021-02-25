@@ -21,13 +21,13 @@ u3 = User.create({ name: 'Kev', email: 'kev@example.com', password: 'aaaaaaaa', 
 u4 = User.create({ name: 'Jack', email: 'jack@example.com', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa', role_id: r3.id })
 u5 = User.create({ name: 'Admin', email: 'admin@admin', password: '123456', password_confirmation: '123456', role_id: r3.id })
 
-q1 = Quote.create({ name: 'First Quote', building_type: 'residential', number_of_apartments: '500', number_of_floors: '50', number_of_basements: '5', user_id: u1.id})
-q5 = Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u1.id})
-q2 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '400', number_of_floors: '40', number_of_basements: '10', user_id: u2.id})
-q3 = Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u3.id})
-q4 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u4.id})
-q5 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
-q6 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
+Quote.create({ name: 'First Quote', building_type: 'residential', number_of_apartments: '500', number_of_floors: '50', number_of_basements: '5', user_id: u1.id})
+Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u1.id})
+Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '400', number_of_floors: '40', number_of_basements: '10', user_id: u2.id})
+Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u3.id})
+Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u4.id})
+Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
+Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
 
 Employee.all.each do |employee|
   employee.build_user({
@@ -80,7 +80,7 @@ puts "= Customer Seeds Finished ="
 puts "= Starting Building Seeds ="
 CSV.foreach(Rails.root.join('app/mailers/building-300.csv'), headers: true) do |row|
   Building.create({
-    customer_id: customer_id,
+    # customer_id: customer_id,
     building_address: row["address"],
     building_admin_full_name: Faker::Name.name,
     building_admin_email: Faker::Internet.email,

@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_180334) do
-  
+ActiveRecord::Schema.define(version: 2021_02_24_211842) do
+
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
     t.string "status"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2021_02_24_180334) do
     t.string "building_technical_email", null: false
     t.string "building_technical_phone", null: false
     t.bigint "customer_id"
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_buildings_on_address_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
@@ -184,6 +186,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_180334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "email"
     t.index ["name"], name: "index_quotes_on_name"
     t.index ["user_id"], name: "index_quotes_on_user_id"
   end
@@ -208,7 +211,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_180334) do
     t.string "title"
     t.boolean "admin", default: false
     t.string "employee_id"
-    t.bigint "role_id"
+    t.bigint "role_id", default: 1
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
@@ -217,6 +220,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_180334) do
   add_foreign_key "addresses", "buildings"
   add_foreign_key "batteries", "buildings"
   add_foreign_key "building_details", "buildings"
+  add_foreign_key "buildings", "addresses"
   add_foreign_key "buildings", "customers"
   add_foreign_key "columns", "batteries"
   add_foreign_key "customers", "addresses"

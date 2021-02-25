@@ -5,10 +5,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
-  resources :leads do
-    get "serve", :on => :member
-  end
-
   scope '/admin' do
     resources :users
   end
