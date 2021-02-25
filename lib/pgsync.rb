@@ -3,55 +3,59 @@ require 'pg'
 require 'yaml'
 
 
-class Pgsync < ActiveRecord
+class Pgsync 
     
-    # attr_accessor :conn, :host, :port, :database, :user, :password 
+    attr_accessor :conn, :host, :port, :database, :user, :password 
     
     def initialize
         puts "init debut"
-        # self.info
-        # self.connection  
-        self.sync_quotes 
+        self.info
+        self.connection 
+        # self.sync_quotes 
         puts "init fin"
     end
 
-    # def info
-    #     puts "debut info"
-    #     info = YAML.load(File.read("../config/pg.yml")) 
-    #     puts info
-    #     self.host = info["localhost"]
-    #     self.database = info["database"]
-    #     self.user = info["username"]
-    #     self.password = info["password"]
-    #     self.port = info["port"]
+    def info
+        puts "debut info"
+        info = YAML.load(File.read("./config/pg.yml")) 
+        puts info
+        self.host = info["development"]["host"]
+        puts "host #{self.host}"
+        self.database = info["development"]["database"]
+        puts "database #{self.database}"
+        self.user = info["development"]["username"]
+        puts "user #{self.user}"
+        self.password = info["development"]["password"]
+        puts "password #{self.password}"
+        self.port = info["development"]["port"]
+        puts "port #{self.port}"
 
-    #     puts "info fin"
-    # end
-
-    # def connection
-    #     self.conn = PG.connect(
-    #         host: self.host,
-    #         dbname: self.database,
-    #         port: self.port,
-    #         user: self.user,
-    #         password: self.password
-    #     )    
-    #     puts "connection"    
-    # end
+        puts "info fin"
+    end
 
     def connection
-        conn = PG.connect(
-            dbname: "postgres",
-            port: 5432,
-            user: "gabrielrioux",
-            password: "admin"
-        )
+        self.conn = PG.connect(
+            host: self.host,
+            dbname: self.database,
+            port: self.port,
+            user: self.user,
+            password: self.password
+        )    
+        puts "connection"    
     end
+
+
+    def select
+        sql = "SELECT * FROM fact_quotes;" 
+        self.conn.exec(sql)
+    end
+
     def sync_quotes
-        Quote.all.each do | quotes |
-            sql = "INSERT INTO fact_quotes(id, created_at, company_name, email, number_of_elevator) 
-            VALUES (#{quote.id},#{quote.created_at},#{quote.company_name},#{quote.number_of_elevator},#{customer.company_email})"
-            self.conn.exec(sql)
+        Quote.all.each do | quote |
+            puts "quote = #{quote}"
+            # sql = "INSERT INTO fact_quotes(id, created_at, company_name, email, number_of_elevator) 
+            # VALUES (#{quote.id},#{quote.created_at},#{quote.company_name},#{quote.number_of_elevator},#{customer.company_email})"
+            # self.conn.exec(sql)
         end
     end
 
@@ -83,5 +87,4 @@ class Pgsync < ActiveRecord
     # Pgsync.sync_contact()
     # Pgsync.sync_elevators()
 #     Pgsync.sync_customers()
-Pgsync.new
 end
