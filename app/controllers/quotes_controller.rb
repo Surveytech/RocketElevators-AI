@@ -22,12 +22,17 @@ class QuotesController < ApplicationController
 
   # POST /quotes or /quotes.json
   def create
-    @quote = Quote.new(quote_params)
-    @quote.user_id = current_user.id
-    @quote.save!
+    if(quote_params[:email].present?)
+      @quote = Quote.new(quote_params)
+      @quote.save!
+    else
+      @quote = Quote.new(quote_params)
+      @quote.user_id = current_user.id
+      @quote.save!
+    end
     respond_to do |format|
       if @quote
-        format.html { redirect_to @quote, notice: "Quote was successfully created." }
+        format.html { redirect_to "/", notice: "Quote was successfully created." }
         format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,7 +71,7 @@ class QuotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_params
-      params.require(:quote).permit(:name,:building_type,:product_line,:elevator_unit_price,:elevator_total_price,:installation_price,:total_price,:company_name,:number_of_apartments,:number_of_floors,:number_of_basements,:number_of_companies,:number_of_parking_spots,:number_of_elevators,:number_of_corporations,:maximum_occupancy,:business_hours)
+      params.require(:quote).permit(:name,:building_type,:product_line,:elevator_unit_price,:elevator_total_price,:installation_price,:total_price,:company_name,:number_of_apartments,:number_of_floors,:number_of_basements,:number_of_companies,:number_of_parking_spots,:number_of_elevators,:number_of_corporations,:maximum_occupancy,:business_hours,:email)
     end
 
 

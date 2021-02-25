@@ -1,3 +1,3 @@
 class Customer < ApplicationRecord
-    has_one :users
+    has_one :user
 end
