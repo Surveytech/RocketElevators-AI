@@ -18,6 +18,9 @@
     <div class="form-container">
       <div class="grid1">
                 <%= f.input :name%><br/>
+                <% if !user_signed_in? %>
+                  <%= f.input :email%><br/>
+                <% end %>
                 <%= f.input :company_name, :label=>"Enter Your Company Name (optional)" %> <br/>
                 <%= f.select :building_type, Quote::TYPE_LIST, :label=>"Select Your Building Type"%><br/>
         </div>
@@ -138,7 +141,7 @@
                     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
               <% else %>
                       <div>
-                        <%= f.button :submit, :disabled=> true%>
+                        <%= f.button :submit %>
                       </div>
                       <%= link_to "Sign up", new_user_registration_path %> or
                       <%= link_to "sign in", new_user_session_path %>
