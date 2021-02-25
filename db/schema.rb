@@ -10,42 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_211842) do
+ActiveRecord::Schema.define(version: 2021_02_25_155617) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
     t.string "status"
     t.string "notes"
     t.string "entity"
-    t.string "address_formatted_address"
-    t.string "address_street_number"
-    t.string "address_street_name"
-    t.string "address_street"
-    t.string "address_city"
-    t.string "address_zip_code"
-    t.string "address_department"
-    t.string "address_department_code"
-    t.string "address_state"
-    t.string "address_state_code"
-    t.string "address_country"
-    t.string "address_country_code"
-    t.float "address_lat"
-    t.float "address_lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "building_id"
-    t.index ["building_id"], name: "index_addresses_on_building_id"
+    t.string "number_and_street"
+    t.string "suite"
+    t.string "city"
+    t.string "postal_code"
+    t.string "country"
   end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "type", null: false
-    t.string "status", null: false
-    t.bigint "employee_id", null: false
-    t.datetime "date_of_commissioning", null: false
-    t.datetime "date_of_last_inspection", null: false
-    t.string "certificate_of_operations", null: false
-    t.string "information", null: false
-    t.string "notes", null: false
+    t.string "building_type"
+    t.string "status"
+    t.bigint "employee_id"
+    t.datetime "date_of_commissioning"
+    t.datetime "date_of_last_inspection"
+    t.string "certificate_of_operations"
+    t.string "information"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "building_id"
@@ -67,18 +56,18 @@ ActiveRecord::Schema.define(version: 2021_02_24_211842) do
     t.string "building_technical_full_name", null: false
     t.string "building_technical_email", null: false
     t.string "building_technical_phone", null: false
-    t.bigint "customer_id"
     t.bigint "address_id"
+    t.bigint "customer_id"
     t.index ["address_id"], name: "index_buildings_on_address_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
   create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "building_type", null: false
-    t.integer "number_of_floors_served", null: false
-    t.string "status", null: false
-    t.string "information", null: false
-    t.string "notes", null: false
+    t.string "building_type"
+    t.integer "number_of_floors_served"
+    t.string "status"
+    t.string "information"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "battery_id"
@@ -103,31 +92,16 @@ ActiveRecord::Schema.define(version: 2021_02_24_211842) do
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
-  create_table "dg_kleads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "fullNameOfTheContact"
-    t.string "companyName"
-    t.string "email"
-    t.string "phone"
-    t.string "projectName"
-    t.string "projectDescription"
-    t.string "departmentInChargeOfTheElevators"
-    t.string "message"
-    t.binary "attachedFileStoredAsABinaryFile"
-    t.datetime "dateOfTheContactRequest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "serial_number", null: false
-    t.string "model_type", null: false
-    t.string "building_type", null: false
-    t.string "status", null: false
-    t.datetime "date_of_commissioning", null: false
-    t.datetime "date_of_last_inspection", null: false
-    t.string "certificate_of_operations", null: false
-    t.string "information", null: false
-    t.string "notes", null: false
+    t.bigint "serial_number"
+    t.string "model_type"
+    t.string "building_type"
+    t.string "status"
+    t.datetime "date_of_commissioning"
+    t.datetime "date_of_last_inspection"
+    t.string "certificate_of_operations"
+    t.string "information"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "column_id"
@@ -144,9 +118,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_211842) do
     t.bigint "user_id"
     t.index ["first_name"], name: "index_employees_on_first_name"
     t.index ["user_id"], name: "index_employees_on_user_id"
-  end
-
-  create_table "exemples", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -217,7 +188,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_211842) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "addresses", "buildings"
   add_foreign_key "batteries", "buildings"
   add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "addresses"

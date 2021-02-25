@@ -1,5 +1,7 @@
 class Address < ApplicationRecord
-    def formatted_address
-        "#{self.address_street_name} #{self.address_city}"
-    end
+    belongs_to :building, optional: true
+    belongs_to :customer, optional: true
+    # def formatted_address
+    #     "#{self.number_and_street} #{self.city}"
+    # end
 end
