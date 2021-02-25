@@ -16,8 +16,8 @@ class AddAllReferences < ActiveRecord::Migration[5.2]
     add_reference :quotes, :user, foreign_key: true
     add_reference :customers, :user, foreign_key: true
 
-    add_reference :attachment_binaries, :attachment, foreign_key: true
-    add_reference :attachments, :leads, foreign_key: true
+    # add_reference :attachment_binaries, :attachment, foreign_key: true
+    # add_reference :attachments, :leads, foreign_key: true
 
   end
 end
