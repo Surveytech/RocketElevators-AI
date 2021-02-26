@@ -3,20 +3,20 @@ require 'pg'
 require 'yaml'
 
 
-class Pgsync 
-    
-    attr_accessor :conn, :host, :port, :database, :user, :password 
-    
+class Pgsync
+
+    attr_accessor :conn, :host, :port, :database, :user, :password
+
     def initialize
         # puts "init debut"
         self.info
-        self.connection 
+        self.connection
         # puts "init fin"
     end
 
     def info
         # puts "debut info"
-        info = YAML.load(File.read("./config/pg.yml")) 
+        info = YAML.load(File.read("./config/pg.yml"))
         # puts info
         self.host = info["development"]["host"]
         # puts "host #{self.host}"
@@ -37,24 +37,25 @@ class Pgsync
             port: self.port,
             user: self.user,
             password: self.password
-        )    
-        # puts "connection"    
+        )
+        # puts "connection"
     end
 
 
     def sync_quotes
         Quote.all.each do | quote |
-            # puts "#{quote}"
-            sql = "INSERT INTO fact_quotes(quote_id, creation_date, company_name, email) 
-            VALUES (#{quote.id},'#{quote.created_at}','#{quote.company_name.gsub!(/[^0-9A-Za-z]/, '')}','#{quote.email}');"
+            puts 123
+            sql = "INSERT INTO fact_quotes(quote_id, creation_date, company_name, email, nb_elevators)
+            VALUES (#{quote.id},'#{quote.created_at}','#{quote.company_name}','#{quote.email}',#{quote.number_of_elevators}');"
             self.conn.exec(sql)
         end
     end
 
     # def sync_elevators
     #     Elevator.all.each do | elevator |
-    #         sql = "INSERT INTO fact_elevator (serial_number, date_of_commissioning, building_id, customer_id, building_city) 
-    #         VALUES (#{elevator.id},'#{elevator.date_of_commissioning}',#{building.id},#{customer.id},#{adress.city});",
+    #         puts "#{elevator}"
+    #         sql = "INSERT INTO fact_elevator(serial_number, date_of_commissioning, building_id, customer_id, building_city)
+    #         VALUES (#{elevator.id},'#{elevator.date_of_commissioning}',#{elevator.column_id},#{elevator.column.battery.building.customer_id},'#{elevator.column.battery.building.customer.address.city}');"
     #         self.conn.exec(sql)
     #     end
     # end
