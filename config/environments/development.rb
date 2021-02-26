@@ -59,43 +59,20 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Default url for devise
-  #  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.delivery_method = :smtp
-  # # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   user_name:      'rocketelevators@rocket.com',
-  #   password:       'ThisIsAGoodPassword',
-  #   domain:         'localhost:3000',
-  #   address:       'smtppro.zoho.com',
-  #   port:          '465',
-  #   authentication: :plain,
-  #    enable_starttls_auto: true
-  # }
-
-  config.action_mailer.default_options = {
-    from: 'rocketelevators@zohomail.com'
-  }
-
   config.action_mailer.raise_delivery_errors = true
-
- config.action_mailer.delivery_method = :smtp
-
- config.action_mailer.smtp_settings = {
-  address: "smtp.zoho.com",
-  port: 465,
-  domain: "tommycote.com",
-  user_name: "rocketelevators@zohomail.com",
-  password: "ThisIsAGoodPassword",
-  authentication: 'plain',
-  ssl: true
- }
-
- config.action_mailer.default_url_options = { :host => 'tommycote.com' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_options = { from: 'rocketelevators@zohomail.com' }
+  config.action_mailer.default_url_options = { host: 'tommycote.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    from: 'rocketelevators@zohomail.com',
+    user_name: 'rocketelevators@zohomail.com',
+    password: 'ThisIsAGoodPassword',
+    address: 'smtp.zoho.com',
+    domain: 'smtp.zoho.com',
+    port: '465',
+    authentication: :plain,
+    enable_starttls_auto: false,
+    ssl: true
+  }
 end
