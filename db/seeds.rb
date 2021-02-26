@@ -41,25 +41,8 @@ Employee.all.each do |employee|
   employee.save!
   employee.user_id = employee.user.id
   employee.save!
-  # puts(employee.first_name, employee.user_id)
-  print("\n\t\t\t",employee.first_name, " user_id => ", employee.user_id, "\n")
  end
 
-puts "Done!"
-
- #puts "= Seeding Quotes ="
- #50.times do
- # Quote.create(
- #  #building_type: Faker::Number.between(from: , to: ),
- #  number_of_apartments: Faker::Number.between(from: 50, to: 600),
- #  number_of_floors: Faker::Number.between(from: 1, to: 50),
- #  number_of_basements: Faker::Number.between(from: 1, to: 400),
- #  number_of_companies: Faker::Number.between(from: 1, to: 500),
- #  number_of_parking_spots: Faker::Number.between(from: 1, to: 700),
- #  number_of_elevators: Faker::Number.between(from: 1, to: 200),
- #  number_of_corporations: Faker::Number.between(from: 1, to: 500),
- #  maximum_occupancy: Faker::Number.between(from: 1, to: 500))
- #end
 
 puts "= Starting Leads Seeds ="
 100.times do
@@ -78,100 +61,26 @@ puts "= Starting Leads Seeds ="
     created_at: Faker::Date.between(from: '2017-01-02', to: '2018-01-01'))
 end
 
-# puts "= Starting Customer Seeds ="
-# CSV.foreach(Rails.root.join('app/mailers/customer-200.csv'), headers: true) do |row|
-#   Customer.create({
-#     created_at: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
-#     company_name: row["company_name"],
-#     company_address: row["address"],
-#     company_contact_full_name: Faker::Name.name,
-#     company_phone: Faker::PhoneNumber.cell_phone,
-#     company_email: Faker::Internet.email,
-#     company_description: "Confidential",
-#     service_technical_authority_full_name: Faker::Name.name,
-#     service_technical_authority_phone: Faker::PhoneNumber.cell_phone,
-#     service_technical_authority_email: Faker::Internet.email})
-#   end
-
-# puts "= Starting Building Seeds ="
-# CSV.foreach(Rails.root.join('app/mailers/building-300.csv'), headers: true) do |row|
-#   Building.create({
-#     #customer_id: customer_id,
-#     building_address: row["address"],
-#     building_admin_full_name: Faker::Name.name,
-#     building_admin_email: Faker::Internet.email,
-#     building_admin_phone: Faker::PhoneNumber.cell_phone,
-#     building_technical_full_name: Faker::Company.name,
-#     building_technical_email: Faker::Internet.email,
-#     building_technical_phone: Faker::PhoneNumber.cell_phone})
-# end
-
 puts "= Starting Address Seeds ="
-100.times do
-  Address.create(
-    address_type: ["Residential", "Commercial", "Corporate"].sample,
-    status: ["Active", "Innactive"].sample,
-    notes: "Confidential",
-    entity: "is it from Customer or Building...?"
-    # address_formatted_address: "adress of Customer or Building"
-  )
+def createAddresses
+  csv_text = File.read(Rails.root.join('lib','address.csv'))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  csv.each do |row|
+    address = Address.new(
+      address_type: ["Residential", "Commercial", "Corporate"].sample,
+      status: ["Active", "Innactive"].sample,
+      number_and_street: row['number_and_street'],
+      suite: row['suite'],
+      city: row['city'],
+      country: row['country'],
+      postal_code: row['postal_code'],
+      notes: "Confidential",
+      entity: "is it from Customer or Building...?")
+    address.save!
+  end
 end
 
-#puts "= Starting BuildingDetail Seeds ="
-#100.times do
-#  BuildingDetail.create(
-#    building_id: "#from building",
-#    information_key: "Confidential",
-#    information_value: "Confidential")
-#end
-
-# puts "= Starting Battery Seeds ="
-# 100.times do
-#   Battery.create
-#   (
-#     # building_id: "#from building",
-#     type: "",
-#     status: ["Active", "intervention", "inactive"].sample,
-#     employee_id: Faker::IDNumber.valid,
-#     date_of_commissioning: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
-#     date_of_last_inspection: Faker::Date.between(from: '2020-01-02', to: '2021-01-01'),
-#     certificate_of_operations: Faker::Crypto.md5,
-#     information: "Confidential",
-#     notes: "Confidential"
-#   )
-# end
-
-# puts "= Starting Column Seeds ="
-# 100.times do
-#   Column.create(
-# #    battery_id: "#from battery",
-#     building_type: ["Residential", "Commercial", "Corporate"].sample,
-#     number_of_floors_served: Faker::Number.between(from: 2, to: 60),
-#     status: ["Active", "Intervention", "Inactive"].sample,
-#     information: "Confidential's information",
-#     notes: "Column's Confidential notes")
-# end
-
-# puts "= Starting Elevators Seeds ="
-# 100.times do
-#   Elevator.create(
-#     #column_id: "#from column",
-#     serial_number: Faker::Device.serial,
-#     model_type: ["Standard", "Premium", "Excelium"].sample,
-#     building_type: "",
-#     status: ["Idle", "Moving", "Stopped"].sample,
-#     date_of_commissioning: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
-#     date_of_last_inspection: Faker::Date.between(from: '2020-01-02', to: '2021-01-01'),
-#     certificate_of_operations: Faker::Crypto.md5,
-#     information: "Elevator's confidential information",
-#     notes: "Elevator's confidential notes")
-# end
-
-
-# ======================================================
-
 puts "= Starting Seeds ="
-
 def createElevators(columnID, amountOfElevators)
   column = Column.find(columnID)
   amountOfElevators.times do
@@ -226,21 +135,6 @@ def createBatteries(buildingID, amountOfBatteries)
   end
 end
 
-#def createDetails(buildingID, amountOfBuilding)
-#  building = Building.find(buildingID)
-#  amountOfBuilding.times do
-#    buildingDetails = BuildingDetail.create(
-#      building_id: building.id,
-#      information_key: "Confidential",
-#      information_value: "Confidential")
-
-#      buildingDetails.save!
-#      print("\n\t\t\t","Building Details created with the id: ", building.id, "\n")
-#      createDetail(building.id,1)
-#  end
-#send
-
-
 def createBuildings(customerID, amountOfBuilding)
   
   print("\n\t\t\t","= Building Seeds =","\n")
@@ -284,6 +178,8 @@ def createCustomers
         createBuildings(customer.id, 2)
     # end
 end
+
+createAddresses()
 
 2.times do 
   createCustomers()
