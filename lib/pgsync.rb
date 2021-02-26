@@ -42,14 +42,14 @@ class Pgsync
     end
 
 
-    # def sync_quotes
-    #     Quote.all.each do | quote |
-    #         # puts "#{quote}"
-    #         sql = "INSERT INTO fact_quotes(quote_id, creation_date, company_name, email) 
-    #         VALUES (#{quote.id},'#{quote.created_at}','#{quote.company_name}','#{quote.email}');"
-    #         self.conn.exec(sql)
-    #     end
-    # end
+    def sync_quotes
+        Quote.all.each do | quote |
+            # puts "#{quote}"
+            sql = "INSERT INTO fact_quotes(quote_id, creation_date, company_name, email) 
+            VALUES (#{quote.id},'#{quote.created_at}','#{quote.company_name.gsub!(/[^0-9A-Za-z]/, '')}','#{quote.email}');"
+            self.conn.exec(sql)
+        end
+    end
 
     # def sync_elevators
     #     Elevator.all.each do | elevator |
@@ -59,21 +59,21 @@ class Pgsync
     #     end
     # end
 
-    # def sync_contact
-    #     Lead.all.each do | lead |
-    #         sql = "INSERT INTO fact_contact(contact_id, creation_date, company_name, email, project_name) 
-    #         VALUES (#{lead.id},'#{lead.created_at}','#{lead.company_name.gsub!(/[^0-9A-Za-z]/, '')}','#{lead.email}','#{lead.project_name}');"
-    #         self.conn.exec(sql)
-    #     end
-    # end
-
-    def sync_customers
-        Customer.all.each do | customer |
-            sql = "INSERT INTO dim_customers(created_at, company_name, service_technical_authority_full_name, service_technical_authority_email, nbelevators, customer_city) 
-            VALUES ('#{customer.created_at}','#{customer.company_name}','#{customer.service_technical_authority_full_name}','#{customer.service_technical_authority_email}','#{quote.number_of_elevator}','#{customer.city}');"
+    def sync_contact
+        Lead.all.each do | lead |
+            sql = "INSERT INTO fact_contact(contact_id, creation_date, company_name, email, project_name) 
+            VALUES (#{lead.id},'#{lead.created_at}','#{lead.company_name.gsub!(/[^0-9A-Za-z]/, '')}','#{lead.email}','#{lead.project_name}');"
             self.conn.exec(sql)
         end
-    end 
+    end
+
+    # def sync_customers
+    #     Customer.all.each do | customer |
+    #         sql = "INSERT INTO dim_customers(created_at, company_name, service_technical_authority_full_name, service_technical_authority_email, nbelevators, customer_city) 
+    #         VALUES ('#{customer.created_at}','#{customer.company_name}','#{customer.service_technical_authority_full_name}','#{customer.service_technical_authority_email}','#{quote.number_of_elevator}','#{customer.city}');"
+    #         self.conn.exec(sql)
+    #     end
+    # end 
 
     # Pgsync.sync_quotes()
     # Pgsync.sync_contact()
