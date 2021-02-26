@@ -105,3 +105,7 @@ gem 'pg'
 gem 'multiverse'
 gem 'csv'
 
+
+# YAML: Read Write Parse .yml doc
+gem 'yaml'
+gem 'rake'
