@@ -1,3 +1,4 @@
+
 /*The number of unique requests (ContactId) grouped by Month (Creation Date)*/
 amount_of_contact_request_per_month = 
     select year(creation_date),month(creation_date),count(contact_id)
