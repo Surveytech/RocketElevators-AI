@@ -31,5 +31,10 @@
 /config/master.key
 
 # Ignore database infos
-config/database.yml
-config/pg.yml
+# <<<<<<< gabriel_week2
+# config/database.yml
+# config/pg.yml
+# =======
+# config/database.yml
+# config/pg.yml
+# >>>>>>> main
