@@ -75,7 +75,7 @@ def createAddresses
       country: row['country'],
       postal_code: row['postal_code'],
       notes: "Confidential",
-      entity: "is it from Customer or Building...?")
+      entity: "")
     address.save!
   end
 end
@@ -135,52 +135,64 @@ def createBatteries(buildingID, amountOfBatteries)
   end
 end
 
-def createBuildings(customerID, amountOfBuilding)
-  
-  print("\n\t\t\t","= Building Seeds =","\n")
-  customer = Customer.find(customerID)
-
-  amountOfBuilding.times do
-    # CSV.foreach(Rails.root.join('app/mailers/building-300.csv'), headers: true) do |row|
-      building = Building.create(
-        customer_id: customer.id,
-        building_address: customer.company_address,#row["address"],
-        building_admin_full_name: Faker::Name.name,
-        building_admin_email: Faker::Internet.email,
-        building_admin_phone: Faker::PhoneNumber.cell_phone,
-        building_technical_full_name: Faker::Company.name,
-        building_technical_email: Faker::Internet.email,
-        building_technical_phone: Faker::PhoneNumber.cell_phone)
-
-        building.save!
-        print("\n\t\t\t","Building created with the id: ", building.id, "\n")
-        createBatteries(building.id,2)
-    # end 
+puts "= Starting Customer Seeds ="
+def createCustomers
+  csv_text = File.read(Rails.root.join('lib','customer-200.csv'))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  csv.each do |row|
+    customer = Customer.new(
+      created_at: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
+      company_name: row["company_name"],
+      company_address: row["address"],
+      company_contact_full_name: Faker::Name.name,
+      company_phone: Faker::PhoneNumber.cell_phone,
+      company_email: Faker::Internet.email,
+      company_description: "Confidential",
+      service_technical_authority_full_name: Faker::Name.name,
+      service_technical_authority_phone: Faker::PhoneNumber.cell_phone,
+      service_technical_authority_email: Faker::Internet.email)
+      customer.save!
   end
 end
 
-def createCustomers
-  print("\n\t\t\t","= Customer Seeds =","\n")
-    # CSV.foreach(Rails.root.join('app/mailers/customer-200.csv'), headers: true) do |row|
-      customer = Customer.create({
-        created_at: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
-        company_name: "ouer monsieur",#row["company_name"],
-        company_address: "ouer garcon",#row["address"],
-        company_contact_full_name: Faker::Name.name,
-        company_phone: Faker::PhoneNumber.cell_phone,
-        company_email: Faker::Internet.email,
-        company_description: "Confidential",
-        service_technical_authority_full_name: Faker::Name.name,
-        service_technical_authority_phone: Faker::PhoneNumber.cell_phone,
-        service_technical_authority_email: Faker::Internet.email})
-
-        customer.save!
-        createBuildings(customer.id, 2)
-    # end
+puts "= Starting Building Seeds ="
+def createBuildings
+  csv_text = File.read(Rails.root.join('lib','building-300.csv'))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  csv.each do |row|
+    building = Building.new(
+      building_address: row["address"],
+      building_admin_full_name: Faker::Name.name,
+      building_admin_email: Faker::Internet.email,
+      building_admin_phone: Faker::PhoneNumber.cell_phone,
+      building_technical_full_name: Faker::Company.name,
+      building_technical_email: Faker::Internet.email,
+      building_technical_phone: Faker::PhoneNumber.cell_phone)
+      building.save!
+  end
 end
 
+puts "= Starting createAddresses ="
 createAddresses()
 
-2.times do 
+puts "= Starting createCustomers ="
   createCustomers()
-end
+
+puts "= Starting createBuildings ="
+createBuildings()
+
+puts "= Starting createBatteries ="
+  createBatteries()
+
+puts "= Starting createColumns ="
+  createColumns()
+
+puts "= Starting createElevators ="
+  createElevators()
+
+
+
+
+
+
+
