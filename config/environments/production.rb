@@ -91,26 +91,22 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.action_mailer.default_options = {
-    from: 'rocketelevators@zohomail.com'
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_options = { from: 'rocketelevators@zohomail.com' }
+  config.action_mailer.default_url_options = { host: 'tommycote.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    from: 'rocketelevators@zohomail.com',
+    user_name: 'rocketelevators@zohomail.com',
+    password: 'ThisIsAGoodPassword',
+    address: 'smtp.zoho.com',
+    domain: 'smtp.zoho.com',
+    port: '465',
+    authentication: :plain,
+    enable_starttls_auto: false,
+    ssl: true
   }
 
-  config.action_mailer.raise_delivery_errors = false
-
- config.action_mailer.delivery_method = :smtp
-
- config.action_mailer.smtp_settings = {
-  address: "smtp.zoho.com",
-  port: 465,
-  domain: "tommycote.com",
-  user_name: "rocketelevators@zohomail.com",
-  password: "ThisIsAGoodPassword",
-  authentication: 'plain',
-  ssl: true
- }
-
-
- config.action_mailer.default_url_options = { :host => 'tommycote.com' }
 
 end
