@@ -1,0 +1,100 @@
+number_and_street,suite,city,country,postal_code,entity,notes,id
+1745 T Street Southeast,,Washington,DC,20020,,City of Haddam (CT),1
+6007 Applegate Lane,,Louisville,KY,40219,,Ciy of Hartford (CT),2
+560 Penstock Drive,,Grass Valley,CA,95945,,City of Lyme (CT),3
+150 Carter Street,,Manchester,CT,6040,,City of Manchester (CT),4
+2721 Lindsay Avenue,,Louisville,KY,40206,,City of Watertown (CT),5
+18 Densmore Drive,,Essex,VT,5452,,City of Avon (CT),6
+637 Britannia Drive,,Vallejo,CA,94591,,Town of Fairfield (CT),7
+5601 West Crocus Drive,,Glendale,AZ,85306,,City of Groton (CT),8
+5403 Illinois Avenue,,Nashville,TN,37209,,"Office of Geographic Information (MassGIS), Commonwealth of Massachusetts, MassIT (MA)",9
+8821 West Myrtle Avenue,,Glendale,AZ,85305,,"VT Enhanced 911 Board, VCGI (VT)",10
+2203 7th Street Road,,Louisville,KY,40208,,City of Huntsville (AL),11
+6463 Vrain Street,,Arvada,CO,80003,,City of Montgomery (AL),12
+87 Horseshoe Drive,,West Windsor,VT,5037,,Shelby County (AL),13
+60 Desousa Drive,,Manchester,CT,6040,,Talladega County (AL),14
+4 Old Colony Way,,Yarmouth,MA,2664,,City of Fayetteville (AR),15
+314 South 17th Street,,Nashville,TN,37206,,Arkansas Geographic Information Office (AR),16
+1649 Timberridge Court,,Fayetteville,AR,72704,,City of Washington (DC),17
+5461 West Shades Valley Drive,,Montgomery,AL,36108,,Bay County (FL),18
+629 Debbie Drive,,Nashville,TN,37076,,Brevard County (FL),19
+22572 Toreador Drive,,Salinas,CA,93908,,Charlotte County (FL),20
+3034 Mica Street,,Fayetteville,AR,72704,,Citrus County (FL),21
+3729 East Mission Boulevard,,Fayetteville,AR,72703,,Clay County (FL),22
+5114 Greentree Drive,,Nashville,TN,37211,,"Highlands County, FL (FL)",23
+3466 Southview Avenue,,Montgomery,AL,36111,,Hillsborough County (FL),24
+1513 Cathy Street,,Savannah,GA,31415,,City of Savannah (GA),25
+600 West 19th Avenue,APT B,Anchorage,AK,99503,,Gordon County (GA),26
+1208 Elkader Court North,,Nashville,TN,37013,,Muscogee County (GA),27
+210 Green Road,,Manchester,CT,6042,,Sumter County (GA),28
+49548 Road 200,,O'Neals,CA,93645,,"Metro Louisville,  LOJIC partners (KY)",29
+81 Seaton Place Northwest,,Washington,DC,20001,,Anne Arundel County (MD),30
+1267 Martin Street,#203,Nashville,TN,37203,,City of Baltimore (MD),31
+7431 Candace Way,#1,Louisville,KY,40214,,Frederick County (MD),32
+1407 Walden Court,,Crofton,MD,21114,,Oklahoma and Logan Counties - Association of Central Oklahoma Governments (OK),33
+5906 Milton Avenue,,Deale,MD,20751,,"Kern, Cleveland, Canadian, Logan Counties (OK)",34
+74 Springfield Street,B,Agawam,MA,1001,,City of Nashville (TN),35
+2905 Stonebridge Court,,Norman,OK,73071,,"Cooke,Fannin,Grayson Counties - Texoma Council of Governments (TX)",36
+20930 Todd Valley Road,,Foresthill,CA,95631,,Municipality of Anchorage (AK),37
+5928 West Mauna Loa Lane,,Glendale,AZ,85306,,Copyright © 2015 Kenai Peninsula Borough (AK),38
+802 Madison Street Northwest,,Washington,DC,20011,,Matanuska-Susitna Borough (AK),39
+2811 Battery Place Northwest,,Washington,DC,20016,,City of Glendale (AZ),40
+210 Lacross Lane,,Westmore,VT,5860,,City of Mesa (AZ),41
+2010 Rising Hill Drive,,Norman,OK,73071,,Alameda County (CA),42
+388 East Main Street,,,VT,5753,,Amador County (CA),43
+450 Kinhawk Drive,,Nashville,TN,37211,,City of Berkeley (CA),44
+131 Westerly Street,,Manchester,CT,6042,,Butte County (CA),45
+308 Woodleaf Court,,Glen Burnie,MD,21061,,City of Bakersfield (CA),46
+8502 Madrone Avenue,,Louisville,KY,40258,,City of Carson (CA),47
+23 Sable Run Lane,,Methuen,MA,1844,,City of Cupertino (CA),48
+716 Waller Road,,Brentwood,TN,37027,,City of Hayward and Fairview. Licensed for Public Use (CA),49
+416 McIver Street,,Nashville,TN,37211,,City of Mountain View (CA),50
+1508 Massachusetts Avenue Southeast,,Washington,DC,20003,,City of Orange (CA),51
+5615 West Villa Maria Drive,,Glendale,AZ,85308,,Contra Costa County (CA),52
+3162 Martin Luther King Junior Boulevard,#2,Fayetteville,AR,72704,,El Dorando County (CA),53
+5306 Ritchie Highway,,Baltimore,MD,21225,,Fresno County (CA),54
+109 Summit Street,,Burlington,VT,5401,,Humboldt County (CA),55
+816 West 19th Avenue,,Anchorage,AK,99503,,Kern County (CA),56
+172 Alburg Springs Road,,Alburgh,VT,5440,,Kings County (CA),57
+159 Downey Drive,A,Manchester,CT,6040,,Lake County (CA),58
+125 John Street,,Santa Cruz,CA,95060,,Lassen County (CA),59
+1101 Lotus Avenue,,Glen Burnie,MD,21061,,Los Angeles County (CA),60
+8376 Albacore Drive,,Pasadena,MD,21122,,Madera County (CA),61
+491 Arabian Way,,Grand Junction,CO,81504,,Marin County (CA),62
+12245 West 71st Place,,Arvada,CO,80004,,Merced County (CA),63
+80 North East Street,#4,Holyoke,MA,1040,,Mono County (CA),64
+4695 East Huntsville Road,,Fayetteville,AR,72701,,Monterey County (CA),65
+310 Timrod Road,,Manchester,CT,6040,,Napa County (CA),66
+1364 Capri Drive,,Panama City,FL,32405,,"County of Nevada, California (CA)",67
+132 Laurel Green Court,,Savannah,GA,31419,,Orange County (CA),68
+6657 West Rose Garden Lane,,Glendale,AZ,85308,,City of Palo Alto (CA),69
+519 West 75th Avenue,#APT 000003,Anchorage,AK,99518,,County of Placer (CA),70
+31353 Santa Elena Way,,Union City,CA,94587,,Secramento County (CA),71
+8398 West Denton Lane,,Glendale,AZ,85305,,San Bernardino County (CA),72
+700 Winston Place,,Anchorage,AK,99504,,San Diego Geographic Information Source - JPA (CA),73
+232 Maine Avenue,,Panama City,FL,32401,,San Joaquin County (CA),74
+1 Kempf Drive,,Easton,MA,2375,,San Luis Obispo County (CA),75
+5811 Crossings Boulevard,,Nashville,TN,37013,,San Mateo County (CA),76
+5108 Franklin Street,,Savannah,GA,31405,,Santa Barbara County (CA),77
+913 Fallview Trail,,Nashville,TN,37211,,Santa Clara County (CA),78
+270 Chrissy's Court,,,VT,5443,,Santa Cruz County (CA),79
+130 Old Route 103,,Chester,VT,5143,,Shasta County (CA),80
+10826 Pointe Royal Drive,,Bakersfield,CA,93311,,Solano County (CA),81
+74 Ranch Drive,,Montgomery,AL,36109,,Sonoma County (CA),82
+6601 West Ocotillo Road,,Glendale,AZ,85301,,Stanislaus County (CA),83
+19416 Barclay Road,,Castro Valley,CA,94546,,Tuolumne County (CA),84
+1347 Blackwalnut Court,,Annapolis,MD,21403,,Yolo County (CA),85
+1770 Colony Way,,Fayetteville,AR,72704,,Yuba County (CA),86
+165 Saint John Street,,Manchester,CT,6040,,Arapahoe County (CO),87
+2409 Research Boulevard,,Fort Collins,CO,80526,,Archuleta County (CO),88
+1903 Bashford Manor Lane,,Louisville,KY,40218,,City of Arvada (CO),89
+8315 Surf Drive,,Panama City Beach,FL,32408,,City of Aurora (CO),90
+3301 Old Muldoon Road,,Anchorage,AK,99504,,City of Boulder (CO),91
+8800 Cordell Circle,#APT 000003,Anchorage,AK,99502,,City of Fort Collins (CO),92
+117 East Cook Avenue,,Anchorage,AK,99501,,City of Greeley (CO),93
+6231 North 67th Avenue,#241,Glendale,AZ,85301,,City of Loveland (CO),94
+8505 Waters Avenue,#66,Savannah,GA,31406,,City of Westminster (CO),95
+7 Underwood Place Northwest,,Washington,DC,20012,,Gilpin County (CO),96
+21950 Arnold Center Road,,Carson,CA,90810,,Gunnison County (CO),97
+1427 South Carolina Avenue Southeast,,Washington,DC,20003,,Jefferson County (CO),98
+1420 Turtleback Trail,,Panama City,FL,32413,,Larimer County (CO),99
