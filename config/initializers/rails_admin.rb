@@ -12,6 +12,8 @@ RailsAdmin.config do |config|
   config.authorize_with :cancancan
 
   config.navigation_static_links = {
+    'Home' => '/',
+    'Blazer' => '/blazer',
     'Charts' => '/blazer/dashboards/1-main-dashboard'
   }
 
