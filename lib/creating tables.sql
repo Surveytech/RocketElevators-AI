@@ -1,16 +1,16 @@
 CREATE TABLE fact_contact (
-    contact_id serial PRIMARY KEY, 
+    contact_id INTEGER PRIMARY KEY, 
     creation_date TIMESTAMP NOT NULL, 
     company_name VARCHAR (50), 
     email VARCHAR (255) NOT NULL, 
-    project_name VARCHAR (50)
+    project_name VARCHAR (50) NOT NULL
     );
 CREATE TABLE FactElevator (
-    serialnumber serial PRIMARY KEY, 
-    date_of_commissioning timestamp, 
-    building_id serial, 
-    customer_id serial, 
-    building_city VARCHAR(50)
+    serial_number INTEGER PRIMARY KEY, 
+    date_of_commissioning timestamp NOT NULL, 
+    building_id INTEGER NOT NULL, 
+    customer_id INTEGER NOT NULL, 
+    building_city VARCHAR(50) NOT NULL
     );
 CREATE TABLE dim_customers (
     creation_date timestamp PRIMARY KEY, 
@@ -18,13 +18,13 @@ CREATE TABLE dim_customers (
     first_name_company_main_contact VARCHAR(50) NOT NULL, 
     last_name_company_main_contact VARCHAR(50) NOT NULL, 
     email_of_company_main_contact VARCHAR(255) NOT NULL, 
-    nbelevators smallint, 
-    customers_city VARCHAR(100)    
+    nb_elevators INTEGER NOT NULL, 
+    customers_city VARCHAR(100) NOT NULL   
     );
 CREATE TABLE fact_quotes (
-    quote_id serial PRIMARY KEY, 
+    quote_id serial PRIMARY KEYs, 
     creation_date TIMESTAMP NOT NULL, 
-    company_name VARCHAR (50), 
+    company_name VARCHAR (50) NOT NULL, 
     email VARCHAR ( 255 ) NOT NULL, 
-    nb_elevator SMALLINT
+    nb_elevators INTEGER NOT NULL
     );
