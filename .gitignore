@@ -33,3 +33,5 @@
 # Ignore database infos
 config/database.yml
 config/pg.yml
+
+notes.txt
