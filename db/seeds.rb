@@ -43,6 +43,7 @@ Employee.all.each do |employee|
   employee.save!
  end
 
+$addressArray = []
 
 puts "= Starting Leads Seeds ="
 100.times do
@@ -61,24 +62,6 @@ puts "= Starting Leads Seeds ="
     created_at: Faker::Date.between(from: '2017-01-02', to: '2018-01-01'))
 end
 
-puts "= Starting Address Seeds ="
-def createAddresses
-  csv_text = File.read(Rails.root.join('lib','address.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    address = Address.new(
-      address_type: ["Residential", "Commercial", "Corporate"].sample,
-      status: ["Active", "Innactive"].sample,
-      number_and_street: row['number_and_street'],
-      suite: row['suite'],
-      city: row['city'],
-      country: row['country'],
-      postal_code: row['postal_code'],
-      notes: "Confidential",
-      entity: "")
-    address.save!
-  end
-end
 
 puts "= Starting Seeds ="
 def createElevators(columnID, amountOfElevators)
@@ -135,64 +118,71 @@ def createBatteries(buildingID, amountOfBatteries)
   end
 end
 
-puts "= Starting Customer Seeds ="
-def createCustomers
-  csv_text = File.read(Rails.root.join('lib','customer-200.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    customer = Customer.new(
-      created_at: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
-      company_name: row["company_name"],
-      company_address: row["address"],
-      company_contact_full_name: Faker::Name.name,
-      company_phone: Faker::PhoneNumber.cell_phone,
-      company_email: Faker::Internet.email,
-      company_description: "Confidential",
-      service_technical_authority_full_name: Faker::Name.name,
-      service_technical_authority_phone: Faker::PhoneNumber.cell_phone,
-      service_technical_authority_email: Faker::Internet.email)
-      customer.save!
-  end
-end
-
 puts "= Starting Building Seeds ="
-def createBuildings
-  csv_text = File.read(Rails.root.join('lib','building-300.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
+def createBuildings(customerID, address)
+    # currentAddress = $addressArray.find_index(addressID)
+    puts address.id
     building = Building.new(
-      building_address: row["address"],
+      building_address: address.number_and_street + "," + address.city,
       building_admin_full_name: Faker::Name.name,
       building_admin_email: Faker::Internet.email,
       building_admin_phone: Faker::PhoneNumber.cell_phone,
       building_technical_full_name: Faker::Company.name,
       building_technical_email: Faker::Internet.email,
-      building_technical_phone: Faker::PhoneNumber.cell_phone)
+      building_technical_phone: Faker::PhoneNumber.cell_phone,
+      address_id: address.id,
+      customer_id: customerID)
       building.save!
+      $addressArray.delete_at(address.id)
+      createBatteries(building.id,2)
+end
+
+puts "= Starting Customer Seeds ="
+def createCustomers
+  30.times do
+    currentAddress = $addressArray.sample
+    puts currentAddress.number_and_street
+    customer = Customer.new(
+      created_at: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
+      company_name: Faker::Company.name,
+      company_address: currentAddress.number_and_street + "," + currentAddress.city,
+      company_contact_full_name: Faker::Name.name,
+      company_phone: Faker::PhoneNumber.cell_phone,
+      company_email: Faker::Internet.email,
+      company_description: Faker::Company.catch_phrase,
+      service_technical_authority_full_name: Faker::Name.name,
+      service_technical_authority_phone: Faker::PhoneNumber.cell_phone,
+      service_technical_authority_email: Faker::Internet.email,
+      address_id: currentAddress.id)
+      customer.save!
+      createBuildings(customer.id, currentAddress)
   end
 end
 
-puts "= Starting createAddresses ="
+
+puts "= Starting Address Seeds ="
+def createAddresses
+  csv_text = File.read(Rails.root.join('lib','address.csv'))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+  csv.each do |row|
+    address = Address.new(
+      address_type: ["Residential", "Commercial", "Corporate"].sample,
+      status: ["Active", "Innactive"].sample,
+      number_and_street: row['number_and_street'],
+      suite: row['suite'],
+      city: row['city'],
+      country: row['country'],
+      postal_code: row['postal_code'],
+      notes: "Confidential",
+      entity: "")
+    address.save!
+
+    $addressArray.push(address)
+    
+  end
+end
+
+
 createAddresses()
-
-puts "= Starting createCustomers ="
-  createCustomers()
-
-puts "= Starting createBuildings ="
-createBuildings()
-
-puts "= Starting createBatteries ="
-  createBatteries()
-
-puts "= Starting createColumns ="
-  createColumns()
-
-puts "= Starting createElevators ="
-  createElevators()
-
-
-
-
-
-
+createCustomers()
 
