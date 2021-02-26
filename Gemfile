@@ -47,7 +47,10 @@ gem 'hirb'
 gem 'jt-rails-address'
 
 # charts
-gem "chartkick"
+gem 'chartkick'
+
+# blazer for charts
+gem 'blazer'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

@@ -11,6 +11,10 @@ RailsAdmin.config do |config|
   # == CancanCan ==
   config.authorize_with :cancancan
 
+  config.navigation_static_links = {
+    'Charts' => '/blazer/dashboards/1-main-dashboard'
+  }
+
 
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
