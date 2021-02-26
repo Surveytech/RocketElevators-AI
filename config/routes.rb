@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   authenticate :user, ->(user) { user.admin? || user.employee? } do
     mount Blazer::Engine, at: "blazer"
   end
-  
+
   devise_for :users
 
   scope '/admin' do
     resources :users
   end
+
+  root :to => "main#index"
 
   get "/", to: "main#index"
   get "/index", to: "main#index"

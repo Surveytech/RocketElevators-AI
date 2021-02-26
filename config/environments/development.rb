@@ -90,12 +90,12 @@ Rails.application.configure do
  config.action_mailer.smtp_settings = {
   address: "smtp.zoho.com",
   port: 465,
-  domain: "localhost:3000",
+  domain: "tommycote.com",
   user_name: "rocketelevators@zohomail.com",
   password: "ThisIsAGoodPassword",
   authentication: 'plain',
   ssl: true
  }
 
- config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+ config.action_mailer.default_url_options = { :host => 'tommycote.com' }
 end

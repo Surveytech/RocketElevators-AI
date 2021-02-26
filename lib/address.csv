@@ -27,7 +27,7 @@ number_and_street,suite,city,country,postal_code,entity,notes,id
 600 West 19th Avenue,APT B,Anchorage,AK,99503,,Gordon County (GA),26
 1208 Elkader Court North,,Nashville,TN,37013,,Muscogee County (GA),27
 210 Green Road,,Manchester,CT,6042,,Sumter County (GA),28
-49548 Road 200,,O'Neals,CA,93645,,"Metro Louisville,  LOJIC partners (KY)",29
+49548 Road 200,,ONeals,CA,93645,,"Metro Louisville,  LOJIC partners (KY)",29
 81 Seaton Place Northwest,,Washington,DC,20001,,Anne Arundel County (MD),30
 1267 Martin Street,#203,Nashville,TN,37203,,City of Baltimore (MD),31
 7431 Candace Way,#1,Louisville,KY,40214,,Frederick County (MD),32
@@ -77,7 +77,7 @@ number_and_street,suite,city,country,postal_code,entity,notes,id
 5811 Crossings Boulevard,,Nashville,TN,37013,,San Mateo County (CA),76
 5108 Franklin Street,,Savannah,GA,31405,,Santa Barbara County (CA),77
 913 Fallview Trail,,Nashville,TN,37211,,Santa Clara County (CA),78
-270 Chrissy's Court,,,VT,5443,,Santa Cruz County (CA),79
+270 Chrissys Court,,Bristol,VT,5443,,Santa Cruz County (CA),79
 130 Old Route 103,,Chester,VT,5143,,Shasta County (CA),80
 10826 Pointe Royal Drive,,Bakersfield,CA,93311,,Solano County (CA),81
 74 Ranch Drive,,Montgomery,AL,36109,,Sonoma County (CA),82
