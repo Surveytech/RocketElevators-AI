@@ -51,7 +51,7 @@ audit: true
 # before_action_method: require_admin
 
 # email to send checks from
-# from_email: rocketelevators@zohomail.com
+# from_email: "rocketelevators@zohomail.com"
 
 # webhook for Slack
 # slack_webhook_url: <%= ENV["BLAZER_SLACK_WEBHOOK_URL"] %>
