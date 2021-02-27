@@ -1,0 +1,11 @@
+development:
+  host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com
+  adapter: postgresql
+  encoding: utf8
+  port: 5432
+  database: postgres
+  pool: 5
+  username: codeboxx
+  password: Codeboxx1!
+  sock: /tmp
+
