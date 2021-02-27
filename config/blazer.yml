@@ -5,7 +5,7 @@ data_sources:
   #   url: <%= ENV["BLAZER_DATABASE_URL"] %>
 
   mysql:
-    url: mysql2://codeboxx:Codeboxx1!@codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com:3306/DanielaGrumbachKinder
+    url: mysql2://codeboxx:Codeboxx1!@codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com:3306/DanielaGrumbachKinder
 
   postgres:
     url: postgres://codeboxx:Codeboxx1!@codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com:5432/postgres
