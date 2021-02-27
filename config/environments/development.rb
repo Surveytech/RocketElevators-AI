@@ -60,6 +60,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.raise_delivery_errors = true
+
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_options = { from: 'nordik.tommy@gmail.com' }
   config.action_mailer.default_url_options = { host: 'tommycote.com' }

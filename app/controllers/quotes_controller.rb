@@ -28,6 +28,7 @@ class QuotesController < ApplicationController
     else
       @quote = Quote.new(quote_params)
       @quote.user_id = current_user.id
+      @quote.email = current_user.email
       @quote.save!
     end
     respond_to do |format|
