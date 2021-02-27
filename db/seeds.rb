@@ -205,6 +205,7 @@ end
 createAddresses()
 createCustomers()
 
+
 #Initiating Pgsync
 pgsync = Pgsync.new
 
