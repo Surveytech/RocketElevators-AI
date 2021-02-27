@@ -205,3 +205,13 @@ end
 createAddresses()
 createCustomers()
 
+#Initiating Pgsync
+pgsync = Pgsync.new
+
+#Creating Postgres Tables
+pgsync.create_tables
+
+#Synchronizing Datas
+pgsync.sync_mysql
+
+
