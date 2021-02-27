@@ -1,18 +1,18 @@
 
 /*The number of unique requests (ContactId) grouped by Month (Creation Date)*/
 amount_of_contact_request_per_month = 
-    select year(creation_date),month(creation_date),count(contact_id)
+    select month(creation_date),count(contact_id)
     from fact_contact
-    group by year(creation_date),month(creation_date)
-    order by year(creation_date),month(creation_date);
+    group by month(creation_date)
+    order by month(creation_date);
 
 
 /*The number of unique requests (QuoteId) grouped by Month (Creation Date)*/
 amount_of_bid_request_per_month =
-    select year(creation_date),month(creation_date),count(quote_id)
+    select month(creation_date),count(quote_id)
     from fact_quotes
-    group by year(creation_date),month(creation_date)
-    order by year(creation_date),month(creation_date);
+    group by month(creation_date)
+    order by month(creation_date);
 
 
 /*The number of elevators (ElevatorId) contained in the buildings belonging to each customer*/
