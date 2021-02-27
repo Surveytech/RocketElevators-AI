@@ -45,7 +45,7 @@ class Pgsync
     def create_tables
         self.conn.exec(
             File.read("./lib/creating_tables.txt")
-        )   
+        )
     end
 
     def sync_mysql
@@ -57,10 +57,6 @@ class Pgsync
 
     def sync_quotes
         Quote.all.each do | quote |
-            puts 123
-            puts quote.created_at
-            puts quote.id
-            puts quote.company_name
             sql = "INSERT INTO fact_quotes(quote_id, creation_date, company_name, nb_elevator, email)
             VALUES (#{quote.id},'#{quote.created_at}','#{quote.company_name.gsub!(/[^0-9A-Za-z]/, '')}',#{quote.number_of_elevators},'#{quote.email}');"
             self.conn.exec(sql)
@@ -72,14 +68,14 @@ class Pgsync
             puts "#{elevator}"
             address = Address.find(elevator.column.battery.building.address_id)
             sql = "INSERT INTO fact_elevator(serial_number, date_of_commissioning, building_id, customer_id, building_city)
-            VALUES (#{elevator.id},'#{elevator.date_of_commissioning}',#{elevator.column_id},#{elevator.column.battery.building.customer_id},'#{address.city}');"
+            VALUES (#{elevator.id},'#{elevator.date_of_commissioning}',#{elevator.column_id},#{elevator.column.battery.building.customer_id},'#{address.city.gsub!(/[^0-9A-Za-z]/, '')}');"
             self.conn.exec(sql)
         end
     end
 
     def sync_contact
         Lead.all.each do | lead |
-            sql = "INSERT INTO fact_contact(contact_id, creation_date, company_name, email, project_name) 
+            sql = "INSERT INTO fact_contact(contact_id, creation_date, company_name, email, project_name)
             VALUES (#{lead.id},'#{lead.created_at}','#{lead.company_name.gsub!(/[^0-9A-Za-z]/, '')}','#{lead.email}','#{lead.project_name}');"
             self.conn.exec(sql)
         end
@@ -95,14 +91,12 @@ class Pgsync
                             amountOfElevator += 1
                         end
                     end
-                end 
-            end 
-            address = Address.find(customer.address_id)   
-            puts amountOfElevator
-            sql = "INSERT INTO dim_customers(creation_date, company_name, full_name_company_main_contact, email_of_company_main_contact, nb_elevators, customers_city) 
-            VALUES ('#{customer.created_at}','#{customer.company_name}','#{customer.service_technical_authority_full_name}','#{customer.service_technical_authority_email}','#{amountOfElevator}','#{address.city}');"
+                end
+            end
+            address = Address.find(customer.address_id)
+            sql = "INSERT INTO dim_customers(creation_date, company_name, full_name_company_main_contact, email_of_company_main_contact, nb_elevators, customers_city)
+            VALUES ('#{customer.created_at}','#{customer.company_name.gsub!(/[^0-9A-Za-z]/, '')}','#{customer.service_technical_authority_full_name.gsub!(/[^0-9A-Za-z]/, '')}','#{customer.service_technical_authority_email}','#{amountOfElevator}','#{address.city}');"
             self.conn.exec(sql)
         end
     end
 end
-
