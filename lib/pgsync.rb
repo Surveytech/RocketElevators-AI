@@ -41,24 +41,28 @@ class Pgsync
         # puts "connection"
     end
 
+    #CREATING TABLES VIA creating_tables.txt
     def create_tables
         self.conn.exec(
-            File.read("creating_tables.sql")
-        )
+            File.read("./lib/creating_tables.txt")
+        )   
     end
 
-    def sync_with_my_sql
+    def sync_mysql
         self.sync_quotes
         self.sync_contact
-        self.sync_elevators
+        self.sync_elevator
         self.sync_customers
     end
 
     def sync_quotes
         Quote.all.each do | quote |
             puts 123
-            sql = "INSERT INTO fact_quotes(quote_id, creation_date, company_name, email, nb_elevators)
-            VALUES (#{quote.id},'#{quote.created_at}','#{quote.company_name}','#{quote.email}',#{quote.number_of_elevators}');"
+            puts quote.created_at
+            puts quote.id
+            puts quote.company_name
+            sql = "INSERT INTO fact_quotes(quote_id, creation_date, company_name, nb_elevator, email)
+            VALUES (#{quote.id},'#{quote.created_at}','#{quote.company_name.gsub!(/[^0-9A-Za-z]/, '')}',#{quote.number_of_elevators},'#{quote.email}');"
             self.conn.exec(sql)
         end
     end
@@ -66,8 +70,9 @@ class Pgsync
     def sync_elevator
         Elevator.all.each do | elevator |
             puts "#{elevator}"
+            address = Address.find(elevator.column.battery.building.address_id)
             sql = "INSERT INTO fact_elevator(serial_number, date_of_commissioning, building_id, customer_id, building_city)
-            VALUES (#{elevator.id},'#{elevator.date_of_commissioning}',#{elevator.column_id},#{elevator.column.battery.building.customer_id},'#{elevator.column.battery.building.customer.address.city}');"
+            VALUES (#{elevator.id},'#{elevator.date_of_commissioning}',#{elevator.column_id},#{elevator.column.battery.building.customer_id},'#{address.city}');"
             self.conn.exec(sql)
         end
     end
@@ -82,8 +87,20 @@ class Pgsync
 
     def sync_customers
         Customer.all.each do | customer |
-            sql = "INSERT INTO dim_customers(created_at, company_name, service_technical_authority_full_name, service_technical_authority_email, nbelevators, customer_city) 
-            VALUES ('#{customer.created_at}','#{customer.company_name}','#{customer.service_technical_authority_full_name}','#{customer.service_technical_authority_email}','#{quote.number_of_elevator}','#{customer.city}');"
+            amountOfElevator = 0
+            customer.building.each do |building|
+                building.battery.each do |battery|
+                    battery.columns.each do |column|
+                        column.elevators.each do |elevator|
+                            amountOfElevator += 1
+                        end
+                    end
+                end 
+            end 
+            address = Address.find(customer.address_id)   
+            puts amountOfElevator
+            sql = "INSERT INTO dim_customers(creation_date, company_name, full_name_company_main_contact, email_of_company_main_contact, nb_elevators, customers_city) 
+            VALUES ('#{customer.created_at}','#{customer.company_name}','#{customer.service_technical_authority_full_name}','#{customer.service_technical_authority_email}','#{amountOfElevator}','#{address.city}');"
             self.conn.exec(sql)
         end
     end

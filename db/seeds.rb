@@ -21,13 +21,13 @@ u3 = User.create({ name: 'Kev', email: 'kev@example.com', password: 'aaaaaaaa', 
 u4 = User.create({ name: 'Jack', email: 'jack@example.com', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa', role_id: r3.id })
 u5 = User.create({ name: 'Admin', email: 'admin@admin', password: '123456', password_confirmation: '123456', role_id: r3.id })
 
-q1 = Quote.create({ name: 'First Quote', building_type: 'residential', number_of_apartments: '500', number_of_floors: '50', number_of_basements: '5', user_id: u1.id})
-q5 = Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u1.id})
-q2 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '400', number_of_floors: '40', number_of_basements: '10', user_id: u2.id})
-q3 = Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u3.id})
-q4 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u4.id})
-q5 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
-q6 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
+# q1 = Quote.create({ name: 'First Quote', building_type: 'residential', number_of_apartments: '500', number_of_floors: '50', number_of_basements: '5', user_id: u1.id})
+# q5 = Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u1.id})
+# q2 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '400', number_of_floors: '40', number_of_basements: '10', user_id: u2.id})
+# q3 = Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u3.id})
+# q4 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u4.id})
+# q5 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
+# q6 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
 
 Employee.all.each do |employee|
   employee.build_user({
@@ -44,6 +44,25 @@ Employee.all.each do |employee|
  end
 
 $addressArray = []
+
+puts "= Starting Quotes Seeds ="
+100.times do
+  Quote.create(
+    name: Faker::Name.name,
+    building_type: ["Residential", "Commercial", "Corporate"].sample,
+    email: Faker::Internet.email,
+    number_of_apartments: rand(5..500),
+    number_of_floors: rand(5..500),
+    number_of_basements: rand(5..500),
+    number_of_parking_spots: rand(5..500),
+    number_of_elevators: rand(5..500),
+    number_of_corporations: rand(5..20),
+    maximum_occupancy: rand(5..20),
+    product_line: ["Standard", "Premium", "Excelium"].sample,
+    company_name: Faker::Company.name,
+    created_at: Faker::Date.between(from: '2017-01-02', to: '2018-01-01'))
+end
+
 
 puts "= Starting Leads Seeds ="
 100.times do

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   belongs_to :role, optional: true
   belongs_to :employee, optional: true
   belongs_to :customer, optional: true
-  has_many :quotes, dependent: :destroy
+  has_many :quote, dependent: :destroy
   validates :name, presence: true
   # before_save :assign_role
 
