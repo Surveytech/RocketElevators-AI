@@ -92,20 +92,20 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_options = { from: 'nordik.tommy@gmail.com' }
-  config.action_mailer.default_url_options = { host: 'tommycote.com' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    from: 'nordik.tommy@gmail.com',
-    user_name: 'nordik.tommy@gmail.com',
-    password: '6WQpUZjMqLXKdEDJ',
-    address: 'smtp-relay.sendinblue.com',
-    domain: 'smtp-relay.sendinblue.com',
-    port: '587',
-    authentication: :plain,
-    enable_starttls_auto: true,
-  }
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.default_options = { from: '@gmail.com' }
+  # config.action_mailer.default_url_options = { host: 'tommycote.com' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   from: '@gmail.com',
+  #   user_name: '@gmail.com',
+  #   password: '',
+  #   address: 'smtp-relay.sendinblue.com',
+  #   domain: 'smtp-relay.sendinblue.com',
+  #   port: '587',
+  #   authentication: :plain,
+  #   enable_starttls_auto: true,
+  # }
 
 end

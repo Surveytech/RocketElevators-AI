@@ -32,4 +32,4 @@
 
 # Ignore database infos
 config/database.yml
-notes.txt
+config/pg.yml

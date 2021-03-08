@@ -5,15 +5,17 @@
 ## :busts_in_silhouette: Team Members
   ```
     Team Leader:
-    - Daniela Grumbach Kinder
+    - Tommy Cote
 
     Team Member:
-    - Tommy Cote
-    - Daniel Foti
-    - Gabriel Rioux
-    - Maxime Lachance
-    - Etienne G.Lapointe
+    - Felix Masse
+    - Charles Hall
+    - Marie-Eve Goupil
   ```
+---
+
+## :construction: W.I.P :construction:
+
 ---
 ## :warning: The Prerequisites To Run The App (Skip If On The Website)
 
@@ -77,5 +79,3 @@
   4. Being able to edit/delete the quote once logged in
 
 ## :construction: THE REST IS W.I.P :construction:
-
-
