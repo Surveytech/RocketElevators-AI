@@ -65,7 +65,6 @@ class Pgsync
 
     def sync_elevator
         Elevator.all.each do | elevator |
-            puts "#{elevator}"
             address = Address.find(elevator.column.battery.building.address_id)
             sql = "INSERT INTO fact_elevator(serial_number, date_of_commissioning, building_id, customer_id, building_city)
             VALUES (#{elevator.id},'#{elevator.date_of_commissioning}',#{elevator.column_id},#{elevator.column.battery.building.customer_id},'#{address.city.gsub!(/[^0-9A-Za-z]/, '')}');"

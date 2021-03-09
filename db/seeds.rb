@@ -1,5 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 require 'csv'
 require 'faker'
 
@@ -20,14 +18,6 @@ u2 = User.create({ name: 'Sue', email: 'sue@example.com', password: 'aaaaaaaa', 
 u3 = User.create({ name: 'Kev', email: 'kev@example.com', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa', role_id: r2.id })
 u4 = User.create({ name: 'Jack', email: 'jack@example.com', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa', role_id: r3.id })
 u5 = User.create({ name: 'Admin', email: 'admin@admin', password: '123456', password_confirmation: '123456', role_id: r3.id })
-
-# q1 = Quote.create({ name: 'First Quote', building_type: 'residential', number_of_apartments: '500', number_of_floors: '50', number_of_basements: '5', user_id: u1.id})
-# q5 = Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u1.id})
-# q2 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '400', number_of_floors: '40', number_of_basements: '10', user_id: u2.id})
-# q3 = Quote.create({ name: 'This Quote', building_type: 'residential', number_of_apartments: '300', number_of_floors: '30', number_of_basements: '2', user_id: u3.id})
-# q4 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u4.id})
-# q5 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
-# q6 = Quote.create({ name: 'My Quote', building_type: 'residential', number_of_apartments: '600', number_of_floors: '60', number_of_basements: '5', user_id: u5.id})
 
 Employee.all.each do |employee|
   employee.build_user({
@@ -98,13 +88,12 @@ def createElevators(columnID, amountOfElevators)
       information: "Elevator's confidential information",
       notes: "Elevator's confidential notes")
     elevator.save!
-    print("\n\t\t\t","Elevator created with the id: ", elevator.id, "\n")
   end
 end
 
 def createColumns(batteryID, amountOfColumns)
   battery = Battery.find(batteryID)
-  amountOfColumns.times do 
+  amountOfColumns.times do
     column = Column.create(
       battery_id: battery.id,
       building_type: battery.building_type,
@@ -113,7 +102,7 @@ def createColumns(batteryID, amountOfColumns)
       information: battery.information,
       notes: battery.notes)
     column.save!
-    print("\n\t\t\t","Column created with the id: ", column.id, "\n")
+
     createElevators(column.id,4)
   end
 end
@@ -132,15 +121,15 @@ def createBatteries(buildingID, amountOfBatteries)
       information: "Confidential",
       notes: "Confidential")
       battery.save!
-      print("\n\t\t\t","Battery created with the id: ", battery.id, "\n")
+
       createColumns(battery.id,2)
   end
 end
 
 puts "= Starting Building Seeds ="
 def createBuildings(customerID, address)
-    # currentAddress = $addressArray.find_index(addressID)
-    puts address.id
+
+    # puts address.id
     building = Building.new(
       building_address: address.number_and_street + "," + address.city,
       building_admin_full_name: Faker::Name.name,
@@ -186,18 +175,20 @@ def createAddresses
   csv.each do |row|
     address = Address.new(
       address_type: ["Residential", "Commercial", "Corporate"].sample,
-      status: ["Active", "Innactive"].sample,
+      status: ["Active", "Inactive"].sample,
       number_and_street: row['number_and_street'],
       suite: row['suite'],
       city: row['city'],
       country: row['country'],
       postal_code: row['postal_code'],
-      notes: "Confidential",
-      entity: "")
+      notes: row["notes"],
+      entity: ["Building", "Customer"].sample,
+      longitude: row['longitude'],
+      latitude: row['latitude'])
     address.save!
 
     $addressArray.push(address)
-    
+
   end
 end
 
@@ -214,5 +205,3 @@ pgsync.create_tables
 
 #Synchronizing Datas
 pgsync.sync_mysql
-
-
