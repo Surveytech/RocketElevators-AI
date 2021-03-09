@@ -1,0 +1,17 @@
+<head>
+    <style type="text/css">
+      #map {
+        height: 850px;
+        width: 100%;
+      }
+    </style>
+
+</head>
+<body>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API']%>&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+</body>
