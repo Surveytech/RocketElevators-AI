@@ -36,3 +36,4 @@ config/pg.yml
 sendgrid.env
 .api_key
 .env
+.vscode/settings.json

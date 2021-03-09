@@ -52,8 +52,14 @@ gem 'chartkick'
 # blazer for charts
 gem 'blazer'
 
+# httparty
+gem 'httparty'
+
 # Storing Keys
 gem 'dotenv-rails', groups: [:development, :test]
+
+# Twilio
+gem 'twilio-ruby'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
