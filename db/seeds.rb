@@ -139,7 +139,9 @@ def createBuildings(customerID, address)
       building_technical_email: Faker::Internet.email,
       building_technical_phone: Faker::PhoneNumber.cell_phone,
       address_id: address.id,
-      customer_id: customerID)
+      customer_id: customerID,
+      latitude: address.latitude,
+      longitude: address.longitude)
       building.save!
       $addressArray.delete_at(address.id)
       createBatteries(building.id,2)
