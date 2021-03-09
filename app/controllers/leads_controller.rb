@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-
+ 
   def index
     @leads = Lead.all
   end
@@ -36,7 +36,9 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
+        SendGridMailer.send_signup_email(@lead).deliver
         format.html  { redirect_to "/", notice: 'Thank You!' }
+        
       end
     end
 
