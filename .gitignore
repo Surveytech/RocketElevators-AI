@@ -34,3 +34,5 @@
 config/database.yml
 config/pg.yml
 sendgrid.env
+.api_key
+.env
