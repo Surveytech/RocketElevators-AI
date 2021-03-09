@@ -35,3 +35,4 @@ config/database.yml
 config/pg.yml
 .api_key
 .env
+.vscode/settings.json
