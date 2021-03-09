@@ -10,13 +10,15 @@
 <body>
 
  <script>
+
+
     var buildings = <%= @buildings.html_safe %>;
     // var addresses = <%= @addresses.html_safe %>;
 
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 39.959, lng: -101 },
-        zoom: 5,
+        zoom: 4,
       });
 
 
@@ -27,8 +29,6 @@
       var longitude = parseFloat(obj.longitude);
       var latitude = parseFloat(obj.latitude);
       console.log(longitude);
-
-      var postion =
 
       new google.maps.Marker({
          position: {lat: latitude, lng: longitude},
