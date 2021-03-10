@@ -6,9 +6,9 @@ class WatsonController < ApplicationController
   def update
   end
 
-  def greetings
+  def greetings(name)
 
-    # @user = current_user.id
+    @user = name
     @elevators = Elevator.all
     @buildings = Building.all
     @addresses = Address.all
@@ -43,37 +43,31 @@ class WatsonController < ApplicationController
     You currently have #{@leads_amount.to_int} leads in your contact requests.
     #{@amount_of_batteries.to_int} Batteries are deployed across #{@amount_of_cities.to_int} cities."
 
+    @testContent = "Greetings#{@user}!"
+
     
                       ##########
                       # Watson #
                       ##########
-    # authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
-    #   apikey: ENV['TEXT_TO_SPEECH_IAM_APIKEY']
-    # )
+    authenticator = IBMWatson::Authenticators::IamAuthenticator.new(
+      apikey: ENV['TEXT_TO_SPEECH_IAM_APIKEY']
+    )
     
   
-    # text_to_speech = IBMWatson::TextToSpeechV1.new(
-    #   authenticator: authenticator
-    # )
-    # text_to_speech.service_url = ENV['TEXT_TO_SPEECH_URL']
+    text_to_speech = IBMWatson::TextToSpeechV1.new(
+      authenticator: authenticator
+    )
+    text_to_speech.service_url = ENV['TEXT_TO_SPEECH_URL']
   
-    
 
-    # File.open("greetings.wav", "wb") do |audio_file|
-    #   response = text_to_speech.synthesize(
-    #     text: @content,
-    #     accept: "audio/wav",
-    #     voice: "en-US_AllisonVoice"
-    #   ).result
+    File.open(File.join(Rails.root,'app','assets','sounds','greetings.wav'), "wb") do |audio_file|
+      response = text_to_speech.synthesize(
+        text: @content,
+        accept: "audio/wav",
+        voice: "en-US_AllisonVoice"
+      ).result
       
-    #   audio_file << response
-
-              
-                        
-
+      audio_file << response
+    end
   end
-
-
-
-
 end
