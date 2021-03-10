@@ -1,3 +1,3 @@
-class Quote < ApplicationRecord
+class Map < ApplicationRecord
 
 end

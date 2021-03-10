@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+    authorize_resource
 
     def index
         @buildings = Building.all.to_json
