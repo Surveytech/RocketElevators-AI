@@ -81,7 +81,7 @@ def createElevators(columnID, amountOfElevators)
       serial_number: Faker::Device.serial,
       model_type: ["Standard", "Premium", "Excelium"].sample,
       building_type: column.building_type,
-      status: ["Idle", "Moving", "Stopped"].sample,
+      status: ["Idle", "Moving", "Stopped", "Inactive"].sample,
       date_of_commissioning: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
       date_of_last_inspection: Faker::Date.between(from: '2020-01-02', to: '2021-01-01'),
       certificate_of_operations: Faker::Crypto.md5,

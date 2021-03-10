@@ -61,6 +61,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Twilio
 gem 'twilio-ruby'
 
+# IBM Watson
+gem 'ibm_watson'
+
 # SendGrid send automatic email WORK IN PROGRESS
 gem 'sendgrid-ruby'
 
