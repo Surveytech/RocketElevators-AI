@@ -33,3 +33,6 @@
 # Ignore database infos
 config/database.yml
 config/pg.yml
+
+#environment key
+.env
