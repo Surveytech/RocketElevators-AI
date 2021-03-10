@@ -52,8 +52,6 @@ gem 'chartkick'
 # blazer for charts
 gem 'blazer'
 
-# httparty
-gem 'httparty'
 # Storing Keys
 gem 'dotenv-rails', groups: [:development, :test]
 

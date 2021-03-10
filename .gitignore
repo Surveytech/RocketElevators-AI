@@ -33,12 +33,6 @@
 # Ignore database infos
 config/database.yml
 config/pg.yml
-<<<<<<< HEAD
-
-#environment key
-.env
-=======
 .api_key
 .env
 .vscode/settings.json
->>>>>>> main
