@@ -61,6 +61,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Twilio
 gem 'twilio-ruby'
 
+# Dropbox
+gem 'dropbox-sdk-v2'
+
 # IBM Watson
 gem 'ibm_watson'
 
@@ -127,3 +130,4 @@ gem 'csv'
 # YAML: Read Write Parse .yml doc
 gem 'yaml'
 gem 'rake'
+
