@@ -1,9 +1,35 @@
 <head>
   <style type="text/css">
-    #map {
-      height: 800px;
-      width: 100%;
-    }
+
+  #map {
+    height: 800px;
+    width: 100%;
+  }
+
+  body {
+      margin: 0;
+      font-family: Roboto;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #000000;
+      text-align: left;
+      background-color: #fff;
+  }
+
+  .gm-style .gm-style-iw {
+    font-weight: 400;
+    font-size: 16px;
+    overflow: hidden;
+  }
+
+  p {
+    color: #000;
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+
   </style>
 
 </head>
@@ -11,60 +37,70 @@
 
  <script>
 
-
     var buildings = <%= @buildings.html_safe %>;
-    // var addresses = <%= @addresses.html_safe %>;
+    var addresses = <%= @addresses.html_safe %>;
+    var marker;
+    var selectedMarker;
 
-    function initMap() {
+  function initMap() {
+
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 39.959, lng: -101 },
         zoom: 4,
+        mapId: "feb9c8c37860f93d",
       });
 
+      buildings.forEach(obj => { // For each building in the building array
+
+        var addressid = obj.address_id; // Get the address id of the selected building
+        let address = addresses.find(o => o.id === addressid); // Find the address using the id
+
+        var longitude = parseFloat(obj.longitude);
+        var latitude = parseFloat(obj.latitude);
+        var building_address = obj.building_address;
+        var tech_full_name = obj.building_technical_full_name;
 
 
-    buildings.forEach(obj => {
-      var addressid = obj.address_id;
-      // var address = addresses.find(id => addressid);
-      var longitude = parseFloat(obj.longitude);
-      var latitude = parseFloat(obj.latitude);
-      console.log(longitude);
+        var marker = new google.maps.Marker({
+          position: {lat: latitude, lng: longitude},
+          map,
+        });
 
-      new google.maps.Marker({
-         position: {lat: latitude, lng: longitude},
-         map,
-         title: "Hey",
-       });
-    });
+        var contentInfo =
+                    ("<p><b>Building address: </b>" +
+                      address.number_and_street +
+                      "<br>" +
+                      "<p><b>Number of floors: </b>" +
+                      "placeholder" +
+                      "<br>");
 
-    // buildings.forEach(obj => {
-    //     Object.entries(obj).forEach(([key, value]) => {
-    //         console.log(`${key} ${value}`);
-    //     });
-    //     console.log('-------------------');
-    // });
+        marker.infowindow = new google.maps.InfoWindow({
+          content: contentInfo,
+        });
 
-    // addresses.forEach(obj => {
-    //     Object.entries(obj).forEach(([key, value]) => {
-    //         console.log(`${key} ${value}`);
-    //     });
-    //     console.log('-------------------');
-    // });
-
-    // function getAddress() {
-    //   console.log(building.id);
-    // }
-
-
-    // console.log(buildings);
-    // console.log(Object.keys(addresses));
-
+        marker.addListener("click", () => {
+          if(selectedMarker == null){
+            selectedMarker = marker;
+            selectedMarker.infowindow.open(map, selectedMarker)
+          }
+          else{
+            selectedMarker.infowindow.close();
+            selectedMarker = marker;
+            selectedMarker.infowindow.open(map, selectedMarker);
+          }
+        });
+        google.maps.event.addListener(map, 'click', function(){
+            marker.infowindow.close();
+        });
+      })
   }
+
+
   </script>
     <!--The div element for the map -->
   <div id="map"></div>
   <script
-    src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API']%>&callback=initMap&libraries=&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API']%>&callback=initMap&libraries=&v=weekly&map_ids=feb9c8c37860f93d"
     async
   ></script>
 </body>

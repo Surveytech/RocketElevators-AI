@@ -1,20 +1,13 @@
 class MapsController < ApplicationController
 
     def index
-         @buildings = Building.all.to_json
-         @addresses = Address.all.to_json
-        # @buildings = Building.all
-        #   @buildings.each do |building|
-        #     address = Address.find(building.address_id)
-        #     address.longitude
-        #     address.latitude
-        #   end
-    end
-
-    def findLocation
+        @buildings = Building.all.to_json
+        @addresses = Address.all.to_json
+        # @buildingInfos = Building_detail.all.to_json
+        @batteries = Battery.all.to_json
+        @columns = Column.all.to_json
+        @elevators = Elevator.all.to_json
 
     end
-
-
 
 end
