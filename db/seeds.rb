@@ -143,6 +143,13 @@ def createBuildings(customerID, address)
       latitude: address.latitude,
       longitude: address.longitude)
       building.save!
+
+    buildingInfos = Building_detail.new(
+      information_key: 'amount_of_floors',
+      information_value: Faker::Number.between(from: 4, to: 100),
+      building_id: building.id)
+      buildingInfos.save!
+
       $addressArray.delete_at(address.id)
       createBatteries(building.id,2)
 end
