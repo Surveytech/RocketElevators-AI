@@ -61,6 +61,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Twilio
 gem 'twilio-ruby'
 
+# Dropbox
+gem 'dropbox-sdk-v2'
+
 # SendGrid send automatic email WORK IN PROGRESS
 gem 'sendgrid-ruby'
 
@@ -124,3 +127,4 @@ gem 'csv'
 # YAML: Read Write Parse .yml doc
 gem 'yaml'
 gem 'rake'
+
