@@ -36,3 +36,7 @@ config/pg.yml
 .api_key
 .env
 .vscode/settings.json
+
+# doc from Watson
+hello_world.ogg
+hello_world.wav
