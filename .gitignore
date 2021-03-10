@@ -33,6 +33,7 @@
 # Ignore database infos
 config/database.yml
 config/pg.yml
+sendgrid.env
 .api_key
 .env
 .vscode/settings.json

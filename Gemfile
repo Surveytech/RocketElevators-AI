@@ -52,14 +52,17 @@ gem 'chartkick'
 # blazer for charts
 gem 'blazer'
 
-# Storing Keys
-gem 'dotenv-rails', groups: [:development, :test]
-
 # httparty
 gem 'httparty'
 
+# Storing Keys
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Twilio
 gem 'twilio-ruby'
+
+# SendGrid send automatic email WORK IN PROGRESS
+gem 'sendgrid-ruby'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -121,4 +124,3 @@ gem 'csv'
 # YAML: Read Write Parse .yml doc
 gem 'yaml'
 gem 'rake'
-

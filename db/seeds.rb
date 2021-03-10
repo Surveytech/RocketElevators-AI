@@ -57,10 +57,10 @@ end
 puts "= Starting Leads Seeds ="
 100.times do
   Lead.create(
-    full_name: Faker::Name.name,
-    company_name: Faker::Company.name,
-    email: Faker::Internet.email,
-    phone: Faker::PhoneNumber.cell_phone,
+    full_name: Faker::Name.unique.name,
+    company_name: Faker::Company.unique.name,
+    email: Faker::Internet.unique.email,
+    phone: Faker::PhoneNumber.unique.cell_phone,
     project_name: "Elevator project",
     project_description: "Confidential",
     department_in_charge_of_the_elevators: ["Sales", "Support", "Administration"].sample,
@@ -114,10 +114,10 @@ def createBatteries(buildingID, amountOfBatteries)
       building_id: building.id,
       building_type: ["Residential", "Commercial", "Corporate"].sample,
       status: ["Active", "Inactive"].sample,
-      employee_id: Faker::IDNumber.valid,
+      employee_id: Faker::IDNumber.unique.valid,
       date_of_commissioning: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
       date_of_last_inspection: Faker::Date.between(from: '2020-01-02', to: '2021-01-01'),
-      certificate_of_operations: Faker::Crypto.md5,
+      certificate_of_operations: Faker::Crypto.unique.md5,
       information: "Confidential",
       notes: "Confidential")
       battery.save!
@@ -132,17 +132,24 @@ def createBuildings(customerID, address)
     # puts address.id
     building = Building.new(
       building_address: address.number_and_street + "," + address.city,
-      building_admin_full_name: Faker::Name.name,
-      building_admin_email: Faker::Internet.email,
-      building_admin_phone: Faker::PhoneNumber.cell_phone,
-      building_technical_full_name: Faker::Company.name,
-      building_technical_email: Faker::Internet.email,
-      building_technical_phone: Faker::PhoneNumber.cell_phone,
+      building_admin_full_name: Faker::Name.unique.name,
+      building_admin_email: Faker::Internet.unique.email,
+      building_admin_phone: Faker::PhoneNumber.unique.cell_phone,
+      building_technical_full_name: Faker::Company.unique.name,
+      building_technical_email: Faker::Internet.unique.email,
+      building_technical_phone: Faker::PhoneNumber.unique.cell_phone,
       address_id: address.id,
       customer_id: customerID,
       latitude: address.latitude,
       longitude: address.longitude)
       building.save!
+
+    buildingInfos = Building_detail.new(
+      information_key: 'amount_of_floors',
+      information_value: Faker::Number.between(from: 4, to: 100),
+      building_id: building.id)
+      buildingInfos.save!
+
       $addressArray.delete_at(address.id)
       createBatteries(building.id,2)
 end
@@ -154,15 +161,15 @@ def createCustomers
     puts currentAddress.number_and_street
     customer = Customer.new(
       created_at: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
-      company_name: Faker::Company.name,
+      company_name: Faker::Company.unique.name,
       company_address: currentAddress.number_and_street + "," + currentAddress.city,
-      company_contact_full_name: Faker::Name.name,
-      company_phone: Faker::PhoneNumber.cell_phone,
-      company_email: Faker::Internet.email,
-      company_description: Faker::Company.catch_phrase,
-      service_technical_authority_full_name: Faker::Name.name,
-      service_technical_authority_phone: Faker::PhoneNumber.cell_phone,
-      service_technical_authority_email: Faker::Internet.email,
+      company_contact_full_name: Faker::Name.unique.name,
+      company_phone: Faker::PhoneNumber.unique.cell_phone,
+      company_email: Faker::Internet.unique.email,
+      company_description: Faker::Company.unique.catch_phrase,
+      service_technical_authority_full_name: Faker::Name.unique.name,
+      service_technical_authority_phone: Faker::PhoneNumber.unique.cell_phone,
+      service_technical_authority_email: Faker::Internet.unique.email,
       address_id: currentAddress.id)
       customer.save!
       createBuildings(customer.id, currentAddress)
