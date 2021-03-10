@@ -64,6 +64,9 @@ gem 'twilio-ruby'
 # Dropbox
 gem 'dropbox-sdk-v2'
 
+# IBM Watson
+gem 'ibm_watson'
+
 # SendGrid send automatic email WORK IN PROGRESS
 gem 'sendgrid-ruby'
 
