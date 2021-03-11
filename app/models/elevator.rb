@@ -3,20 +3,17 @@ require 'httparty'
 class Elevator < ApplicationRecord
     include ActiveModel::Dirty
     belongs_to :column
+
     before_update :sendMsg
     before_update :check_intervention
-    
-    def getElevator
-        return "Elevator(self.id)"
-    end
-    
+
     private
     def sendMsg
         if self.status_changed?
             url = ENV['SLACK_URL']
             msg = "The Elevator #{self.id} with Serial Number #{self.serial_number} changed status from #{self.status_was} to #{self.status}"
             HTTParty.post(url, body: {"text":"#{msg}"}.to_json)
-        end 
+        end
     end
 
     def check_intervention
@@ -32,7 +29,7 @@ class Elevator < ApplicationRecord
                 to_phone = ENV['PHONE_NUMBER']
                 from_phone = ENV['PHONE_NUMBER_TWILIO']
 
-                
+
                 message = @client.messages.create(
                     body: "Hi #{name} the elevator with id #{self.id} and serial_number #{self.serial_number} is in Intervention",
                     from: from_phone,
