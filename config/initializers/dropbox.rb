@@ -1,6 +1,6 @@
 require 'dropbox'
 
-dbx = Dropbox::Client.new('')
+# dbx = Dropbox::Client.new('')
 
 # folder = dbx.create_folder('/folder_Felix') # => Dropbox::FolderMetadata
 # folder.id # => "id:a4ayc_80_OEAAAAAAAAAXz"

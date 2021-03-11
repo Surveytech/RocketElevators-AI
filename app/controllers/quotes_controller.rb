@@ -1,3 +1,4 @@
+require 'zendesk_api'
 class QuotesController < ApplicationController
   before_action :set_quote, only: %i[ show edit update destroy ]
 
@@ -33,6 +34,7 @@ class QuotesController < ApplicationController
     end
     respond_to do |format|
       if @quote
+        createTicket()
         format.html { redirect_to "/", notice: "Quote was successfully created." }
         format.json { render :show, status: :created, location: @quote }
       else
@@ -40,6 +42,30 @@ class QuotesController < ApplicationController
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def createTicket()
+    client = ZendeskAPI::Client.new do |config|
+        config.url = ENV['ZENDESK_URL']
+        config.username = ENV['ZENDESK_EMAIL']
+        config.token = ENV['ZENDESK_API']
+      end
+
+      ZendeskAPI::Ticket.create!(client,
+        :subject => "#{@quote.name} from #{@quote.company_name}",
+        :comment => { :value =>
+          "#{@quote.name} from company #{@quote.company_name} can be reached at the following email: #{@quote.email}.
+          The quote contained the following informations:
+          Building type: #{@quote.building_type}
+          Amount of apartments: #{@quote.number_of_apartments}, Amount of floors: #{@quote.number_of_floors}, Amount of basements: #{@quote.number_of_basements},
+          Amount of companies: #{@quote.number_of_companies}, Amount of parking spots: #{@quote.number_of_parking_spots}, Amount of elevators: #{@quote.number_of_elevators},
+          Amount of corporations: #{@quote.number_of_corporations}, Maximum occupancy: #{@quote.maximum_occupancy},
+          Product line: #{@quote.product_line}
+          Total price of the elevators: #{@quote.elevator_total_price}
+          Total price of the installation: #{@quote.installation_price}
+          Total price: #{@quote.total_price}"},
+        :type => "task",
+        :priority => "normal")
   end
 
   # PATCH/PUT /quotes/1 or /quotes/1.json
