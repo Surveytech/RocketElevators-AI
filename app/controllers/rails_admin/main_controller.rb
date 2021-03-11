@@ -10,7 +10,6 @@ module RailsAdmin
       before_action :get_object, only: RailsAdmin::Config::Actions.all(:member).collect(&:action_name)
       before_action :check_for_cancel
 
-      # before_action :_getMapInfos!
     #   UNCOMMENT ME BEFORE DEPLOY
     #   before_action :_greetings!
 
@@ -32,11 +31,6 @@ module RailsAdmin
         name = instance_eval(&RailsAdmin::Config.current_user_method).name
         ibm = WatsonController.new
         ibm.greetings(name)
-      end
-
-      def _getMapInfos!
-        map = MapsController.new
-        map.getInfos
       end
 
       def bulk_action
