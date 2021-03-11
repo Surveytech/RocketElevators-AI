@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'watson/update'
   resources :leads
   resources :quotes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

@@ -1,5 +1,6 @@
+require 'zendesk_api'
 class LeadsController < ApplicationController
- 
+
   def index
     @leads = Lead.all
   end
@@ -36,15 +37,32 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
+        createTicket()
         SendGridMailer.send_signup_email(@lead).deliver
         format.html  { redirect_to "/", notice: 'Thank You!' }
-        
+
       end
     end
-
   end
 
+  def createTicket()
+    client = ZendeskAPI::Client.new do |config|
+        config.url = ENV['ZENDESK_URL']
+        config.username = ENV['ZENDESK_EMAIL']
+        config.token = ENV['ZENDESK_API']
+      end
 
+      ZendeskAPI::Ticket.create!(client,
+        :subject => "#{@lead.full_name} from #{@lead.company_name}",
+        :comment => { :value =>
+          "The contact #{@lead.full_name} from company #{@lead.company_name} can be reached at email  #{@lead.email} and at phone number #{@lead.phone}.
+          #{@lead.department_in_charge_of_the_elevators} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators.
+          #{@lead.project_description}
+          Attached Message: #{@lead.message}
+          The Contact uploaded an attachment" },
+        :type => "question",
+        :priority => "normal")
+  end
 
   # DELETE /leads/1 or /leads/1.json
   def destroy
