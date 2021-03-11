@@ -144,7 +144,7 @@ def createBuildings(customerID, address)
       longitude: address.longitude)
       building.save!
 
-    buildingInfos = Building_detail.new(
+    buildingInfos = BuildingDetail.new(
       information_key: 'amount_of_floors',
       information_value: Faker::Number.between(from: 4, to: 100),
       building_id: building.id)
@@ -156,8 +156,9 @@ end
 
 puts "= Starting Customer Seeds ="
 def createCustomers
+  i = 0
   30.times do
-    currentAddress = $addressArray.sample
+    currentAddress = $addressArray[i]
     puts currentAddress.number_and_street
     customer = Customer.new(
       created_at: Faker::Date.between(from: '2018-01-01', to: '2020-01-01'),
@@ -172,6 +173,7 @@ def createCustomers
       service_technical_authority_email: Faker::Internet.unique.email,
       address_id: currentAddress.id)
       customer.save!
+      i = i+1
       createBuildings(customer.id, currentAddress)
   end
 end
