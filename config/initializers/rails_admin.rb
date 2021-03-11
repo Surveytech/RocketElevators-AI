@@ -1,5 +1,8 @@
 RailsAdmin.config do |config|
 
+  require Rails.root.join('lib', 'rails_admin', 'map.rb')
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Map)
+
   config.main_app_name = ["Rocket Elevators", "BackOffice"]
 
   # == Devise ==
@@ -15,9 +18,7 @@ RailsAdmin.config do |config|
     'Home' => '/',
     'Blazer' => '/blazer',
     'Charts' => '/blazer/dashboards/1-main-dashboard',
-    'gMap' => '/maps'
   }
-
 
   config.actions do
     dashboard
@@ -29,6 +30,7 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+    map
 
   end
 end
