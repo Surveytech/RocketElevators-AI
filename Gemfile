@@ -124,3 +124,7 @@ gem 'csv'
 # YAML: Read Write Parse .yml doc
 gem 'yaml'
 gem 'rake'
+
+# DropBox
+gem 'dropbox-api', '~> 0.4.7'
+gem 'dropbox-sdk-v2'
