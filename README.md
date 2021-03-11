@@ -82,6 +82,7 @@
 - Google Maps API
   - It display our customer information based on the geolocalisation of their buiding in our database
   - It is only accesible trough the admin sectio on the site
+  ![](app/assets/images/readMe/Google_map_API.png)
 
 
 - Twilio API
@@ -97,6 +98,7 @@
 
 - Sendgrid API:
     - When a contact complete a "Contact Us" form a confirmation email is send to the provided contact's email.
+  ![](app/assets/images/readMe/confirmationEmail.png)
 
 
 - IBM Watson API:
@@ -109,7 +111,7 @@
         You currently have XXX leads in your contact requests
         XXX Batteries are deployed across XXX cities
     - Those info are dynamic and change when the admin page is loaded.
-
+  ![](app/assets/images/readMe/IBM_Watson_player.png)
 
 - ZenDesk API:
     - The ZenDesk platform can be powered by a call to the API and the software can then process requests depending on the type.
