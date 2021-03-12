@@ -73,6 +73,9 @@ gem 'ibm_watson'
 # SendGrid send automatic email WORK IN PROGRESS
 gem 'sendgrid-ruby'
 
+# Cloud Vison
+gem 'google-cloud-vision', '~> 1.1'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
