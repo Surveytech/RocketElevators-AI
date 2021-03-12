@@ -1,7 +1,7 @@
 require 'zendesk_api'
 require "google/cloud/vision"
 class LeadsController < ApplicationController
-
+  
   def index
     @leads = Lead.all
   end
@@ -49,14 +49,16 @@ class LeadsController < ApplicationController
       @lead.save
     end
 
+
     respond_to do |format|
-      if (@badimg == true)
-        format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
-      elsif @lead.save
+      if verify_recaptcha(model: @lead) && @lead.save
         createTicket()
         SendGridMailer.send_signup_email(@lead).deliver
         format.html  { redirect_to "/", notice: 'Thank You!' }
+      else
+        format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
       end
+      
     end
   end
 
