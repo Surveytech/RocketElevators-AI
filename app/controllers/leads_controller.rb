@@ -1,4 +1,5 @@
 require 'zendesk_api'
+require "google/cloud/vision"
 class LeadsController < ApplicationController
 
   def index
@@ -15,32 +16,46 @@ class LeadsController < ApplicationController
   def edit
   end
 
-
   def create
-
+    @badimg = false
+    image_annotator = Google::Cloud::Vision.image_annotator
     if(lead_params[:file].present?)
-      file = lead_params[:file]
+      @file = lead_params[:file]
+      if (@file.content_type.to_s.include? "image/" )
+        response = image_annotator.safe_search_detection image: @file.tempfile
 
-      filename = file.original_filename
-      filedata = file.read
-      filetype = file.content_type
+        response.responses.each do |res|
+          safe_search = res.safe_search_annotation
 
-      @lead = Lead.new(lead_params.except(:file))
-      @lead.file_data = filedata
-      @lead.file_name = filename
-      @lead.file_type = filetype
-      @lead.save
+          if(safe_search.adult.to_s == "VERY_LIKELY" || safe_search.racy.to_s == "VERY_LIKELY" || safe_search.violence.to_s == "VERY_LIKELY")
+            @badimg = true
+          end
+        end
+      end
+
+      if(@badimg != true)
+        filename = @file.original_filename
+        filedata = @file.read
+        filetype = @file.content_type
+        @lead = Lead.new(lead_params.except(:file))
+        @lead.file_data = filedata
+        @lead.file_name = filename
+        @lead.file_type = filetype
+        @lead.save
+      end
+
     else
       @lead = Lead.new(lead_params.except(:file))
       @lead.save
     end
 
     respond_to do |format|
-      if @lead.save
+      if (@badimg == true)
+        format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
+      elsif @lead.save
         createTicket()
         SendGridMailer.send_signup_email(@lead).deliver
         format.html  { redirect_to "/", notice: 'Thank You!' }
-
       end
     end
   end
