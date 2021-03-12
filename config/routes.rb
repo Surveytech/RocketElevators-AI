@@ -23,8 +23,4 @@ Rails.application.routes.draw do
   get "/commercial", to: "main#commercial"
   get "/new", to: "registrations#new"
 
-
-  # TESTING #
-  get "/maps", to: "maps#index"
-
 end

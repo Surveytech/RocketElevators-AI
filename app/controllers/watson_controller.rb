@@ -43,6 +43,8 @@ class WatsonController < ApplicationController
     You currently have #{@leads_amount.to_int} leads in your contact requests.
     #{@amount_of_batteries.to_int} Batteries are deployed across #{@amount_of_cities.to_int} cities."
 
+    @testing = "Hey #{@user}, #{@elevators_in_service.to_int} being serviced."
+
 
                       ##########
                       # Watson #
@@ -57,9 +59,9 @@ class WatsonController < ApplicationController
     )
     text_to_speech.service_url = ENV['TEXT_TO_SPEECH_URL']
 
-    File.open(File.join(Rails.root,'app','assets','sounds','greetings.wav'), "wb") do |audio_file|
+    File.open(File.join(Rails.root,'app','assets','sounds',"#{@user}" + '.wav'), "wb") do |audio_file|
       response = text_to_speech.synthesize(
-        text: @content,
+        text: @testing,
         accept: "audio/wav",
         voice: "en-GB_CharlotteV3Voice"
       ).result
