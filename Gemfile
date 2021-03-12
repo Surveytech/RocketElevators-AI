@@ -134,6 +134,7 @@ gem 'csv'
 gem 'yaml'
 gem 'rake'
 
-# DropBox
-gem 'dropbox-api', '~> 0.4.7'
-gem 'dropbox-sdk-v2'
+
+
+# reCaptcha
+gem 'recaptcha', :require => 'recaptcha/rails'
