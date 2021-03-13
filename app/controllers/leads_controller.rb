@@ -51,12 +51,12 @@ class LeadsController < ApplicationController
 
 
     respond_to do |format|
-      if verify_recaptcha(model: @lead) && @lead.save
+      if (@badimg == true)
+        format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
+      elsif (verify_recaptcha(model: @lead) && @lead.save)
         createTicket()
         SendGridMailer.send_signup_email(@lead).deliver
         format.html  { redirect_to "/", notice: 'Thank You!' }
-      elsif (@badimg == true)
-        format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
       else
         format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
       end
