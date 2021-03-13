@@ -43,7 +43,7 @@ class WatsonController < ApplicationController
     You currently have #{@leads_amount.to_int} leads in your contact requests.
     #{@amount_of_batteries.to_int} Batteries are deployed across #{@amount_of_cities.to_int} cities."
 
-    @testing = "Hey #{@user}, #{@elevators_in_service.to_int} being serviced."
+    # @testing = "Hey #{@user}, #{@elevators_in_service.to_int} being serviced."
 
 
                       ##########
@@ -61,7 +61,7 @@ class WatsonController < ApplicationController
 
     File.open(File.join(Rails.root,'app','assets','sounds',"#{@user}" + '.wav'), "wb") do |audio_file|
       response = text_to_speech.synthesize(
-        text: @testing,
+        text: @content,
         accept: "audio/wav",
         voice: "en-GB_CharlotteV3Voice"
       ).result
