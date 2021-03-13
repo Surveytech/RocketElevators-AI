@@ -1,7 +1,7 @@
 require 'zendesk_api'
 require "google/cloud/vision"
 class LeadsController < ApplicationController
-  
+
   def index
     @leads = Lead.all
   end
@@ -55,10 +55,12 @@ class LeadsController < ApplicationController
         createTicket()
         SendGridMailer.send_signup_email(@lead).deliver
         format.html  { redirect_to "/", notice: 'Thank You!' }
+      elsif (@badimg == true)
+        format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
       else
         format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
       end
-      
+
     end
   end
 
