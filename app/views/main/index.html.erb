@@ -783,23 +783,23 @@
 							<div class="row">
 									<div class="col-md-4">
 										<label for="lead:full_name">Full Name *</label>
-										<input type="text" value="" class="form-control" name="lead[full_name]" id="lead:full_name">
+										<input type="text" required value="" class="form-control" name="lead[full_name]" id="lead:full_name">
 									</div>
 									<div class="col-md-4">
 										<label for="lead:company_name">Business Name *</label>
-										<input type="text" value="" class="form-control" name="lead[company_name]" id="lead:company_name">
+										<input type="text" required value="" class="form-control" name="lead[company_name]" id="lead:company_name">
 									</div>
 									<div class="col-md-4">
 										<label for="lead:email">E-mail Address *</label>
-										<input type="email" value="" class="form-control" name="lead[email]" id="lead:email">
+										<input type="email" required value="" class="form-control" name="lead[email]" id="lead:email">
 									</div>
 									<div class="col-md-4">
 										<label for="lead:phone">Phone Number *</label>
-										<input type="tel" value="" class="form-control" name="lead[phone]" id="lead:phone">
+										<input type="tel" required value="" class="form-control" name="lead[phone]" id="lead:phone">
 									</div>
 									<div class="col-md-4">
 										<label for="lead:project_name">Project Name *</label>
-										<input type="text" value="" class="form-control" name="lead[project_name]" id="lead:project_name">
+										<input type="text" required value="" class="form-control" name="lead[project_name]" id="lead:project_name">
 									</div>
 									<div class="col-md-4">
 										<label for="department_in_charge_of_the_elevators">Department</label>
@@ -814,7 +814,7 @@
 							<div class="row">
 									<div class="col-md-12">
 										<label for="lead:project_description">Project Description *</label>
-										<input type="text" value="" class="form-control" name="lead[project_description]" id="lead:project_description">
+										<input type="text" required value="" class="form-control" name="lead[project_description]" id="lead:project_description">
 									</div>
 
 							</div>
@@ -831,7 +831,16 @@
 
 							</div><br />
 
+
+
 						</fieldset>
+
+
+						<div class="field">
+   								<%= flash[:recaptcha_error] %>
+    							<%= recaptcha_tags %>
+  						</div>
+
 
 						<div class="row">
 							<div class="col-md-12">

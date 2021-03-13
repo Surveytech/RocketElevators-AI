@@ -136,3 +136,8 @@ gem 'csv'
 # YAML: Read Write Parse .yml doc
 gem 'yaml'
 gem 'rake'
+
+
+
+# reCaptcha
+gem 'recaptcha', :require => 'recaptcha/rails'
