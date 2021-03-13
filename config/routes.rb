@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   resources :quotes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  
+
   authenticate :user, ->(user) { user.admin? || user.employee? } do
     mount Blazer::Engine, at: "blazer"
   end
 
-  devise_for :users, :controllers => { :registrations => "users/registrations", :sessions => "users/sessions"}
+  devise_for :users
 
   scope '/admin' do
     resources :users
