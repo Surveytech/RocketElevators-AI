@@ -17,6 +17,7 @@ RailsAdmin.config do |config|
   config.navigation_static_links = {
     'Home' => '/',
     'Blazer' => '/blazer',
+    'Charts' => '/blazer/dashboards/1-main-dashboard',
   }
 
   config.actions do
