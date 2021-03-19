@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_193536) do
+ActiveRecord::Schema.define(version: 2021_03_18_153848) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_type"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_193536) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "number_and_street"
-    t.string "suite"
+    t.string "suite", default: " "
     t.string "city"
     t.string "postal_code"
     t.string "country"
@@ -197,27 +197,27 @@ ActiveRecord::Schema.define(version: 2021_03_09_193536) do
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "building_type"
-    t.integer "number_of_apartments"
-    t.integer "number_of_floors"
-    t.integer "number_of_basements"
-    t.integer "number_of_companies"
-    t.integer "number_of_parking_spots"
-    t.integer "number_of_elevators"
-    t.integer "number_of_corporations"
-    t.integer "maximum_occupancy"
-    t.string "product_line"
-    t.float "elevator_unit_price"
-    t.float "elevator_total_price"
-    t.float "installation_price"
-    t.float "total_price"
-    t.string "company_name"
-    t.time "business_hours"
+    t.string "name", default: " "
+    t.string "building_type", default: " "
+    t.integer "number_of_apartments", default: 0
+    t.integer "number_of_floors", default: 0
+    t.integer "number_of_basements", default: 0
+    t.integer "number_of_companies", default: 0
+    t.integer "number_of_parking_spots", default: 0
+    t.integer "number_of_elevators", default: 0
+    t.integer "number_of_corporations", default: 0
+    t.integer "maximum_occupancy", default: 0
+    t.string "product_line", default: " "
+    t.float "elevator_unit_price", default: 0.0
+    t.float "elevator_total_price", default: 0.0
+    t.float "installation_price", default: 0.0
+    t.float "total_price", default: 0.0
+    t.string "company_name", default: " "
+    t.time "business_hours", default: "2000-01-01 00:00:00"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.string "email"
+    t.string "email", default: " "
     t.index ["name"], name: "index_quotes_on_name"
     t.index ["user_id"], name: "index_quotes_on_user_id"
   end

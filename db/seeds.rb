@@ -35,6 +35,7 @@ Employee.all.each do |employee|
 
 $addressArray = []
 
+
 puts "= Starting Quotes Seeds ="
 100.times do
   Quote.create(
@@ -50,6 +51,7 @@ puts "= Starting Quotes Seeds ="
     maximum_occupancy: rand(5..20),
     product_line: ["Standard", "Premium", "Excelium"].sample,
     company_name: Faker::Company.name,
+    user_id: User.all.sample.id,
     created_at: Faker::Date.between(from: '2017-01-02', to: '2018-01-01'))
 end
 
@@ -171,6 +173,7 @@ def createCustomers
       service_technical_authority_full_name: Faker::Name.unique.name,
       service_technical_authority_phone: Faker::PhoneNumber.unique.cell_phone,
       service_technical_authority_email: Faker::Internet.unique.email,
+      user_id: User.all.sample.id,
       address_id: currentAddress.id)
       customer.save!
       i = i+1
@@ -203,7 +206,6 @@ def createAddresses
   end
 end
 
-
 createAddresses()
 createCustomers()
 
@@ -216,3 +218,77 @@ pgsync.create_tables
 
 #Synchronizing Datas
 pgsync.sync_mysql
+
+
+$endDate
+$interventionEnded 
+$interventionStatus
+$interventionResult
+
+def endProbability 
+  random_number = rand(1..10)
+  case random_number
+  when 1..3
+      $endDate = Faker::Time.between(from: $startDate, to: Time.now)
+      $interventionEnded = true
+  when 4..10
+      $endDate = '2000-01-01 00:00:00'
+      $interventionEnded = false
+  end 
+end
+
+def status 
+  case $interventionEnded
+  when true 
+    $interventionStatus = 'Complete'
+    $interventionResult = ['Success','Failure'].sample
+  when false
+    $interventionStatus = ['Pending', 'InProgress', 'Interrupted', 'Resumed'].sample
+    $interventionResult = 'Incomplete'
+  end
+end
+
+  rand(35..50).times do
+  $startDate = Faker::Time.between(from: 1.year.ago, to: Time.now)
+  $buildingfact = Building.all.sample
+  $batteryfact = $buildingfact.batteries.sample
+  $columnfact = $batteryfact.columns.sample
+  $elevatorfact = $columnfact.elevators.sample 
+  $column_id 
+  $battery_id
+  $elevator_id
+    
+
+  random_number = rand(1..9)
+  case random_number
+  when 1..3
+      $column_id = $columnfact.id
+      $battery_id = 0 
+      $elevator_id = 0
+  when 4..6
+      $column_id = 0
+      $battery_id = 0 
+      $elevator_id = $elevatorfact.id
+  when 7..9
+      $column_id = 0
+      $battery_id = $batteryfact.id 
+      $elevator_id = 0
+  end
+
+  endProbability()
+  status()
+
+    intervention = FactIntervention.create(
+        employee_id: Employee.all.sample.id,
+        building_id: $buildingfact.id,
+        battery_id: $battery_id,
+        column_id: $column_id,
+        elevator_id: $elevator_id,
+        intervention_start: $startDate,
+        intervention_end: $endDate,
+        intervention_status: $interventionStatus,
+        intervention_result: $interventionResult,
+        intervention_report: Faker::Lorem.sentence)
+    intervention.save!
+    puts FactIntervention.count
+end 

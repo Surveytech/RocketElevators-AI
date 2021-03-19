@@ -45,6 +45,7 @@ class Pgsync
     def create_tables
         self.conn.exec(
             File.read("./lib/creating_tables.txt")
+            
         )
     end
 
@@ -83,8 +84,8 @@ class Pgsync
     def sync_customers
         Customer.all.each do | customer |
             amountOfElevator = 0
-            customer.building.each do |building|
-                building.battery.each do |battery|
+            customer.buildings.each do |building|
+                building.batteries.each do |battery|
                     battery.columns.each do |column|
                         column.elevators.each do |elevator|
                             amountOfElevator += 1
@@ -99,3 +100,5 @@ class Pgsync
         end
     end
 end
+
+ 
