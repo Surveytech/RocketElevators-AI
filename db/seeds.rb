@@ -232,7 +232,7 @@ def endProbability
       $endDate = Faker::Time.between(from: $startDate, to: Time.now)
       $interventionEnded = true
   when 4..10
-      $endDate = '2000-01-01 00:00:00'
+      $endDate = nil
       $interventionEnded = false
   end 
 end
