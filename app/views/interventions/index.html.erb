@@ -1,31 +1,49 @@
 <p id="notice"><%= notice %></p>
 
- 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
   <body>
     <h1 class="fw-800 fs-40 font-roboto" style="text-align: center">Interventions</h1>
-    <div class="row no-gutters wow slideInUp" data-wow-duration="1s">
-    <div class="col-md-6 col-md-offset-3">
-        <%= select_tag 'customer_id', 
-            options_for_select(@customers.collect{ |u| [u.company_contact_full_name, u.id] }), 
-            class: 'form-control',
-            prompt: "Select a Customer"%>
-        <%= select_tag 'building_id', 
-            options_from_collection_for_select(Building.all, "id", "building_address"),
-            class: 'form-control',
-            prompt: "Select a Building"%>
-        <%= select_tag 'battery_id', 
-            options_from_collection_for_select(Battery.all, "id", "id"),
-            class: 'form-control',
-            prompt: "Select a Battery"%>
-        <%= select_tag 'column_id', 
-            options_from_collection_for_select(Column.all, "id", "id"),
-            class: 'form-control',
-            prompt: "Select a Column"%>
+    <div class="row wow slideInUp" data-wow-duration="1s">
+        <div class="col-md-3 col-md-offset-1">
+            <%= label_tag 'employee_id', 'Select an Employee', id: 'employee_label'%>
+            <%= select_tag 'employee_id', 
+                options_from_collection_for_select(Employee.all, "id", "first_name", "last_name"), 
+                class: 'form-control',
+                prompt: "Select an Employee"%>
+            <%= label_tag 'description', 'Enter a description', id: 'description_label'%>
+            <%= text_field_tag "description", nil, class: 'form-control', id: 'description'%>
+            <%= submit_tag 'Submit', data: { confirm: "Are you sure?" }, class: 'btn btn-outline-secondary form-control'%>
+        </div>
+        <%# col-md-offset-3 %>
+        <div class="col-md-4">
+            <%= label_tag 'customer_id', 'Select a Customer', id: 'customer_label'%>
+            <%= select_tag 'customer_id', 
+                options_for_select(@customers.collect{ |u| [u.company_contact_full_name, u.id] }), 
+                class: 'form-control',
+                prompt: "Select a Customer"%>
+            <%= label_tag 'building_id', 'Select a Building', id: 'building_label'%>
+            <%= select_tag 'building_id', 
+                options_from_collection_for_select(Building.all, "id", "building_address"),
+                class: 'form-control',
+                prompt: "Select a Building"%>
+            <%= label_tag 'battery_id', 'Select a Battery', id: 'battery_label'%>
+            <%= select_tag 'battery_id', 
+                options_from_collection_for_select(Battery.all, "id", "id"),
+                class: 'form-control',
+                prompt: "Select a Battery"%>
+            <%= label_tag 'column_id', 'Select a Column', id: 'column_label'%>
+            <%= select_tag 'column_id', 
+                options_from_collection_for_select(Column.all, "id", "id"),
+                class: 'form-control',
+                prompt: "Select a Column"%>
+            <%= label_tag 'elevator_id', 'Select an Elevator', id: 'elevator_label'%>
+            <%= select_tag 'elevator_id', 
+                options_from_collection_for_select(Elevator.all, "id", "id"),
+                class: 'form-control',
+                prompt: "Select an Elevator"%>
+        </div>
     </div>
-</div>
 
   </body>

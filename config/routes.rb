@@ -28,5 +28,6 @@ Rails.application.routes.draw do
   get 'get_buildings/', to: 'interventions#get_buildings'  
   get 'get_batteries/', to: 'interventions#get_batteries'  
   get 'get_columns/', to: 'interventions#get_columns'  
+  get 'get_elevators/', to: 'interventions#get_elevators'  
 
 end
