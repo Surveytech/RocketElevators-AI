@@ -20,7 +20,8 @@ class InterventionsController < ApplicationController
         @intervention.customer_id = intervention_params[:customer_id]
         @intervention.building_id = intervention_params[:building_id]
         @intervention.battery_id = intervention_params[:battery_id]
-        if intervention_params[:column_id] == 'None' || intervention_params[:column_id]
+        @intervention.report = intervention_params[:report]
+        if intervention_params[:column_id] == 'None' || intervention_params[:column_id] == 0
             @intervention.column_id = nil
         else
             @intervention.column_id = intervention_params[:column_id] 
@@ -134,11 +135,13 @@ class InterventionsController < ApplicationController
             :comment => { :value =>
               "#{employee_name} created a new intervention with the following customer: 
               #{Customer.find(@intervention.customer_id).company_contact_full_name} with #{Customer.find(@intervention.customer_id).company_name}, with the following informations: 
-              Building id: #{@intervention.building_id}, Battery id: #{@intervention.battery_id},
-              #{if @intervention.column_id != nil then 'Column id: ' end} #{if @intervention.column_id != nil then @intervention.column_id end} #{if @intervention.elevator_id != nil then ', Elevator id: ' end} #{if @intervention.elevator_id != nil then @intervention.elevator_id end}
-              The assigned employee is #{Employee.find(@intervention.employee_id).first_name} #{Employee.find(@intervention.employee_id).last_name}.
-              Description of the intervention: #{@intervention.report}"
-            },
+              #{Employee.find(@intervention.employee_id).first_name} #{Employee.find(@intervention.employee_id).last_name} is the assigned employee.
+              Description of the intervention: #{@intervention.report.to_s}.
+              Building id: #{@intervention.building_id}
+              Battery id: #{@intervention.battery_id} 
+              #{if @intervention.column_id != nil then 'Column id: ' end} #{if @intervention.column_id != nil then @intervention.column_id end} 
+              #{if @intervention.elevator_id != nil then 'Elevator id: ' end} #{if @intervention.elevator_id != nil then @intervention.elevator_id end}"
+             },
             :type => "problem",
             :priority => "normal")
       end
