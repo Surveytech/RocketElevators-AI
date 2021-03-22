@@ -25,4 +25,8 @@ Rails.application.routes.draw do
   get "/new", to: "registrations#new"
   get "/interventions", to: "interventions#index"
 
+  get 'get_buildings/', to: 'interventions#get_buildings'  
+  get 'get_batteries/', to: 'interventions#get_batteries'  
+  get 'get_columns/', to: 'interventions#get_columns'  
+
 end
