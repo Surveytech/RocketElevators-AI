@@ -1,5 +1,6 @@
+require 'zendesk_api'
 class InterventionsController < ApplicationController
-    # authorize_resource
+     authorize_resource
 
     def index   
         @customers = Customer.all  
@@ -19,13 +20,23 @@ class InterventionsController < ApplicationController
         @intervention.customer_id = intervention_params[:customer_id]
         @intervention.building_id = intervention_params[:building_id]
         @intervention.battery_id = intervention_params[:battery_id]
-        if intervention_params[:column_id] != 'none' then @intervention.column_id = intervention_params[:column_id] end
-        if intervention_params[:elevator_id] != 'none' then @intervention.elevator_id = intervention_params[:elevator_id] end
+        if intervention_params[:column_id] == 'None' || intervention_params[:column_id]
+            @intervention.column_id = nil
+        else
+            @intervention.column_id = intervention_params[:column_id] 
+        end
+        if intervention_params[:elevator_id] == 'None' || intervention_params[:elevator_id] == 0
+            @intervention.elevator_id = nil
+        else
+             @intervention.elevator_id = intervention_params[:elevator_id] 
+        end
         @intervention.save!
+        puts '=============================================================='
+        puts @intervention.id
 
         respond_to do |format|
             if @intervention.save!
-              # createTicket()
+              createTicket()
               format.html { redirect_to "/", notice: "Intervention was successfully created." }
             else
               format.html { redirect_to "/", notice: "There was an error creating the intervention" }
@@ -108,6 +119,29 @@ class InterventionsController < ApplicationController
             end
         end
     end
+
+    def createTicket()
+        client = ZendeskAPI::Client.new do |config|
+            config.url = ENV['ZENDESK_URL']
+            config.username = ENV['ZENDESK_EMAIL']
+            config.token = ENV['ZENDESK_API']
+          end
+
+          employee_name = (Employee.find(@intervention.author).first_name)
+    
+          ZendeskAPI::Ticket.create!(client,
+            :subject => "New Intervention by #{Employee.find(@intervention.author).first_name} #{Employee.find(@intervention.author).last_name}",
+            :comment => { :value =>
+              "#{employee_name} created a new intervention with the following customer: 
+              #{Customer.find(@intervention.customer_id).company_contact_full_name} with #{Customer.find(@intervention.customer_id).company_name}, with the following informations: 
+              Building id: #{@intervention.building_id}, Battery id: #{@intervention.battery_id},
+              #{if @intervention.column_id != nil then 'Column id: ' end} #{if @intervention.column_id != nil then @intervention.column_id end} #{if @intervention.elevator_id != nil then ', Elevator id: ' end} #{if @intervention.elevator_id != nil then @intervention.elevator_id end}
+              The assigned employee is #{Employee.find(@intervention.employee_id).first_name} #{Employee.find(@intervention.employee_id).last_name}.
+              Description of the intervention: #{@intervention.report}"
+            },
+            :type => "problem",
+            :priority => "normal")
+      end
 
     private 
 

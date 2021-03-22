@@ -7,6 +7,10 @@ jQuery(function(){
     $("#intervention_column_id").attr("class", "hidden");
     $("#elevator_label").attr("class", "hidden");
     $("#intervention_elevator_id").attr("class", "hidden");
+    $("#intervention_elevator_id").empty();
+    $("#intervention_column_id").empty();
+    $("#intervention_elevator_id").append('<option value="None">None</option>');
+    $("#intervention_column_id").append('<option value="None">None</option>');
     
     $("#intervention_customer_id").change(function(){
         var customer = $(this).val();
