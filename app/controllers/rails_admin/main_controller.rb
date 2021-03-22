@@ -11,7 +11,7 @@ module RailsAdmin
       before_action :check_for_cancel
 
     #   UNCOMMENT ME BEFORE DEPLOY
-       before_action :_greetings!
+      #  before_action :_greetings!
 
       RailsAdmin::Config::Actions.all.each do |action|
         class_eval <<-EOS, __FILE__, __LINE__ + 1

@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   get "/residential", to: "main#residential"
   get "/commercial", to: "main#commercial"
   get "/new", to: "registrations#new"
+  get "/interventions", to: "interventions#index"
 
 end
