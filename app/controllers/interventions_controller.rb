@@ -11,7 +11,26 @@ class InterventionsController < ApplicationController
     end
 
     def create 
-        
+        @intervention = Intervention.new
+        puts intervention_params
+
+        @intervention.author = current_user.id
+        @intervention.employee_id = intervention_params[:employee_id]
+        @intervention.customer_id = intervention_params[:customer_id]
+        @intervention.building_id = intervention_params[:building_id]
+        @intervention.battery_id = intervention_params[:battery_id]
+        if intervention_params[:column_id] != 'none' then @intervention.column_id = intervention_params[:column_id] end
+        if intervention_params[:elevator_id] != 'none' then @intervention.elevator_id = intervention_params[:elevator_id] end
+        @intervention.save!
+
+        respond_to do |format|
+            if @intervention.save!
+              # createTicket()
+              format.html { redirect_to "/", notice: "Intervention was successfully created." }
+            else
+              format.html { redirect_to "/", notice: "There was an error creating the intervention" }
+            end
+          end
     end
 
     def get_buildings
@@ -89,4 +108,18 @@ class InterventionsController < ApplicationController
             end
         end
     end
+
+    private 
+
+        def intervention_params
+            params.require(:intervention).permit(
+                :employee_id,
+                :customer_id,
+                :building_id,
+                :battery_id,
+                :column_id,
+                :elevator_id,
+                :report
+            )
+        end
 end
