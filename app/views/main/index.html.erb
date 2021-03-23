@@ -780,8 +780,8 @@
 									</div>
 							</div>
 							<div class="row">
-									<div class="col-md-12">
-										<%= f.file_field :file %>
+									<div class="col-md-6">
+										<%= f.file_field :file, class: "form-control" %>
 									</div>
 
 							</div><br />
@@ -793,7 +793,7 @@
 
 						<div class="field">
    								<%= flash[:recaptcha_error] %>
-    							<%= recaptcha_tags %>
+    							<%= recaptcha_tags theme: 'dark'%>
   						</div>
 
 
