@@ -18,22 +18,22 @@ class LeadsController < ApplicationController
 
   def create
     @badimg = false
-    image_annotator = Google::Cloud::Vision.image_annotator
+    # image_annotator = Google::Cloud::Vision.image_annotator
     if(lead_params[:file].present?)
       @file = lead_params[:file]
-      if (@file.content_type.to_s.include? "image/" )
-        response = image_annotator.safe_search_detection image: @file.tempfile
+      # if (@file.content_type.to_s.include? "image/" )
+      #   response = image_annotator.safe_search_detection image: @file.tempfile
 
-        response.responses.each do |res|
-          safe_search = res.safe_search_annotation
+      #   response.responses.each do |res|
+      #     safe_search = res.safe_search_annotation
 
-          if(safe_search.adult.to_s == "VERY_LIKELY" || safe_search.racy.to_s == "VERY_LIKELY" || safe_search.violence.to_s == "VERY_LIKELY")
-            @badimg = true
-          end
-        end
-      end
+      #     if(safe_search.adult.to_s == "VERY_LIKELY" || safe_search.racy.to_s == "VERY_LIKELY" || safe_search.violence.to_s == "VERY_LIKELY")
+      #       @badimg = true
+      #     end
+      #   end
+      # end
 
-      if(@badimg != true)
+      # if(@badimg != true)
         filename = @file.original_filename
         filedata = @file.read
         filetype = @file.content_type
@@ -44,18 +44,18 @@ class LeadsController < ApplicationController
         @lead.save
       end
 
-    else
-      @lead = Lead.new(lead_params.except(:file))
-      @lead.save
-    end
+    # else
+    #   @lead = Lead.new(lead_params.except(:file))
+    #   @lead.save
+    # end
 
 
     respond_to do |format|
       if (@badimg == true)
         format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
       elsif (verify_recaptcha(model: @lead) && @lead.save)
-        # createTicket()
-        # SendGridMailer.send_signup_email(@lead).deliver
+         createTicket()
+         SendGridMailer.send_signup_email(@lead).deliver
         format.html  { redirect_to "/", notice: 'Thank You!' }
       else
         format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }

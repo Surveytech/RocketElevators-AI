@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
     
     has_one :address
     has_many :buildings
-    has_many :fact_interventions, through: :building
+    has_many :fact_interventions
 
     after_create :dropbox_file
 
