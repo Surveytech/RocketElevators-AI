@@ -1,7 +1,7 @@
 require 'zendesk_api'
 require "google/cloud/vision"
 class LeadsController < ApplicationController
-
+@badImage
   def index
     @leads = Lead.all
   end
@@ -10,53 +10,74 @@ class LeadsController < ApplicationController
   end
 
   def new
-    @lead = Lead.new
+    # @lead = Lead.new
   end
 
   def edit
   end
+ 
+  def safeSearch(file)
+      image_annotator = Google::Cloud::Vision.image_annotator
 
-  def create
-    @badimg = false
-    # image_annotator = Google::Cloud::Vision.image_annotator
-    if(lead_params[:file].present?)
-      @file = lead_params[:file]
-      # if (@file.content_type.to_s.include? "image/" )
-      #   response = image_annotator.safe_search_detection image: @file.tempfile
-
-      #   response.responses.each do |res|
-      #     safe_search = res.safe_search_annotation
-
-      #     if(safe_search.adult.to_s == "VERY_LIKELY" || safe_search.racy.to_s == "VERY_LIKELY" || safe_search.violence.to_s == "VERY_LIKELY")
-      #       @badimg = true
-      #     end
-      #   end
-      # end
-
-      # if(@badimg != true)
-        filename = @file.original_filename
-        filedata = @file.read
-        filetype = @file.content_type
-        @lead = Lead.new(lead_params.except(:file))
-        @lead.file_data = filedata
-        @lead.file_name = filename
-        @lead.file_type = filetype
-        @lead.save
+      t = Tempfile.new.tap do |f|
+        f.write(open(file).read)
+        f.close
       end
 
-    # else
-    #   @lead = Lead.new(lead_params.except(:file))
-    #   @lead.save
-    # end
+      response = image_annotator.safe_search_detection image: t.path
 
+      t.unlink
+      response.responses.each do |res|
+        safe_search = res.safe_search_annotation
+        
+        adult = safe_search.adult
+        violence = safe_search.violence
+        racy = safe_search.racy
+        if(safe_search.adult.to_s == "VERY_LIKELY" || safe_search.adult.to_s == "LIKELY" || safe_search.racy.to_s == "VERY_LIKELY" || safe_search.racy.to_s == "LIKELY" || safe_search.violence.to_s == "VERY_LIKELY" || safe_search.violence.to_s == "LIKELY")
+          @badImage = true
+          puts '======================= BAD IMAGE ===================='
+        else
+          @badImage = false
+          puts '======================= GOOD IMAGE ===================='
+        end
+      end
+  end
+
+  def create
+    @badImage = false
+    if(lead_params[:file].present?)
+      file = lead_params[:file]
+
+      filename = file.original_filename
+      filedata = file.read
+      filetype = file.content_type
+      if (filetype.to_s.include? "image/" )
+        safeSearch(file)
+      end
+
+      @lead = Lead.new(lead_params.except(:file))
+      @lead.file_data = filedata
+      @lead.file_name = filename
+      @lead.file_type = filetype
+      @lead.save
+    else
+      @lead = Lead.new(lead_params.except(:file))
+      @lead.save
+    end        
 
     respond_to do |format|
-      if (@badimg == true)
-        format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
-      elsif (verify_recaptcha(model: @lead) && @lead.save)
+      if (verify_recaptcha(model: @lead) && @lead.save)
          createTicket()
-         SendGridMailer.send_signup_email(@lead).deliver
-        format.html  { redirect_to "/", notice: 'Thank You!' }
+         SendGridMailer.send_signup_email(@lead).deliver 
+         if @badImage == true 
+          @lead.file_name = nil 
+          @lead.file_type = nil
+          @lead.file_data = nil
+          @lead.save!
+          format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements but your form was successfully saved" }
+         elsif @badImage == false
+          format.html  { redirect_to "/", notice: 'Thank You!' }
+         end 
       else
         format.html  { redirect_to "/", notice: "Sorry the file didn't pass our requirements." }
       end
