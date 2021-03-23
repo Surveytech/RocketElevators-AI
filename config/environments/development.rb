@@ -62,11 +62,11 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_options = { from: 'marie.eve.goupil@gmail.com' }
+  config.action_mailer.default_options = { from: 'nordik.tommy@gmail.com' }
   config.action_mailer.default_url_options = { host: 'tommycote.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    from: 'marie.eve.goupil@gmail.com',
+    from: 'nordik.tommy@gmail.com',
     user_name: 'apikey',
     password: ENV['SENDGRID_API_KEY'],
     address: 'smtp.sendgrid.net',

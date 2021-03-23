@@ -5,5 +5,6 @@ class Building < ApplicationRecord
     has_many :columns
     has_many :elevators
     has_many :fact_interventions
+    has_many :interventions
     has_many :building_details
 end

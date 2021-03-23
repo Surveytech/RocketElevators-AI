@@ -1,5 +1,5 @@
 class SendGridMailer < ApplicationMailer
-    default from: 'marie.eve.goupil@gmail.com'
+    default from: 'nordik.tommy@gmail.com'
 
     # send a signup email to the user, pass in the user object that   contains the user's email address
     def send_signup_email(lead)

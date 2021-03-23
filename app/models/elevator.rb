@@ -31,7 +31,7 @@ class Elevator < ApplicationRecord
                 to_phone = ENV['PHONE_NUMBER']
                 from_phone = ENV['PHONE_NUMBER_TWILIO']
 
-
+                
                 message = @client.messages.create(
                     body: "Hi #{name} the elevator with id #{self.id} and serial_number #{self.serial_number} is in Intervention",
                     from: from_phone,

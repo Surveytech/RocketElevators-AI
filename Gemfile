@@ -27,7 +27,9 @@ gem 'simple_form'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 #gem 'font-awesome-sass', '~> 4.3.0'
-gem 'jquery-ui-rails'
+# gem 'jquery-ui-rails'
+gem 'jquery-rails'
+
 gem 'bootstrap-social-rails'
 
 gem "font-awesome-rails"

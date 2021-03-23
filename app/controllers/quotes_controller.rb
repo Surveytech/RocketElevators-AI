@@ -34,7 +34,7 @@ class QuotesController < ApplicationController
     end
     respond_to do |format|
       if @quote
-        createTicket()
+        # createTicket()
         format.html { redirect_to "/", notice: "Quote was successfully created." }
         format.json { render :show, status: :created, location: @quote }
       else

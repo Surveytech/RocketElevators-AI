@@ -33,3 +33,4 @@
 
 //= require chartkick
 //= require Chart.bundle
+//= require interventions
