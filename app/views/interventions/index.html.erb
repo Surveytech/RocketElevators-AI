@@ -15,7 +15,7 @@
                     options_from_collection_for_select(Employee.all, "id", "first_name", "last_name"), {prompt: 'Select an Employee'}, required: true, class: "form-control"%><br/>
               
                 <%= f.label :report, 'Enter a description', id: 'report_label'%>
-                <%= f.text_field :report, class:"form-control", required: true%><br/>
+                <%= f.text_area :report, class:"form-control", required: true%><br/>
                 
                 <%= f.submit 'Submit', data: { confirm: "Are you sure?" }, class: 'btn btn-outline-secondary form-control'%>
             </div>
