@@ -2,9 +2,9 @@ require 'dropbox'
 
 class Customer < ApplicationRecord
     
-    has_one :address
+    belongs_to :address
     has_many :buildings
-    has_many :fact_interventions
+    # has_many :fact_interventions
 
     after_create :dropbox_file
 

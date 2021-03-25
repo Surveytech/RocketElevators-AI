@@ -3,8 +3,8 @@ require 'httparty'
 class Elevator < ApplicationRecord
     include ActiveModel::Dirty
     belongs_to :column
-    belongs_to :battery , optional: true
-    belongs_to :building, optional: true
+    # belongs_to :battery , optional: true
+    # belongs_to :building, optional: true
 
     before_update :sendMsg
     before_update :check_intervention
