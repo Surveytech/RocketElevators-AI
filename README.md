@@ -100,7 +100,6 @@
 
 > That step created the database, migrated, and seeded it
 
----
 
 ## :pencil2: To Run The Application
 - To start the rails server you need to run the following command: `rails s`
@@ -111,7 +110,6 @@
 
 > This started the rails server on localhost:3000
 
----
 
 ## :large_blue_circle: Now That The Server Is Running
 
@@ -129,8 +127,7 @@
   2. Employee User :arrow_right: email: `The employee's email` password: `123456`
 
 - To access the back office hover over your name at the right of the top nav bar  then click back office
-  
----
+
 
 ## :small_blue_diamond: Some Extra Information About The Project
 
