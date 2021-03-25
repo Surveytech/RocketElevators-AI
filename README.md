@@ -5,7 +5,7 @@
     <img src="app/assets/images/R2.png" alt="Logo" width="35%">
   </a>
 
-  <h2 align="center">Rocket Elevators Foundation 🚀</h2>
+  <h3 align="center">Rocket Elevators Foundation 🚀</h3>
 
   <p align="center">
     This a rails application for Rocket Elevators.
