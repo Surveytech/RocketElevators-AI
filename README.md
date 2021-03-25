@@ -43,10 +43,7 @@
     </li>
     <li><a href="#large_blue_circle-now-that-the-server-is-running">Now That The Server Is Running</a></li>
     <li><a href="#small_blue_diamond-some-extra-information-about-the-project">Extra Information About The Project</a></li>
-    <li><a href="#more-information-about-the-apis">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#more-information-about-the-apis">Information about the APIs</a></li>
   </ol>
 </details>
 
