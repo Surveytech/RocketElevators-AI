@@ -35,18 +35,15 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#installation">Installation</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#pencil2-to-setup-the-database">Setup The Database</a></li>
+        <li><a href="#pencil2-to-run-the-application">Run The Application</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#large_blue_circle-now-that-the-server-is-running">Now That The Server Is Running</a></li>
+    <li><a href="#small_blue_diamond-some-extra-information-about-the-project">Extra Information About The Project</a></li>
+    <li><a href="#more-information-about-the-apis">Information about the APIs</a></li>
   </ol>
 </details>
 
@@ -97,7 +94,7 @@
 - Once you have edited your database.yml with the correct infos :arrow_heading_down:
 - Run the following command: `rails db:setup`
 
-<a href="">
+<a href="https://github.com/CoteTommy/CoteTommy/blob/main/runDbSetup.gif?raw=true">
     <img src="https://github.com/CoteTommy/CoteTommy/blob/main/runDbSetup.gif?raw=true" alt="dbsetup" width="40%">
 </a>
 
@@ -108,7 +105,7 @@
 ## :pencil2: To Run The Application
 - To start the rails server you need to run the following command: `rails s`
 
-<a href="">
+<a href="https://github.com/CoteTommy/CoteTommy/blob/main/runRailsServer.gif?raw=true">
     <img src="https://github.com/CoteTommy/CoteTommy/blob/main/runRailsServer.gif?raw=true" alt="dbsetup" width="40%">
 </a>
 
@@ -122,7 +119,7 @@
 
 - Then you can login by clicking the button on the top right
   
-<a href="">
+<a href="https://github.com/CoteTommy/CoteTommy/blob/main/topnav.png?raw=true">
     <img src="https://github.com/CoteTommy/CoteTommy/blob/main/topnav.png?raw=true" alt="dbsetup" width="40%">
 </a>
 
@@ -135,9 +132,9 @@
   
 ---
 
-### :small_blue_diamond: Some Extra Information About The Project
+## :small_blue_diamond: Some Extra Information About The Project
 
-#### This responsive website has:
+### This responsive website has:
 
 - Admin dashboard allowing the following:
   - View/Edit/Delete everything in the database
@@ -162,13 +159,13 @@
 
 
    
-#### More information about the APIs
+### More information about the APIs
 
 - Google Maps API
   - It display our customer information based on the geolocalisation of their building in our database
   - It is only accessible trough the admin section on the site
 <div align="center">
-  <a href="">
+  <a href="app/assets/images/readMe/gmaps.png">
     <img src="app/assets/images/readMe/gmaps.png" alt="dbsetup" width="50%">
   </a>
 </div>
@@ -188,8 +185,8 @@
 - Sendgrid API:
     - When a contact complete a "Contact Us" form a confirmation email is send to the provided contact's email.
 <div align="center">  
-  <a href="">
-      <img src="app/assets/images/readMe/confirmationEmail.png" alt="email" width="30%">
+  <a href="app/assets/images/readMe/confirmationEmail.png">
+      <img src="app/assets/images/readMe/confirmationEmail.png" alt="email" width="45%">
   </a>
 </div>
 
@@ -205,7 +202,7 @@
     - Those info are dynamic and change when the admin page is loaded.
 <div align="center">
   <a href="">
-      <img src="app/assets/images/readMe/IBM_Watson_player.png" alt="watson" width=20%>
+      <img src="app/assets/images/readMe/IBM_Watson_player.png" alt="watson" width=25%>
   </a>
 </div>
 
