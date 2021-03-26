@@ -13,15 +13,25 @@
     <a href="https://github.com/CoteTommy/Rocket-Elevator-Foundation"><strong>Explore the project »</strong></a>
     <br />
     <br />
-    <a href="http://tommycote.com/">View Demo</a>
+    <a href="http://tommycote.com/">View Website</a>
     ·
     <a href="https://github.com/CoteTommy/Rocket-Elevator-Foundation/issues">Report Bug</a>
     ·
     <a href="https://github.com/CoteTommy/Rocket-Elevator-Foundation/issues">Request Feature</a>
+    <br />
+    <a href="https://github.com/CoteTommy/Rocket-Elevator-Foundation-REST">REST API Repo</a>
+    .
+    <a href="https://github.com/CoteTommy/Rocket-Elevator-Foundation-Graphql">Graphql API Repo</a>
   </p>
 </p>
 
-
+```html
+Main Website: http://tommycote.com/
+Rest Repo: https://github.com/CoteTommy/Rocket-Elevator-Foundation-REST
+Rest URL: https://rocketfoundationrestapi.herokuapp.com/
+Graphql Repo: https://github.com/CoteTommy/Rocket-Elevator-Foundation-Graphql
+Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
+```
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
