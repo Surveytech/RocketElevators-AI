@@ -15,9 +15,7 @@
     <br />
     <a href="http://tommycote.com/">View Website</a>
     ·
-    <a href="https://github.com/CoteTommy/Rocket-Elevator-Foundation/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/CoteTommy/Rocket-Elevator-Foundation/issues">Request Feature</a>
+    <a href="https://tommyrocket.zendesk.com/">Zendesk Dashboard</a>
     <br />
     <a href="https://github.com/CoteTommy/Rocket-Elevator-Foundation-REST">REST API Repo</a>
     .
@@ -27,6 +25,7 @@
 
 ```html
 Main Website: http://tommycote.com/
+Zendesk Dashboard: https://tommyrocket.zendesk.com/
 Rest Repo: https://github.com/CoteTommy/Rocket-Elevator-Foundation-REST
 Rest URL: https://rocketfoundationrestapi.herokuapp.com/
 Graphql Repo: https://github.com/CoteTommy/Rocket-Elevator-Foundation-Graphql
