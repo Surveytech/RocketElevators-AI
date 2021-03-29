@@ -32,4 +32,8 @@ Rails.application.routes.draw do
   get 'get_columns/', to: 'interventions#get_columns'  
   get 'get_elevators/', to: 'interventions#get_elevators'  
 
+
+  get "test", to: "test#index"
+  get "test2", to: "test#test2"
+
 end

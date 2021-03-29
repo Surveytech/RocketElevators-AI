@@ -3,6 +3,9 @@ RailsAdmin.config do |config|
   require Rails.root.join('lib', 'rails_admin', 'map.rb')
   RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Map)
 
+  require Rails.root.join('lib', 'rails_admin', 'streamer.rb')
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Streamer)
+
   config.main_app_name = ["Rocket Elevators", "BackOffice"]
 
   # == Devise ==
@@ -31,6 +34,7 @@ RailsAdmin.config do |config|
     delete
     show_in_app
     map
+    streamer
 
   end
 end
