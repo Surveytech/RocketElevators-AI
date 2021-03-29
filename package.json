@@ -1,0 +1,27 @@
+{
+  "name": "Rocket-Elevators-Media-Streamer",
+  "version": "1.0.0",
+  "description": "<br /> <p align=\"center\">   <a href=\"https://github.com/CoteTommy/Rocket-Elevator-Foundation\">     <img src=\"app/assets/images/R2.png\" alt=\"Logo\" width=\"35%\">   </a>",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoteTommy/Rocket-Elevators-Media-Streamer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoteTommy/Rocket-Elevators-Media-Streamer/issues"
+  },
+  "homepage": "https://github.com/CoteTommy/Rocket-Elevators-Media-Streamer#readme"
+}

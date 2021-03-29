@@ -116,6 +116,8 @@ group :development do
   gem 'capistrano-bundler', '>= 1.1.0'
   gem 'rvm1-capistrano3', require: false
   gem 'capistrano3-puma'
+  gem "webmock"
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :test do
@@ -128,18 +130,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+gem 'multiverse'
 # PostGres
 gem 'pg'
-gem 'multiverse'
 gem 'csv'
-
-
+gem 'rake'
 # YAML: Read Write Parse .yml doc
 gem 'yaml'
-gem 'rake'
-
-
-
 # reCaptcha
 gem 'recaptcha', :require => 'recaptcha/rails'
