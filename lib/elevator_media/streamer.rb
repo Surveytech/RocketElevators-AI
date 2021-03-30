@@ -9,8 +9,20 @@ module ElevatorMedia
             weather = client.current_weather(city: "#{city}")
             # puts weather
             response = JSON.parse(weather.to_json)
-
-            html = "<div><h2 class='fw-600 fs-36 font-roboto' style='text-align: center'>It feels like #{response['main']['feels_like']}°C in #{response['name']} and is currently #{response['dt']} </h2></div>".html_safe
+            # a = response["weather"].JSON.stringify(Object.assign({}, arr));
+            puts '=-0=-=-=0=-0=-0=-0=-0=-0=-0'
+            puts response['weather']
+            html = "
+                <div class='row wow slideInUp' data-wow-duration='1s'>
+                <div class='col-md-4 col-md-offset-4'> 
+                <h2 class='fw-600 fs-36 font-roboto' style='text-align: center'>
+                <img src='#{response['weather'][0]['icon_uri']}' alt='weather_ico'><br />
+                It feels like #{response['main']['feels_like']}°C in #{response['name']} 
+                </h2>
+                </div>
+                </div>".html_safe
+        
+        
         end
 
         # def getContent(city = nil, lat = nil, lng = nil)

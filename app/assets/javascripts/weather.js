@@ -22,7 +22,7 @@ jQuery(function(){
             console.log("heyy");  
             // var weather = response
             $(document)
-                .find('#weathertest')
+                .find('#weather')
                 .empty()
                 .append( response )
             console.log(response);            
