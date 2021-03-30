@@ -20,7 +20,7 @@ describe ElevatorMedia::Streamer do
 
     context 'Get weather info from getContent' do 
         it 'return infos' do 
-            expect(streamer.getContent('Levis')).not_to be_nil
+            expect(streamer.getContent('1','Levis')).not_to be_nil
         end
     end
 
@@ -33,9 +33,51 @@ describe ElevatorMedia::Streamer do
 
     context 'Get html from getContent' do
         it 'Returns html!' do 
-            puts (streamer.getContent('Lévis')).html_safe
-            expect((streamer.getContent('Lévis')).html_safe).to include('<div>')
+            # puts (streamer.getContent('Lévis')).html_safe
+            expect((streamer.getContent('1','Lévis')).html_safe).to include('div')
         end
     end
+
+    context 'Does getJoke exists?' do
+        it 'it exist' do
+            expect(streamer).to respond_to(:getJoke)
+        end
+    end
+
+    context 'Does getJoke return a joke?' do 
+        it 'It returns a joke' do 
+            expect(streamer.getJoke).to include('id')
+        end
+    end
+
+    context 'Does getGif exists?' do
+        it 'it exist' do
+            expect(streamer).to respond_to(:getGif)
+        end
+    end
+
+    context 'Does getGif return an url?' do 
+        it 'It returns an url' do 
+            expect(streamer.getGif).to include('.com')
+        end
+    end
+
+    context 'Get Gif html by getContent' do 
+        it 'It returns a valid html' do 
+            expect(streamer.getContent('3')).to include('div')
+        end
+    end
+
+    context 'Does getAdvice exists?' do
+        it 'it exist' do
+            expect(streamer).to respond_to(:getAdvice)
+        end
+    end  
+
+    context 'Get advice returns something?' do
+        it 'it does' do
+            expect(streamer.getAdvice).not_to be_empty
+        end
+    end  
 
 end

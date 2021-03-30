@@ -1,70 +1,81 @@
 require "json"
+require 'httparty'
 module ElevatorMedia
     class Streamer   
-        # @streamer = Streamer.new
-        
 
-        def getContent(city)
+        # @streamer = Streamer.new       
 
+        def getContent(selected, city = nil)
+
+            case selected               
+            when "1"
+                response = self.getWeather(city)
+                html = "
+                    <div class='row wow slideInUp' data-wow-duration='1s'>
+                    <div class='col-md-4 col-md-offset-4'> 
+                    <h2 class='fw-600 fs-36 font-roboto' style='text-align: center'>
+                    <img src='#{response['weather'][0]['icon_uri']}' alt='weather_ico'><br />
+                    It feels like #{response['main']['feels_like']}°C in #{response['name']} 
+                    </h2>
+                    </div>
+                    </div>".html_safe
+            when "2"
+                response = JSON.parse(self.getJoke)
+                html = "<div class='row wow slideInUp' data-wow-duration='1s'><div class='col-md-4 col-md-offset-4'><p class='fs-18 font-roboto' style='text-align: center'>
+                        <img src='#{response['icon_url']}' alt='chuck_ico'><br />
+                        #{response['value']}</p></div></div>".html_safe
+            when "3"
+                response = self.getGif
+                html = "<div class='row wow slideInUp' data-wow-duration='1s'><div class='col-md-4 col-md-offset-4'><h2 class='fs-36 font-roboto' style='text-align: center'>
+                        <img src='#{response}' alt='gif'><br />
+                        </h2></div></div>".html_safe
+            when "4"
+                response = self.getAdvice
+                html = "<div class='row wow slideInUp' data-wow-duration='1s'><div class='col-md-4 col-md-offset-4'><p class='fs-20 font-roboto line-height-30' style='text-align: center'>                     
+                        #{response['slip']['advice']}</p></div></div>".html_safe            
+            when "5"
+                response = self.getProgJoke
+                html = "<div class='row wow slideInUp' data-wow-duration='1s'><div class='col-md-4 col-md-offset-4'><p class='fs-20 font-roboto line-height-30' style='text-align: center'>                     
+                        #{response}</p></div></div>".html_safe     
+            when "6"
+                response = self.getDarkJoke
+                html = "<div class='row wow slideInUp' data-wow-duration='1s'><div class='col-md-4 col-md-offset-4'><p class='fs-20 font-roboto line-height-30' style='text-align: center'>                     
+                        #{response}</p></div></div>".html_safe
+            else
+                puts 'error!'
+            end
+            
+        end
+
+        def getWeather(city)
             client = OpenWeather::Client.new
             weather = client.current_weather(city: "#{city}")
             response = JSON.parse(weather.to_json)
-            html = "
-                <div class='row wow slideInUp' data-wow-duration='1s'>
-                <div class='col-md-4 col-md-offset-4'> 
-                <h2 class='fw-600 fs-36 font-roboto' style='text-align: center'>
-                <img src='#{response['weather'][0]['icon_uri']}' alt='weather_ico'><br />
-                It feels like #{response['main']['feels_like']}°C in #{response['name']} 
-                </h2>
-                </div>
-                </div>".html_safe
         end
 
-        # def getContent(city = nil, lat = nil, lng = nil)
-        #     # options = { units: "metric", APPID: ENV['OPEN_WEATHER_API'] }
+        def getJoke
+            response = HTTParty.get('https://api.chucknorris.io/jokes/random')   
+            response.body       
+        end
 
-        #     if ((city != nil) || (lat != nil && lng != nil))
-        #         weather = self.getWeather(city, lat, lng)
-        #         puts "======================================================"
-        #         puts weather
-        #         puts "======================================================"
-        #     else 
-        #         puts 'Error parameters are not supported' 
-        #     end
+        def getGif
+            response = HTTParty.get("http://api.giphy.com/v1/gifs/random?api_key=#{ENV['GIPHY_API_KEY']}&rating=r&tag=cat")   
+            response = response['data']['images']['original']['url']    
+        end
 
-        #     # Check in the response if there is a
-        # #    if weather["cod"] == 404
-        # #         puts "Error 404 getting the weather"
-        # #    else
-        #     response = JSON.parse(weather.to_json)
-        #     # response = response.to_json
-        #     puts response['main']['feels_like']
-        #     # puts response['description']
-        #     # weather2 = weather1["main"]
-        #     html = "<h2>It feels like #{response['main']['feels_like']}°C in #{city} </h2>".html_safe
-        #     # html = "hey"
-        #     # weather = self.getWeather(params)
-            
-        #     # Convert the response to json °C
-        #     # response = JSON.parse(weather)
-        #     # puts html
-        #     # return html
-        # end
+        def getAdvice
+            response = HTTParty.get("https://api.adviceslip.com/advice")
+            response = JSON.parse(response.body)
+        end
 
-        def getWeather(city = nil, lat = nil, lng = nil)
-            options = { units: "metric", APPID: ENV['OPEN_WEATHER_API'] }
-            if !(city.nil?)
-                # get current weather by city name
-                weather = OpenWeather::Current.city(city, options)
-            elsif !(lat.nil? && lon.nil?)
-                # get current weather by position (latitude,longitude)
-                weather = OpenWeather::Current.geocode(lat, lng, ENV['OPEN_WEATHER_OPTIONS'])
-            else
-                puts 'Error getting the weather!'
-            end
-            weather 
-            # = Json.parse(weather.to_json)
-            #render :json => weather.to_json
+        def getProgJoke
+            response = HTTParty.get("https://v2.jokeapi.dev/joke/Programming?type=single")
+            response = JSON.parse(response.body)['joke']
+        end
+
+        def getDarkJoke
+            response = HTTParty.get("https://v2.jokeapi.dev/joke/Dark?type=single")
+            response = JSON.parse(response.body)['joke']
         end
     end
 end
