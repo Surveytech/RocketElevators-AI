@@ -34,3 +34,5 @@
 //= require chartkick
 //= require Chart.bundle
 //= require interventions
+//= require streamer
+//= require weather

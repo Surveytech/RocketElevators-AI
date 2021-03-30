@@ -1,0 +1,19 @@
+
+<section class="dark">
+<h1> hello world</h1>
+<%# <%= render 'weather'%> 
+<%= render partial: "weather" %>
+<div id="weathertest"></div>
+    <%# <div>
+        <input type="text" id="city" name="city" class="form-control"><br>
+        <button type="button" class="btn btn-primary form-control"id="btn_next">Next</button>
+    </div> %>
+
+    <%# <%= form_for(@streamer,:html=>{:id=>"getCity",:multipart => true,:remote=>true}) do |f |%> 
+    <%= form_for :getWeather, :html=>{:id=>"getCity",:multipart => true,:remote=>true} do |f| %>
+        <%= f.label :city, 'Enter a city', id: 'city_label' %>
+        <%= f.text_field :city, class:"form-control", required: true %><br/>
+        <%= f.submit 'Submit', id: 'city_btn', class: 'btn btn-outline-secondary form-control'%>
+    <%end%>
+
+</section>

@@ -21,15 +21,19 @@ module ElevatorMedia
         #    if weather["cod"] == 404
         #         puts "Error 404 getting the weather"
         #    else
-
-            html = "<body><div> #{weather['weather']}, this is a great test!</div></body>"
-
+            response = JSON.parse(weather.to_json)
+            # response = response.to_json
+            puts response['main']['feels_like']
+            # puts response['description']
+            # weather2 = weather1["main"]
+            html = "<h2>It feels like #{response['main']['feels_like']}°C in #{city} </h2>".html_safe
+            # html = "hey"
             # weather = self.getWeather(params)
             
             # Convert the response to json °C
             # response = JSON.parse(weather)
-            puts html
-            return html
+            # puts html
+            # return html
         end
 
         def getWeather(city = nil, lat = nil, lng = nil)
