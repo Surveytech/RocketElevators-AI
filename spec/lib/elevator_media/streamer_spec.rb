@@ -2,6 +2,7 @@ require 'elevator_media/streamer.rb'
 require 'rails_helper'
 
 describe ElevatorMedia::Streamer do
+
     # Streamer var init
     let!(:streamer){ElevatorMedia::Streamer.new}
 
@@ -17,9 +18,23 @@ describe ElevatorMedia::Streamer do
         end
     end
 
-    context 'Get weather info' do 
+    context 'Get weather info from getContent' do 
         it 'return infos' do 
-            expect(streamer.getWeather('Levis')).not_to be_nil
+            expect(streamer.getContent('Levis')).not_to be_nil
+        end
+    end
+
+    context 'City name from the query should be Charlesbourg' do 
+        it "It works!" do          
+            response = OpenWeather::Client.new.current_weather(city: "Charlesbourg")
+            expect((JSON.parse(response.to_json)['name']) == 'Charlesbourg')
+        end
+    end    
+
+    context 'Get html from getContent' do
+        it 'Returns html!' do 
+            puts (streamer.getContent('Lévis')).html_safe
+            expect((streamer.getContent('Lévis')).html_safe).to include('<div>')
         end
     end
 

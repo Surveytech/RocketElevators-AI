@@ -1,14 +1,6 @@
-# require 'open_weather'
 require "json"
 module ElevatorMedia
-    class Streamer
-
-        OpenWeather::Client.configure do |config|
-            config.api_key = "#{ENV['OPEN_WEATHER_API']}"
-            config.user_agent = 'OpenWeather Ruby Client/1.0'
-            config.units = 'metric'
-          end
-          
+    class Streamer   
         # @streamer = Streamer.new
         
 
@@ -18,7 +10,7 @@ module ElevatorMedia
             # puts weather
             response = JSON.parse(weather.to_json)
 
-            html = "<h2 class='fw-600 fs-36 font-roboto' style='text-align: center'>It feels like #{response['main']['feels_like']}°C in #{response['name']} and is currently #{response['dt']} </h2>".html_safe
+            html = "<div><h2 class='fw-600 fs-36 font-roboto' style='text-align: center'>It feels like #{response['main']['feels_like']}°C in #{response['name']} and is currently #{response['dt']} </h2></div>".html_safe
         end
 
         # def getContent(city = nil, lat = nil, lng = nil)
