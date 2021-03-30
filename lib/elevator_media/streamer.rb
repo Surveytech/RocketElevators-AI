@@ -5,13 +5,10 @@ module ElevatorMedia
         
 
         def getContent(city)
+
             client = OpenWeather::Client.new
             weather = client.current_weather(city: "#{city}")
-            # puts weather
             response = JSON.parse(weather.to_json)
-            # a = response["weather"].JSON.stringify(Object.assign({}, arr));
-            puts '=-0=-=-=0=-0=-0=-0=-0=-0=-0'
-            puts response['weather']
             html = "
                 <div class='row wow slideInUp' data-wow-duration='1s'>
                 <div class='col-md-4 col-md-offset-4'> 
@@ -21,8 +18,6 @@ module ElevatorMedia
                 </h2>
                 </div>
                 </div>".html_safe
-        
-        
         end
 
         # def getContent(city = nil, lat = nil, lng = nil)

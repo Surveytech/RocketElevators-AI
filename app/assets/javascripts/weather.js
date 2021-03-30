@@ -1,33 +1,34 @@
-jQuery(function(){
-    console.log("LOADED");
-    $("#city_btn").click(function(){
-        // $.ajax({
-        //     type:'POST',
-        //     url:'/getWeather',
-        //     data: { id: "demo.html" },
-        //     success:function(result){
-        //     $("#lesson").html(result);
-        //     }
-        // }); var customer = $(this).val();
-
-        var city = $("#getWeather_city").val();
-        console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-        console.log(city)
-        $.ajax({
-        url: "/getWeather",
-        method: "GET",  
-        // dataType: "json",
-        data: {city: city},
-        success: function (response) {
-            console.log("heyy");  
-            // var weather = response
-            $(document)
-                .find('#weather')
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        // console.log(navigator.geolocation.getCurrentPosition.coords.latitude);
+        // console.log(navigator.geolocation.getCurrentPosition.coords.longitude);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude);
+    console.log("Longitude: " + position.coords.longitude);
+    $(document)
+                .find('#weathertest')
                 .empty()
-                .append( response )
-            console.log(response);            
-        }
-    });
+                .append( position.coords.latitude, position.coords.longitude )
+}
 
+jQuery(function(){
+    $("#city_btn").click(function(){
+        var city = $("#getWeather_city").val();
+        $.ajax({
+            url: "/getWeather",
+            method: "GET",  
+            data: {city: city},
+            success: function (response) {
+                $(document)
+                    .find('#weather')
+                    .empty()
+                    .append( response )        
+            }
+         });
     });
 });
