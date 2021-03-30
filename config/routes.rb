@@ -35,5 +35,11 @@ Rails.application.routes.draw do
 
   get "test", to: "test#index"
   get "test2", to: "test#test2"
+  post "test2", to: "media#getContent"
+
+  post 'form_path', to: 'media#getContent'
+
+  post '/getWeather', to: 'media#getContent'
+  
 
 end

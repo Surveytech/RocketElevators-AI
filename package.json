@@ -2,6 +2,7 @@
   "dependencies": {
     "@babel/preset-react": "^7.13.13",
     "@rails/webpacker": "5.2.1",
+    "axios": "^0.21.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.6.0",
     "google-maps-react": "^2.0.6",
