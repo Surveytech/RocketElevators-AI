@@ -11,6 +11,7 @@ jQuery(function(){
         // }); var customer = $(this).val();
 
         var city = $("#getWeather_city").val();
+        console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
         console.log(city)
         $.ajax({
         url: "/getWeather",
@@ -22,6 +23,7 @@ jQuery(function(){
             // var weather = response
             $(document)
                 .find('#weathertest')
+                .empty()
                 .append( response )
             console.log(response);            
         }

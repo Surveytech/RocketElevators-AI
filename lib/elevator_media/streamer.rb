@@ -1,46 +1,62 @@
-require 'open_weather'
+# require 'open_weather'
 require "json"
 module ElevatorMedia
     class Streamer
 
+        OpenWeather::Client.configure do |config|
+            config.api_key = "#{ENV['OPEN_WEATHER_API']}"
+            config.user_agent = 'OpenWeather Ruby Client/1.0'
+            config.units = 'metric'
+          end
+          
         # @streamer = Streamer.new
+        
 
-        def getContent(city = nil, lat = nil, lng = nil)
-            # options = { units: "metric", APPID: ENV['OPEN_WEATHER_API'] }
-
-            if ((city != nil) || (lat != nil && lng != nil))
-                weather = self.getWeather(city, lat, lng)
-                puts "======================================================"
-                puts weather
-                puts "======================================================"
-            else 
-                puts 'Error parameters are not supported' 
-            end
-
-            # Check in the response if there is a
-        #    if weather["cod"] == 404
-        #         puts "Error 404 getting the weather"
-        #    else
+        def getContent(city)
+            client = OpenWeather::Client.new
+            weather = client.current_weather(city: "#{city}")
+            # puts weather
             response = JSON.parse(weather.to_json)
-            # response = response.to_json
-            puts response['main']['feels_like']
-            # puts response['description']
-            # weather2 = weather1["main"]
-            html = "<h2>It feels like #{response['main']['feels_like']}°C in #{city} </h2>".html_safe
-            # html = "hey"
-            # weather = self.getWeather(params)
-            
-            # Convert the response to json °C
-            # response = JSON.parse(weather)
-            # puts html
-            # return html
+
+            html = "<h2 class='fw-600 fs-36 font-roboto' style='text-align: center'>It feels like #{response['main']['feels_like']}°C in #{response['name']} and is currently #{response['dt']} </h2>".html_safe
         end
+
+        # def getContent(city = nil, lat = nil, lng = nil)
+        #     # options = { units: "metric", APPID: ENV['OPEN_WEATHER_API'] }
+
+        #     if ((city != nil) || (lat != nil && lng != nil))
+        #         weather = self.getWeather(city, lat, lng)
+        #         puts "======================================================"
+        #         puts weather
+        #         puts "======================================================"
+        #     else 
+        #         puts 'Error parameters are not supported' 
+        #     end
+
+        #     # Check in the response if there is a
+        # #    if weather["cod"] == 404
+        # #         puts "Error 404 getting the weather"
+        # #    else
+        #     response = JSON.parse(weather.to_json)
+        #     # response = response.to_json
+        #     puts response['main']['feels_like']
+        #     # puts response['description']
+        #     # weather2 = weather1["main"]
+        #     html = "<h2>It feels like #{response['main']['feels_like']}°C in #{city} </h2>".html_safe
+        #     # html = "hey"
+        #     # weather = self.getWeather(params)
+            
+        #     # Convert the response to json °C
+        #     # response = JSON.parse(weather)
+        #     # puts html
+        #     # return html
+        # end
 
         def getWeather(city = nil, lat = nil, lng = nil)
             options = { units: "metric", APPID: ENV['OPEN_WEATHER_API'] }
             if !(city.nil?)
                 # get current weather by city name
-                weather = OpenWeather::Current.city("#{city}", options)
+                weather = OpenWeather::Current.city(city, options)
             elsif !(lat.nil? && lon.nil?)
                 # get current weather by position (latitude,longitude)
                 weather = OpenWeather::Current.geocode(lat, lng, ENV['OPEN_WEATHER_OPTIONS'])

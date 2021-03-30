@@ -21,7 +21,8 @@ gem 'webpacker'
 gem 'react-rails' 
 
 # Open Weather Wrapper 
-gem 'open-weather'
+# gem 'open-weather'
+gem 'open-weather-ruby-client'
 
 # Authentication solution
 gem 'devise'

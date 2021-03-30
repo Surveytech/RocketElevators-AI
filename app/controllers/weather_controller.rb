@@ -9,13 +9,20 @@ class WeatherController < ApplicationController
         
     end
 
-    def getContent(city = nil, lat = nil, lng = nil)
+    def getContent
         # puts params[:content][:city]
         # let!(:streamer){ElevatorMedia::Streamer.new}
         @streamer = ElevatorMedia::Streamer.new
         # weather = @streamer.getWeather(city)
         # html = @streamer.getContent(params[:city])
-        html = @streamer.getContent(params[:city])
+        puts params
+        # puts params[:getWeather][:city]
+        city = params[:city]
+        if !(city.nil?)
+           html = @streamer.getContent(city)
+        else
+            html = ""
+        end
         # render html: "<strong>Not Found</strong>".html_safe
          puts '======================================================'
          puts html.html_safe

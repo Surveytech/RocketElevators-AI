@@ -47,3 +47,4 @@ hello_world.ogg
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.notes
