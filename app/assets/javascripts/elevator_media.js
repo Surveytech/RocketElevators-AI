@@ -1,20 +1,20 @@
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-        // console.log(navigator.geolocation.getCurrentPosition.coords.latitude);
-        // console.log(navigator.geolocation.getCurrentPosition.coords.longitude);
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
-}
-function showPosition(position) {
-    console.log("Latitude: " + position.coords.latitude);
-    console.log("Longitude: " + position.coords.longitude);
-    $(document)
-                .find('#weathertest')
-                .empty()
-                .append( position.coords.latitude, position.coords.longitude )
-}
+// function getLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPosition);
+//         // console.log(navigator.geolocation.getCurrentPosition.coords.latitude);
+//         // console.log(navigator.geolocation.getCurrentPosition.coords.longitude);
+//     } else {
+//         console.log("Geolocation is not supported by this browser.");
+//     }
+// }
+// function showPosition(position) {
+//     console.log("Latitude: " + position.coords.latitude);
+//     console.log("Longitude: " + position.coords.longitude);
+//     $(document)
+//                 .find('#weathertest')
+//                 .empty()
+//                 .append( position.coords.latitude, position.coords.longitude )
+// }
 
 function callController(url) {
     $.ajax({
@@ -22,7 +22,7 @@ function callController(url) {
         method: "GET",  
         success: function (response) {
             $(document)
-                .find('#weather')
+                .find('#streamer')
                 .empty()
                 .append( response )        
         }
@@ -44,8 +44,8 @@ jQuery(function(){
         $("#advice").attr("class", "hidden");
         $("#prog_joke").attr("class", "hidden");
         $("#dark_joke").attr("class", "hidden");
+        
         var selection = $(this).val();
-        console.log(selection + " selected");
         switch(selection){
             case "1":
                 $("#weather_form").attr("class", "");
@@ -85,52 +85,16 @@ jQuery(function(){
             data: {city: city},
             success: function (response) {
                 $(document)
-                    .find('#weather')
+                    .find('#streamer')
                     .empty()
                     .append( response )        
             }
          });
     });
 
-    $("#joke_btn").click(function(){
-        $.ajax({
-            url: "/getJoke",
-            method: "GET",  
-            success: function (response) {
-                $(document)
-                    .find('#weather')
-                    .empty()
-                    .append( response )        
-            }
-         });
-    });
-
-    $("#gif_btn").click(function(){
-        $.ajax({
-            url: "/getGif",
-            method: "GET",  
-            success: function (response) {
-                $(document)
-                    .find('#weather')
-                    .empty()
-                    .append( response )        
-            }
-         });
-    });
-
-    $("#advice_btn").click(function(){
-        $.ajax({
-            url: "/getAdvice",
-            method: "GET",  
-            success: function (response) {
-                $(document)
-                    .find('#weather')
-                    .empty()
-                    .append( response )        
-            }
-         });
-    });
-
+    $("#joke_btn").click(function(){callController('/getJoke')});
+    $("#gif_btn").click(function(){callController('/getGif')});
+    $("#advice_btn").click(function(){callController('/getAdvice')});
     $("#prog_joke_btn").click(function(){callController('/getProgJoke')});
     $("#dark_joke_btn").click(function(){callController('/getDarkJoke')});
 });

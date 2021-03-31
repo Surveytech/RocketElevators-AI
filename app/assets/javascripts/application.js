@@ -35,4 +35,4 @@
 //= require Chart.bundle
 //= require interventions
 //= require streamer
-//= require weather
+//= require elevator_media

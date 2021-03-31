@@ -1,4 +1,4 @@
-class WeatherController < ApplicationController
+class ElevatorMediaController < ApplicationController
 
     def index 
         @streamer = ElevatorMedia::Streamer.new   
