@@ -34,5 +34,4 @@
 //= require chartkick
 //= require Chart.bundle
 //= require interventions
-//= require streamer
 //= require elevator_media
