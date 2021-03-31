@@ -22,6 +22,8 @@ class ElevatorMediaController < ApplicationController
                     render html: html
                 }
             end
+        else 
+            render json: { html: html }
         end
     end
 
@@ -34,6 +36,8 @@ class ElevatorMediaController < ApplicationController
                     render html: html
                 }
             end
+        else 
+            render json: { html: html }
         end
     end
 
@@ -46,6 +50,8 @@ class ElevatorMediaController < ApplicationController
                     render html: html
                 }
             end
+        else 
+            render json: { html: html }
         end
     end
 
@@ -58,6 +64,8 @@ class ElevatorMediaController < ApplicationController
                     render html: html
                 }
             end
+        else 
+            render json: { html: html }
         end
     end
 
@@ -70,6 +78,8 @@ class ElevatorMediaController < ApplicationController
                     render html: html
                 }
             end
+        else 
+            render json: { html: html }
         end
     end
 
@@ -82,6 +92,8 @@ class ElevatorMediaController < ApplicationController
                     render html: html
                 }
             end
+        else 
+            render json: { html: html }
         end
     end
 end

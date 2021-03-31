@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "cypress:open": "cypress open"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.13.13",
     "@rails/webpacker": "5.2.1",
@@ -17,6 +20,7 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
+    "cypress": "^6.8.0",
     "webpack-dev-server": "^3.11.2"
   }
 }

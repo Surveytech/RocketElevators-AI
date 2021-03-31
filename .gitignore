@@ -48,5 +48,6 @@ hello_world.ogg
 yarn-debug.log*
 .yarn-integrity
 .notes
-coverage
+# coverage
 rspec_results.html
+cypress.json
