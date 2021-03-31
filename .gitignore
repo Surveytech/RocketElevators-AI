@@ -48,3 +48,5 @@ hello_world.ogg
 yarn-debug.log*
 .yarn-integrity
 .notes
+coverage
+rspec_results.html
