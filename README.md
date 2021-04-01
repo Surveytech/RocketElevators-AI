@@ -228,6 +228,8 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
 - Recaptcha API:
     - Verifies that the user is not a robot when submitting a new lead.
 
+<br/><br/>
+
 ### Elevator Media Module Information
 
 - Folders related to the Module
@@ -263,6 +265,8 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
                   └── streamer_spec.rb
   ```
 
+<br/>
+
 - Elevator Media is a new module created in the lib folder and contains the call Streamer. 
   - The Streamer class contains the following methods
     - getContent(selected, city(optional))
@@ -291,28 +295,45 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
     ('6') Will return a random dark joke.
     ```
   
+<br/>
+
 - New view on the website
   - To access the page click on the new MEDIA button on the navbar
+  
     ![](readme/navBar.png)
-  - Then click on the select menu 
-    ![](readme/selectMedia.png)
-  - Then select the desired option from the dropdown
-    ![](readme/getWeather.gif)
-  - If needed input the city then click the submit button!
 
+  - Then click on the select menu 
+  
+    ![](readme/selectMedia.png)
+
+  - Then select the desired option from the dropdown
+    - If needed input the city then click the submit button!
+  
+    ![](readme/getWeather.gif)
+
+<br/>
 
 - RSpec Tests 
   - To run all tests type: `rspec` in the terminal
+  
     ![](readme/rspecTests.gif) 
+
+<br/>
 
 - SimpleCov Report
   - After each RSpec tests SimpleCov generates an html page with a lot of useful data (Located in ./coverage/index.html).
+  
     ![](readme/simpleCov1.png)
     ![](readme/simpleCov2.png)
+
+<br/>
 
 - Cypress Tests
   - First make sure the rails server is running
   - Type `yarn cypress:open` in the terminal then this window should appear
+    
     ![](readme/cypressOpen.png)
+
   - Select a test to run and watch it go!
+    
     ![](readme/cypressRun.gif)
