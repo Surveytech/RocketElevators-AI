@@ -54,9 +54,9 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
     <li><a href="#small_blue_diamond-some-extra-information-about-the-project">Extra Information About The Project</a></li>
     <li><a href="#more-information-about-the-apis">Information about the APIs</a></li>
     <li>
-      <a href="#elevator-media-module-information">Elevator Media</a>
+      <a href="#pushpin-elevator-media-module-information">Elevator Media</a>
       <ul>
-        <li><a href="#-round_pushpin-new-page-on-the-website">New Website Page</a></li>
+        <li><a href="#round_pushpin-new-page-on-the-website">New Website Page</a></li>
         <li><a href="#round_pushpin-rspec-tests">RSpec Tests</a></li>
         <li><a href="#round_pushpin-simplecov-report">SimpleCov Report</a></li>
         <li><a href="#round_pushpin-cypress-tests">Cypress Tests</a></li>
