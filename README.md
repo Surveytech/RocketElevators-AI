@@ -53,9 +53,17 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
     <li><a href="#large_blue_circle-now-that-the-server-is-running">Now That The Server Is Running</a></li>
     <li><a href="#small_blue_diamond-some-extra-information-about-the-project">Extra Information About The Project</a></li>
     <li><a href="#more-information-about-the-apis">Information about the APIs</a></li>
+    <li>
+      <a href="#elevator-media-module-information">Elevator Media</a>
+      <ul>
+        <li><a href="#-round_pushpin-new-page-on-the-website">New Website Page</a></li>
+        <li><a href="#round_pushpin-rspec-tests">RSpec Tests</a></li>
+        <li><a href="#round_pushpin-simplecov-report">SimpleCov Report</a></li>
+        <li><a href="#round_pushpin-cypress-tests">Cypress Tests</a></li>
+      </ul>
+    </li>
   </ol>
 </details>
-
 
 ---
 
@@ -230,7 +238,7 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
 
 <br/><br/>
 
-### Elevator Media Module Information
+## :pushpin: Elevator Media Module Information
 
 - Folders related to the Module
   ```sh
@@ -297,7 +305,7 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
   
 <br/>
 
-- New view on the website
+### :round_pushpin: New page on the website
   - To access the page click on the new MEDIA button on the navbar
   
     ![](readme/navBar.png)
@@ -313,14 +321,14 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
 
 <br/>
 
-- RSpec Tests 
+### :round_pushpin: RSpec Tests 
   - To run all tests type: `rspec` in the terminal
   
     ![](readme/rspecTests.gif) 
 
 <br/>
 
-- SimpleCov Report
+### :round_pushpin: SimpleCov Report
   - After each RSpec tests SimpleCov generates an html page with a lot of useful data (Located in ./coverage/index.html).
   
     ![](readme/simpleCov1.png)
@@ -328,7 +336,7 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
 
 <br/>
 
-- Cypress Tests
+### :round_pushpin: Cypress Tests
   - First make sure the rails server is running
   - Type `yarn cypress:open` in the terminal then this window should appear
     
