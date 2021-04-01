@@ -227,3 +227,92 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
 
 - Recaptcha API:
     - Verifies that the user is not a robot when submitting a new lead.
+
+### Elevator Media Module Information
+
+- Folders related to the Module
+  ```sh
+  .  
+  ├─ coverage #SimpleCov report
+  │   └── index.html 
+  │
+  ├─ cypress #Cypress tests
+  │   └── integration 
+  │         ├── creating_an_intervention.spec.js
+  │         └── elevator_media.spec.js
+  │
+  ├─ lib 
+  │   └── elevator_media
+  │         └── streamer.rb #The module main file.
+  │
+  └─ spec #RSpec tests
+      ├─── controllers
+      │     ├── elevator_media_controller_spec.rb
+      │     ├── interventions_controller_spec.rb
+      │     └── main_controller_spec.rb
+      │
+      ├─── features
+      │     └── login_management_spec.rb
+      │
+      ├─── requests
+      │     ├── interventions_management_spec.rb
+      │     └── quotes_management_spec.rb         
+      │
+      └─── lib
+            └── elevator_media
+                  └── streamer_spec.rb
+  ```
+
+- Elevator Media is a new module created in the lib folder and contains the call Streamer. 
+  - The Streamer class contains the following methods
+    - getContent(selected, city(optional))
+      - This is the main method which calls the other methods to retrieve information. You're able to call every method from getContent.
+    - getWeather(city)
+      - This method calls the OpenWeather API and retrieve the weather for the city.
+    - getJoke
+      - This method calls the Chuck Norris api and retrieve a random joke.
+    - getGif
+      - This method calls the giphy api and retrieve a random cat gif.
+    - getAdvice 
+      - This method calls the Advice Slip api and retrieve a random advice.
+    - getProgJoke
+      - This method calls the JokeApi.dev api and retrieve a random programming joke.
+    - getDarkJoke 
+      - This method calls the JokeApi.dev api and retrieve a random dark joke.
+
+  - Example to call getContent and get the weather in the rails console: `ElevatorMedia::Streamer.new.getContent('1', 'Quebec')` <br /> >This will return an html snippet to display the weather on the website.
+    ```text
+    Parameters list:
+    ('1','*city*') Will return the weather for the specified city.
+    ('2') Will return a Chuck Norris joke.
+    ('3') Will return a random cat gif.
+    ('4') Will return a random advice.
+    ('5') Will return a random programmer joke.
+    ('6') Will return a random dark joke.
+    ```
+  
+- New view on the website
+  - To access the page click on the new MEDIA button on the navbar
+    ![](readme/navBar.png)
+  - Then click on the select menu 
+    ![](readme/selectMedia.png)
+  - Then select the desired option from the dropdown
+    ![](readme/getWeather.gif)
+  - If needed input the city then click the submit button!
+
+
+- RSpec Tests 
+  - To run all tests type: `rspec` in the terminal
+    ![](readme/rspecTests.gif) 
+
+- SimpleCov Report
+  - After each RSpec tests SimpleCov generates an html page with a lot of useful data (Located in ./coverage/index.html).
+    ![](readme/simpleCov1.png)
+    ![](readme/simpleCov2.png)
+
+- Cypress Tests
+  - First make sure the rails server is running
+  - Type `yarn cypress:open` in the terminal then this window should appear
+    ![](readme/cypressOpen.png)
+  - Select a test to run and watch it go!
+    ![](readme/cypressRun.gif)
