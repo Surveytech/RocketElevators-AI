@@ -326,6 +326,19 @@ Graphql URL: https://rocketfoundationgraphqlapi.herokuapp.com/graphql
   
     ![](readme/rspecTests.gif) 
 
+  - To run an individual test
+      ```sh
+      rspec ./spec/controllers/main_controller_spec.rb
+      rspec ./spec/controllers/elevator_media_controller_spec.rb
+      rspec ./spec/controllers/interventions_controller_spec.rb
+
+      rspec ./spec/features/login_management_spec.rb
+
+      rspec ./spec/requests/interventions_management_spec.rb
+      rspec ./spec/requests/quotes_management_spec.rb  
+
+      rspec ./spec/lib/elevator_media/streamer_spec.rb
+      ```
 <br/>
 
 ### :round_pushpin: SimpleCov Report
