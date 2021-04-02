@@ -4,8 +4,20 @@ class ElevatorMediaController < ApplicationController
         @streamer = ElevatorMedia::Streamer.new   
     end
 
-    def getContent
-       
+    def react 
+    end
+
+    def getWeatherReact
+        @streamer = ElevatorMedia::Streamer.new
+        city = params[:city]
+        if !(city.nil?)
+           html = @streamer.getContent("11", city)
+        else
+            html = ""
+        end
+
+        render json: { html: html }
+
     end
 
     def getWeather

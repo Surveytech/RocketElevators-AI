@@ -41,6 +41,8 @@ module ElevatorMedia
                 response = self.getDarkJoke
                 html = "<div class='row wow slideInUp' data-wow-duration='1s'><div class='col-md-4 col-md-offset-4'><p class='fs-20 font-roboto line-height-30' style='text-align: center'>                     
                         #{response}</p></div></div>".html_safe
+            when "11"
+                response = self.getWeather(city)           
             else
                 puts 'error!'
             end

@@ -37,7 +37,9 @@ Rails.application.routes.draw do
   # get "test2", to: "test#test2"
   # post "test2", to: "media#getContent"
   # post 'form_path', to: 'media#getContent'
- 
+
+ get '/react/weather', to: 'elevator_media#react'
+ get '/getWeatherReact', to: 'elevator_media#getWeatherReact'
   
   get '/elevator_media', to: 'elevator_media#index'
   post '/elevator_media', to: 'elevator_media#getWeather'
