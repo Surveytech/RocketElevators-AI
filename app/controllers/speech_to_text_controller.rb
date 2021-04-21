@@ -57,7 +57,8 @@ class SpeechToTextController < ApplicationController
         end
         puts response.body
     end
-
+    
+    # method to identify who is speaking
     def speakerIdentification
 
         uri = URI('https://westus.api.cognitive.microsoft.com/spid/v1.0/identify?identificationProfileIds={identificationProfileIds}')
@@ -80,7 +81,7 @@ class SpeechToTextController < ApplicationController
 
         puts response.body
     end
-
+    # method to retrieve the identified profile Id
     def getOperationStatus
 
         uri = URI('https://westus.api.cognitive.microsoft.com/spid/v1.0/operations/{operationId}')
@@ -99,7 +100,7 @@ class SpeechToTextController < ApplicationController
 
         puts response.body
     end
-
+    # method to transcribe from an wave file to a text
     def speechToText
 
         uri = URI('https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US')
