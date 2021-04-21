@@ -537,6 +537,7 @@ DEPENDENCIES
   jquery-rails
   jt-rails-address
   listen (>= 3.0.5, < 3.2)
+  multipart-post
   multiverse
   mysql2 (>= 0.4.4, < 0.6.0)
   open-weather-ruby-client

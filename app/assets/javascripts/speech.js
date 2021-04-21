@@ -11,7 +11,7 @@ jQuery(function(){
 
     $("#apiTest").click(function(){
         $.ajax({
-            url: "/speech/speakerIdentification",
+            url: "/speech/identifySpeaker",
             method: "GET",  
             data: {file: $("#zwavhe").val()},
             error: function (xhr, status, error) {

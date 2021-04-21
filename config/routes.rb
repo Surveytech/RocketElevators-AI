@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
 
   get "/speech", to: "speech#speech"
-  get "/speech/speakerIdentification", to: "speech#speakerIdentification"
+  get "/speech/identifySpeaker", to: "speech#identifySpeaker"
 
   # get "test", to: "test#index"
   # get "test2", to: "test#test2"

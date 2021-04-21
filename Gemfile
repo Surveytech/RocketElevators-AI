@@ -65,6 +65,7 @@ gem 'blazer'
 
 # httparty
 gem 'httparty'
+gem 'multipart-post'
 
 # Storing Keys
 gem 'dotenv-rails', groups: [:development, :test]
