@@ -33,16 +33,17 @@ Rails.application.routes.draw do
   get 'get_elevators/', to: 'interventions#get_elevators'  
 
 
-  get "/speech", to: "test#speech"
+  get "/speech", to: "speech#speech"
+  get "/speech/speakerIdentification", to: "speech#speakerIdentification"
 
   # get "test", to: "test#index"
   # get "test2", to: "test#test2"
   # post "test2", to: "media#getContent"
   # post 'form_path', to: 'media#getContent'
 
- get '/react/weather', to: 'elevator_media#react'
- get '/getWeatherReact', to: 'elevator_media#getWeatherReact'
-  
+  get '/react/weather', to: 'elevator_media#react'
+  get '/getWeatherReact', to: 'elevator_media#getWeatherReact'
+
   get '/elevator_media', to: 'elevator_media#index'
   post '/elevator_media', to: 'elevator_media#getWeather'
   get '/getWeather', to: 'elevator_media#getWeather'

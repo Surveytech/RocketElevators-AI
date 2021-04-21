@@ -1,6 +1,11 @@
 require 'net/http'
 
-class SpeechToTextController < ApplicationController
+class SpeechController < ApplicationController
+
+    def speech
+        @fileList = Dir.entries("./app/assets/sounds").reject{|filename| filename =~/^.{1,2}$/}
+        puts @fileList.length
+    end
 
     def identCreateProfile
 
@@ -11,7 +16,7 @@ class SpeechToTextController < ApplicationController
         # Request headers
         request['Content-Type'] = 'application/json'
         # Request headers
-        request['Ocp-Apim-Subscription-Key'] = '{ENV['AZURE_SPEECH_KEY']}'
+        request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
         # Request body
         request.body = "{body}"
         response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -31,7 +36,7 @@ class SpeechToTextController < ApplicationController
         # Request headers
         request['Content-Type'] = 'multipart/form-data'
         # Request headers
-        request['Ocp-Apim-Subscription-Key'] = '{ENV['AZURE_SPEECH_KEY']}'
+        request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
         # Request body
         request.body = "{body}"
         response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -48,7 +53,7 @@ class SpeechToTextController < ApplicationController
 
         request = Net::HTTP::Delete.new(uri.request_uri)
         # Request headers
-        request['Ocp-Apim-Subscription-Key'] = '{ENV['AZURE_SPEECH_KEY']}'
+        request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
         # Request body
         request.body = "{body}"
 
@@ -59,7 +64,15 @@ class SpeechToTextController < ApplicationController
     end
     
     # method to identify who is speaking
-    def speakerIdentification
+    def speakerIdentification(file)
+
+        # File file = new File(`./app/assets/sounds/#{audioFile}`);
+        # byte[] data = new byte[file.length()];
+        # FileInputStream in = new FileInputStream(file);
+        # in.read(data);
+        # in.close();
+        # puts data;
+
 
         uri = URI('https://westus.api.cognitive.microsoft.com/spid/v1.0/identify?identificationProfileIds={identificationProfileIds}')
         uri.query = URI.encode_www_form({
@@ -71,7 +84,7 @@ class SpeechToTextController < ApplicationController
         # Request headers
         request['Content-Type'] = 'application/octet-stream'
         # Request headers
-        request['Ocp-Apim-Subscription-Key'] = '{ENV['AZURE_SPEECH_KEY']}'
+        request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
         # Request body
         request.body = "{body}"
 
@@ -90,7 +103,7 @@ class SpeechToTextController < ApplicationController
 
         request = Net::HTTP::Get.new(uri.request_uri)
         # Request headers
-        request['Ocp-Apim-Subscription-Key'] = '{ENV['AZURE_SPEECH_KEY']}'
+        request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
         # Request body
         request.body = "{body}"
 
@@ -109,7 +122,7 @@ class SpeechToTextController < ApplicationController
 
         request = Net::HTTP::Get.new(uri.request_uri)
         # Request headers
-        request['Ocp-Apim-Subscription-Key'] = '{ENV['AZURE_SPEECH_KEY']}'
+        request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
         request['Content-Type'] = 'application/octet-stream'
         # Request body
         request.body = "{body}"

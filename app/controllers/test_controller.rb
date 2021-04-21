@@ -1,8 +1,5 @@
 class TestController < ApplicationController
 
-    def index 
-    end
-
     def test2 
         @streamer = ElevatorMedia::Streamer.new
     end

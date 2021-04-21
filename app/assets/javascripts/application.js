@@ -35,3 +35,4 @@
 //= require Chart.bundle
 //= require interventions
 //= require elevator_media
+//= require speech
