@@ -9,6 +9,12 @@ class SpeechController < ApplicationController
         @fileList = Dir.entries("./app/assets/sounds").reject{|filename| filename =~/^.{1,2}$/}
         puts @fileList.length
 
+        f = File.read('./app/assets/sounds/Test1.wav')
+        # puts f.unpack('C*')
+        File.write("./app/assets/sounds/test.txt", f)
+
+
+
         # file_size = File.size("./app/assets/sounds/Claude.wav")
         # File.open("./app/assets/sounds/Claude.wav", "rb") do |file| 
         #     file.seek(postion)
@@ -18,27 +24,27 @@ class SpeechController < ApplicationController
         #         # Request headers
         #         request['Ocp-Apim-Subscription-Key'] = "51d28a570828496f9d7e1ead5867b92f"
 
-        uri = URI('https://westus.stt.speech.microsoft.com/speaker/identification/v2.0/text-independent/profiles/identifySingleSpeaker?profileIds=234fbd49-f417-4786-973e-50d9964e99e2')
+        # uri = URI('https://westus.stt.speech.microsoft.com/speaker/identification/v2.0/text-independent/profiles/identifySingleSpeaker?profileIds=234fbd49-f417-4786-973e-50d9964e99e2')
 
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = true
+        # http = Net::HTTP.new(uri.host, uri.port)
+        # http.use_ssl = true
 
-        request = Net::HTTP::Post.new(
-        uri,
-        # 'authorization'     => 'YOUR-API-TOKEN',
-        'transfer-encoding' => 'chunked'
-        )
+        # request = Net::HTTP::Post.new(
+        # uri,
+        # # 'authorization'     => 'YOUR-API-TOKEN',
+        # 'transfer-encoding' => 'chunked'
+        # )
 
-        request['Content-Type'] = 'audio/wav'
-        request['Ocp-Apim-Subscription-Key'] = "51d28a570828496f9d7e1ead5867b92f"
+        # request['Content-Type'] = 'audio/wav'
+        # request['Ocp-Apim-Subscription-Key'] = "51d28a570828496f9d7e1ead5867b92f"
 
-        request.body = {'audioData' => "#{File.binread('./app/assets/sounds/Claude.wav', 'rb')}" }
+        # request.body = {'audioData' => "#{File.binread('./app/assets/sounds/Claude.wav', 'rb')}" }
         
 
-        response = http.start do |http|
-        http.request(request)
-        end
-        puts response.read_body
+        # response = http.start do |http|
+        # http.request(request)
+        # end
+        # puts response.read_body
 
 
     #    a = File.open('./app/assets/sounds/Claude.wav')
@@ -148,7 +154,7 @@ class SpeechController < ApplicationController
 
         request = Net::HTTP::Post.new(uri.request_uri)
         # Request headers
-        request['Content-Type'] = 'application/octet-stream'
+        request['Content-Type'] = 'audio/wav; codecs=audio/pcm; samplerate=16000'
         # Request headers
         request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
         # Request body -> wave file
@@ -161,19 +167,26 @@ class SpeechController < ApplicationController
         puts response.body
     end
     
-    # method to transcribe from an wave file to a text
-    def speechToText(file)
+    def initialize
+        @language = 'en-US'
+    end
 
+    # method to transcribe from an wave file to a text
+    def speechToText()
+
+        
         uri = URI('https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US')
         uri.query = URI.encode_www_form({
         })
 
         request = Net::HTTP::Get.new(uri.request_uri)
+        # request['language'] = 'en-US'
         # Request headers
         request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
-        request['Content-Type'] = 'application/octet-stream'
+
+        request['Content-Type'] = 'audio/vnd.wave'
         # Request body
-        request.body = "{body}"
+        request.body = './app/assets/sounds/Claude.wav'
 
         response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
             http.request(request)

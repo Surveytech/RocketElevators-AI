@@ -33,8 +33,8 @@ Rails.application.routes.draw do
   get 'get_elevators/', to: 'interventions#get_elevators'  
 
 
-  get "/speech", to: "speech#speech"
-  get "/speech/identifySpeaker", to: "speech#identifySpeaker"
+  get "/speech", to: "speech#index"
+  get "/speech/speakerIdentification", to: "speech#speakerIdentification"
 
   # get "test", to: "test#index"
   # get "test2", to: "test#test2"
