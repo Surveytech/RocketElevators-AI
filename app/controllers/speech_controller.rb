@@ -9,9 +9,9 @@ class SpeechController < ApplicationController
         @fileList = Dir.entries("./app/assets/sounds").reject{|filename| filename =~/^.{1,2}$/}
         puts @fileList.length
 
-        f = File.read('./app/assets/sounds/Test1.wav')
-        # puts f.unpack('C*')
-        File.write("./app/assets/sounds/test.txt", f)
+        # f = File.read('./app/assets/sounds/Test1.wav')
+        # # puts f.unpack('C*')
+        # File.write("./app/assets/sounds/test.txt", f)
 
 
 
