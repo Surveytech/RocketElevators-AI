@@ -138,33 +138,44 @@ class SpeechController < ApplicationController
     end
 
     # V2 of the API who englobe speakerIdentification and get operation status
-    def identifySpeaker(profileIds,filename)
+    def identifySpeaker
 
-        # File file = new File(`./app/assets/sounds/#{audioFile}`);
-        # byte[] data = new byte[file.length()];
-        # FileInputStream in = new FileInputStream(file);
-        # in.read(data);
-        # in.close();
-        # puts data;
-
-        uri = URI("https://westus.stt.speech.microsoft.com/speaker/identification/v2.0/text-independent/profiles/identifySingleSpeaker?profileIds=#{profileIds}")
+        uri = URI("https://westus.stt.speech.microsoft.com/speaker/identification/v2.0/text-independent/profiles/identifySingleSpeaker?")
 
         uri.query = URI.encode_www_form({
+            'profileIds' => 'e0762f50-c521-4c65-a901-12e4e4b3c2f2,
+                            a52253bd-9734-4dcc-bf4c-07d97ceb8015,
+                            2f202d1a-0772-4f4f-94ce-11ec2d936f4a,
+                            a7f1e383-e3e3-4c2e-aec2-97cf9a5a869a',
+            'ignoreMinLength' => 'true'
         })
 
-        request = Net::HTTP::Post.new(uri.request_uri)
-        # Request headers
-        request['Content-Type'] = 'audio/wav; codecs=audio/pcm; samplerate=16000'
-        # Request headers
-        request['Ocp-Apim-Subscription-Key'] = ENV['AZURE_SPEECH_KEY']
-        # Request body -> wave file
-        request.body = "#{filename}"
+        # puts "*******************************"
+        puts uri
+        # puts "************ URI **************"
 
-        response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        request = Net::HTTP::Post.new(uri.request_uri)
+        
+        # Request headers
+        request['Content-Type'] = 'multipart/form-data'
+        # Request headers
+        request['Ocp-Apim-Subscription-Key'] = '3d7458d4dcb44b6ebdbc20af017f777a' #ENV['AZURE_SPEECH_KEY']
+        # Request body -> wave file
+        request.body = params['speakerid-attachment'].read
+
+        response = Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
             http.request(request)
         end
+        # puts "---------------------------"
+        
+        # sleep 15
 
         puts response.body
+        @response = render json: response #, :callback => 'IdentifiedSingleSpeakerInfo(0)'
+        # speakerinfo = response['IdentifiedSingleSpeakerInfo']
+        # @speakerId = speakerinfo
+        puts "Profiles ID = #{@response}"
+        puts "---------------------------"
     end
     
     def initialize
@@ -177,6 +188,7 @@ class SpeechController < ApplicationController
         
         uri = URI('https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US')
         uri.query = URI.encode_www_form({
+                'language' => 'en-US'
         })
 
         request = Net::HTTP::Get.new(uri.request_uri)
