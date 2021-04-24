@@ -10,17 +10,17 @@
       <h1 style="font-weight:500;">Speech Recognition Speech SDK not found (microsoft.cognitiveservices.speech.sdk.bundle.js missing).</h1>
     </div>
     
-    <div class="row wow slideInUp" data-wow-duration="1s">
+    <%# <div class="row wow slideInUp" data-wow-duration="1s">
         <div class="col-md-4 col-md-offset-4">
             <%= select_tag( "zwavhe", options_for_select(@fileList),options = {:class => 'form-control', :prompt => "Please select"}) %>
-        </div>
-    </div>
+        <%# </div>
+    </div> %>
 
     <div id="content" style="display:none">
       <table width="100%">
         <tr>
           <td></td>
-          <td><h1 style="font-weight:500;">Microsoft Cognitive Services Speech SDK JavaScript Quickstart</h1></td>
+          <td><h1 style="font-weight:500;">Speech To Text</h1></td>
         </tr>
         
         <tr style="display:none">
@@ -37,10 +37,12 @@
             <input type="file" id="filePicker" accept=".wav" />
           </td>
         </tr>
+         <br>
         <tr>
           <td></td>
-          <td><button id="startRecognizeOnceAsyncButton">Start recognition</button></td>
+          <td><button class= "btn-sm btn-danger" id="startRecognizeOnceAsyncButton">Start recognition</button></td>
         </tr>
+         <br><br>
         <tr>
           <td align="right" valign="top">Results</td>
           <td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea></td>

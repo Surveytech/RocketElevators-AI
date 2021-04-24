@@ -2,6 +2,9 @@ require 'zendesk_api'
 class InterventionsController < ApplicationController
      authorize_resource
 
+    def home
+    end
+    
     def index   
         @customers = Customer.all  
         @intervention = Intervention.new 

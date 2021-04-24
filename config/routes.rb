@@ -33,9 +33,10 @@ Rails.application.routes.draw do
   get 'get_elevators/', to: 'interventions#get_elevators'  
 
 
-  get "/speech", to: "speech#index"
-  get "/speech/speakerIdentification", to: "speech#speakerIdentification"
-  post "/speech/identifySpeaker", to: "speech#identifySpeaker"
+  get '/speaker', to: 'main#speaker'
+  get '/speechToText', to: 'main#stt'
+  post '/speechToText/speechConverter', to: "main#speechConverter"
+  post "/speaker/identifySpeaker", to: "main#identifySpeaker"
   # get "test", to: "test#index"
   # get "test2", to: "test#test2"
   # post "test2", to: "media#getContent"

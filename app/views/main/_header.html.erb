@@ -62,7 +62,8 @@
                                     <li><%= link_to ">Quotes", quotes_path %></li>                                   
                                     <% if can? :manage, :all %>
                                         <li><a href="/interventions">>Interventions</a></li>
-                                        <li><a href="/speech">>Speech</a></li>
+                                        <li><a href="/speaker">>Speaker Id</a></li>
+                                        <li><a href="/speechToText">>Speech To Text</a></li>
                                         <li><a href="/admin">>Back Office</a></li>
                                     <% end %>
                                     <li><%= link_to ">Edit Profile", edit_user_registration_path %></li>
